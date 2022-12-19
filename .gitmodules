@@ -1,0 +1,7 @@
+[submodule ".config/nvim"]
+	path = .config/nvim
+  ; url = git@github.com:ruanyouxing/nvim
+  url = https://github.com/ruanyouxing/nvim
+[submodule ".zplug"]
+	path = .zplug
+	url = https://github.com/zplug/zplug
