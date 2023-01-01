@@ -1,14 +1,14 @@
-{config, pkgs,...}:
+{config, pkgs,lib,...}:
 {
   home.stateVersion = "22.11";
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-	nodejs feh ibus ibus-engines.bamboo jdk yarn gh
+    nodejs feh gh gcc
         noto-fonts-emoji
         zoxide starship exa htop lazygit stow git
-        sxhkd rofi cava polybar zathura kitty neovim picom-jonaburg
-       (nerdfonts.override {fonts = ["FiraCode" "Iosevka"];})
-      ];
+        sxhkd rofi cava polybar zathura picom-jonaburg
+ #      (nerdfonts.override {fonts = ["FiraCode" "Iosevka"];})
+     ];
   programs.home-manager = {
         enable = true;
 };
@@ -28,5 +28,13 @@
 		set mouse=a
 		colorscheme catppuccin_mocha
 	'';
-};
+      };
+     programs.neovim = {
+       enable = false;
+       viAlias = true;
+       withPython3 = true;
+       plugins = with pkgs.vimPlugins; [
+         nvim-treesitter.withAllGrammars
+       ];
+  };
 }
