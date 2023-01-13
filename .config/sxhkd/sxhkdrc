@@ -14,20 +14,16 @@ super + Escape
 # terminal emulator
 alt + shift + Return
  	kitty
-
-# filemanager
 super + e
  	Thunar
-# launch/restart polybar
 ctrl + alt + p
     ~/.config/polybar/scripts/launch-polybar.sh
 
-# rofi 
-super + d
+super + r
 	rofi -modi drun -show drun -width 5
-
-
-# --------- FUNCTIONALITIES ---------
+# Lock the screen
+super + l 
+  betterlockscreen -l dimblur
 
 # get window's class name
 super + alt + c
