@@ -3,9 +3,9 @@
 workspace()
 {
 	name=1
-	for monitor in 'bspc qeury -M'; do 
- 	 	bspc monitor $(monitor) -n "$name" -d "一" "二" "三" "四" "五" "六" "七" "八" "九" "十"
-		let name++
+  for monitor in $(bspc query -M); do 
+ 	 	 bspc monitor "$monitor" -n "$name" -d "一" "二" "三" "四" "五" "六" "七"
+ ((name++))
 	done
 }
 workspace
@@ -25,8 +25,9 @@ bspc config active_border_color 	"#8BE0FD"
 bspc config presel_feedback_color 	"#50FA7B"
 
 dunst &
-~/.config/polybar/launch.sh --hack
+~/.config/polybar/launch.sh &
 picom --experimental-backends &
-feh --bg-fill ~/wallpaper.jpg
+~/.fehbg
+flameshot &
 sxhkd &
-komorebi &
+ibus-setup 
