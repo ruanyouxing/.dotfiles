@@ -17,7 +17,7 @@ alt + shift + Return
 super + e
  	Thunar
 ctrl + alt + p
-    ~/.config/polybar/scripts/launch-polybar.sh
+    ~/.config/polybar/launch.sh
 
 super + r
 	rofi -modi drun -show drun -width 5
@@ -26,17 +26,14 @@ super + l
   betterlockscreen -l dimblur
 
 # get window's class name
-super + alt + c
     notify-send "$(xprop | grep 'CLASS')"
 
 
 # --------- RANGER (TERMINAL FILE MANAGER) ---------
 
-# ranger screenshots
 shift + super + i
     kitty -e ranger ~/Pictures/Screenshots 
 
-# ranger downloads
 shift + super + d
     kitty -e ranger ~/Downloads
 
@@ -89,7 +86,7 @@ super + Print
 
 # screenshot (region)
 super + shift + S
-    import /tmp/screenshot.png && cat /tmp/screenshot.png | xclip -sel clip -t image/png
+  flameshot gui
 
 # system shutdown
 super + alt + t
@@ -112,7 +109,7 @@ super + F7
 
 # pulsemixer volume MUTE (0)
 super + F5
-	pulsemixer --toggle-mute
+	pulsemixer ---mute
 
 
 # --------- DUNST (NOTIFICATION MANAGER) ---------
@@ -152,17 +149,25 @@ super + m
 super + y
 	bspc node newest.marked.local -n newest.!automatic.local
 
-# swap the current node and the biggest node
 super + g
  	obs
 
 #
 # state/flags
 #
+# Pseudotiled
+super + shift + t
+  bspc node focused -t \~pseudo_tiled
 
-# set the window state
-super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+#Float
+super + s 
+  bspc node focused -t \~floating
+
+super + f 
+  bspc node focused -t \~fullscreen
+
+super + t 
+  bspc node focused -t \~tiled
 
 # set the node flags
 super + ctrl + {m,x,y,z}
@@ -239,7 +244,6 @@ ctrl + alt + {h,l}
 # move/resize
 #
 
-# expand a window by moving one of its side outward
 super + alt + {Left,Down,Up,Right}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
@@ -251,5 +255,12 @@ super + alt + shift + {Left,Down,Up,Right}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-#super + shift + g : {plus,minus}
-    #bspc config window_gap $(( $(bspc config window_gap) {+,- 5}))
+super + shift + g : {plus,minus}
+    bspc config window_gap $(( $(bspc config window_gap) {+,- 5}))
+
+
+# Hide node
+alt + h
+    ~/.config/bspwm/scripts/winhide --hide
+alt + shift + h
+    ~/.config/bspwm/scripts/winhide --showall
