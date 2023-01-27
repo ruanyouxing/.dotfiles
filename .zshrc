@@ -12,8 +12,8 @@ eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 alias ls='exa --icons'
 alias lg='lazygit'
-
-
+alias startx='startx ~/.xinitrc > /dev/null 2>&1'
+alias v='fzf | xargs nvim'
 export PATH="$HOME/.local/bin:$PATH"
 export DOTFILES="${HOME}/.dotfiles"
 if [ -e /home/hungz/.nix-profile/etc/profile.d/nix.sh ]; then . /home/hungz/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
