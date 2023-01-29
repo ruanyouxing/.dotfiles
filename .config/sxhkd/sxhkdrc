@@ -1,17 +1,6 @@
-#
-# CUSTOM hotkeys
-#
-
-# --------- SXHKD (SHORTCUTS MANAGER) ---------
-
-# sxhkd reload keybindings:
 super + Escape
 	pkill -USR1 -x sxhkd
 
-
-# --------- GENERAL APPS ---------
-
-# terminal emulator
 alt + shift + Return
  	kitty
 super + e
@@ -21,30 +10,9 @@ ctrl + alt + p
 
 super + r
 	rofi -modi drun -show drun -width 5
-# Lock the screen
+
 super + l 
   betterlockscreen -l dimblur
-
-# get window's class name
-    notify-send "$(xprop | grep 'CLASS')"
-
-
-# --------- RANGER (TERMINAL FILE MANAGER) ---------
-
-shift + super + i
-    kitty -e ranger ~/Pictures/Screenshots 
-
-shift + super + d
-    kitty -e ranger ~/Downloads
-
-# ranger wallpapers
-shift + super + w
-    kitty -e ranger ~/.wallpapers
-
-# ranger programming
-shift + super + p
-    kitty -e ranger ~/Dropbox/Programming
-
 # nitrogen
 ctrl + alt + w
     bspc rule -a \* -o state=floating && nitrogen
@@ -57,68 +25,18 @@ super + r
 shift + super + r
     kitty -e ranger
 
-# browser
-ctrl + alt + f
-    firefox file:///home/$USER/.config/startpage/index.html
-
-# idea
-ctrl + alt + i
-    ~/software/idea-IC-201.7846.76/bin/idea.sh
-
 # code
 ctrl + alt + c
     code
-   
-# spotify
-#ctrl + alt + s
-#    bspc desktop -f '^8' --follow ; spotify
 
-
-# --------- SCREENSHOTS ---------
-
-# screenshot (entire screen)
-Print
-    scrot $HOME/Pictures/Screenshots/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'
-
-# screenshot (window)
-super + Print
-    scrot -u $HOME/Pictures/Screenshots/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'
-
-# screenshot (region)
+#Screenshot
 super + shift + S
   flameshot gui
-
-# system shutdown
-super + alt + t
-    ~/.config/polybar/scripts/theme-swap.sh
-
-
-# --------- PULSEMIXER (AUDIO MANAGER) ---------
-
 # open pulsemixer
 ctrl + alt + v
     bspc rule -a \* -o state=floating ; pavucontrol # kitty -e /bin/zsh -c pulsemixer
 
-# pulsemixer volume UP (+5)
-super + F8
-	pulsemixer --change-volume +5
 
-# pulsemixer volume DOWN (-5)
-super + F7
-	pulsemixer --change-volume -5
-
-# pulsemixer volume MUTE (0)
-super + F5
-	pulsemixer ---mute
-
-
-# --------- DUNST (NOTIFICATION MANAGER) ---------
-
-# close all notifications
-super + space
-    dunstctl close-all
-
-# notifications history
 super + shift + Escape
     dunstctl history-pop
 
@@ -239,11 +157,7 @@ ctrl + alt + {h,l}
 # cancel the preselection for the focused desktop
 #super + ctrl + shift + space
 	#bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
-
-#
-# move/resize
-#
-
+  #
 super + alt + {Left,Down,Up,Right}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
