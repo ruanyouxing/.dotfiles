@@ -1,6 +1,8 @@
-/** Basic config file **/
-
+@theme "~/.config/rofi/ayu-mirage.rasi"
 configuration {
   show-icons:         true;
-  icon-theme:         "candy-icons";
+  display-drun: "Applications: ";
+  display-run: "Execute: ";
+  display-window:"Windows: ";
+  font: "JetBrainsMono Nerd Font Medium 11";
 }
