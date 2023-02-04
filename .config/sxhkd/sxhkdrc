@@ -178,3 +178,7 @@ alt + h
     ~/.config/bspwm/scripts/winhide --hide
 alt + shift + h
     ~/.config/bspwm/scripts/winhide --showall
+
+
+super + semicolon
+  rofi -modi emoji -show emoji

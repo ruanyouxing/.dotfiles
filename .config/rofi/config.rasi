@@ -1,8 +1,9 @@
 @theme "~/.config/rofi/ayu-mirage.rasi"
 configuration {
-  show-icons:         true;
+  show-icons: true;
   display-drun: "Applications: ";
   display-run: "Execute: ";
   display-window:"Windows: ";
   font: "JetBrainsMono Nerd Font Medium 11";
+  modi: "window,run,drun,emoji";
 }
