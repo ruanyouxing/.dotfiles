@@ -30,10 +30,12 @@ bspc config normal_border_color 	"#282A36"
 bspc config active_border_color 	"#8BE0FD"
 bspc config presel_feedback_color 	"#50FA7B"
 
+xsetroot -cursor_name left_ptr
 dunst &
 ~/.config/polybar/launch.sh &
 picom --experimental-backends &
-~/.fehbg
+ ~/.fehbg
+# background-generate > /dev/null &
 flameshot &
 sxhkd &
 if ! pgrep -x ibus-daemon >/dev/null; then 
