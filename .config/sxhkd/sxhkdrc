@@ -17,10 +17,6 @@ super + l
 ctrl + alt + w
     bspc rule -a \* -o state=floating && nitrogen
 
-#Rofi launcher 
-super + r 
-    ~/.config/rofi/launchers/type-6/launcher.sh
-
 # ranger
 shift + super + r
     kitty -e ranger
