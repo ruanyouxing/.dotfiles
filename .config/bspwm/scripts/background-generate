@@ -18,7 +18,7 @@ while true; do
 	--toplists-bar-height=7 \
 	--toplists-bar-background=444444 \
 	--toplists-bar-color=7d54dd \
-  --interval=2 \
+  --interval=1 \
   --output=/tmp/frame.png
 
   hsetroot -fill /tmp/frame.png

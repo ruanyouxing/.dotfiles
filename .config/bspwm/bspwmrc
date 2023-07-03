@@ -39,3 +39,7 @@ sxhkd &
 if ! pgrep -x ibus-daemon >/dev/null; then
 	ibus-setup
 fi
+
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
