@@ -12,6 +12,7 @@
 !./.config/ranger/*
 !./.config/rofi/*
 !./.config/sxhkd/*
+!./.config/nvim/*
 !./.config/waybar/*
 !./.config/zathura/*
 !./.config/configuration.nix
