@@ -1,5 +1,6 @@
 .*
 !./.config/bspwm/*
+!./.config/home-manager/*
 !./.config/cava/*
 !./.config/htop/*
 !./.config/hypr/*
