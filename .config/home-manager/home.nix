@@ -14,9 +14,10 @@
     homeDirectory = "/home/hungz";
     stateVersion = "23.05";
   };
-  programs.neovim = {
-    defaultEditor = true;
-  };
+  # programs.neovim = {
+  #   enable = true;
+  #   defaultEditor = true;
+  # };
   programs.git = {
     enable = true;
     delta.enable = true;

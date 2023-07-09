@@ -53,14 +53,10 @@
     octofetch
     pipes
     # picom-jonaburg
-    # polybar
     pscircle
     pywal
     ranger
     ripgrep
-    # rofi
-    # rofi-emoji
-    # rofimoji
     ttyper
     rsync
     unzip
