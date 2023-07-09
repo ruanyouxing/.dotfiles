@@ -1,29 +1,29 @@
-*
-!./.config/bspwm/
-!./.config/home-manager/
-!./.config/cava/
-!./.config/htop/
-!./.config/hypr/
-!./.config/kitty/
-!./.config/mpd/
-!./.config/ncmpcpp/
-!./.config/neofetch/
-!./.config/nixpkgs/
-!./.config/polybar/
-!./.config/ranger/
-!./.config/rofi/
-!./.config/sxhkd/
-!./.config/nvim/
-!./.config/waybar/
-!./.config/zathura/
-!./.config/configuration.nix
-!./.config/hardware-configuration.nix
-!./.config/picom.conf
-!.zshrc
-!.gitignore
-!./.stow-local-ignore
-!./aur.txt
-!./install.sh
-!./pacman.txt
-!./README.md
-!picom.conf
+# *
+# !./.config/bspwm/
+# !./.config/home-manager/
+# !./.config/cava/
+# !./.config/htop/
+# !./.config/hypr/
+# !./.config/kitty/
+# !./.config/mpd/
+# !./.config/ncmpcpp/
+# !./.config/neofetch/
+# !./.config/nixpkgs/
+# !./.config/polybar/
+# !./.config/ranger/
+# !./.config/rofi/
+# !./.config/sxhkd/
+# !./.config/nvim/
+# !./.config/waybar/
+# !./.config/zathura/
+# !./.config/configuration.nix
+# !./.config/hardware-configuration.nix
+# !./.config/picom.conf
+# !.zshrc
+# !.gitignore
+# !./.stow-local-ignore
+# !./aur.txt
+# !./install.sh
+# !./pacman.txt
+# !./README.md
+# !picom.conf

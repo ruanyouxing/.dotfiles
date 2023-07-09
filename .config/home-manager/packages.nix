@@ -1,8 +1,7 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # Fonts
-    (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" "FiraCode" ]; })
+    (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
     noto-fonts-cjk-serif
     noto-fonts-cjk-sans
     source-han-serif
@@ -11,7 +10,6 @@
     source-code-pro
     material-icons
     material-design-icons
-
 
     #LSP and formatters
     nodePackages.prettier
@@ -30,7 +28,7 @@
     black
     stylua
     shellcheck
-    nixpkgs-fmt
+    alejandra
 
     #Tools
     # betterlockscreen
@@ -63,6 +61,7 @@
     # rofi
     # rofi-emoji
     # rofimoji
+    ttyper
     rsync
     unzip
     xtitle

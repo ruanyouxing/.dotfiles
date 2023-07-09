@@ -7,6 +7,7 @@
   ];
   programs.home-manager.enable = true;
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = _: true;
   fonts.fontconfig.enable = true;
   home = {
     username = "hungz";
