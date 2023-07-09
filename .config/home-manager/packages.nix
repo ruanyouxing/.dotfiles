@@ -1,10 +1,8 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    # betterlockscreen
-
     # Fonts
-    (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" "Hack" "FiraCode" ]; })
+    (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" "FiraCode" ]; })
     noto-fonts-cjk-serif
     noto-fonts-cjk-sans
     source-han-serif
@@ -18,28 +16,28 @@
     #LSP and formatters
     nodePackages.prettier
     # nil
-    clang-tools
-    lldb_9
-    python310Packages.debugpy
-    black
-    stylua
     # nodePackages.eslint
     # lua-language-server
-    shellcheck
-    nixpkgs-fmt
     # nodePackages.bash-language-server
     # nodePackages.vscode-html-languageserver-bin
     # nodePackages.vscode-css-languageserver-bin
     # nodePackages.vscode-json-languageserver-bin
     # nodePackages.pyright
     # nodePackages.typescript-language-server
+    clang-tools
+    lldb_9
+    python310Packages.debugpy
+    black
+    stylua
+    shellcheck
+    nixpkgs-fmt
 
     #Tools
+    # betterlockscreen
     cava
     nix-prefetch-github
     chafa
     cmus
-    exa
     fd
     feh
     flameshot

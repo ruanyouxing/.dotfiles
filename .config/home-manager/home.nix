@@ -14,7 +14,6 @@
     stateVersion = "23.05";
   };
   programs.neovim = {
-    enable = true;
     defaultEditor = true;
   };
   programs.git = {

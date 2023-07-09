@@ -36,6 +36,12 @@
       }
     '';
   };
+  programs.exa = {
+    enable = true;
+    enableAliases = true;
+    icons = true;
+    git = true;
+  };
   home = {
     sessionVariables = {
       DOTFILES = "/home/hungz/.dotfiles";
@@ -47,7 +53,6 @@
       "$HOME/.local/bin"
     ];
     shellAliases = {
-      ls = "exa --icons";
       lg = "lazygit";
       g = "git";
       record = "ffmpeg -video_size 1920x1080 -framerate 60 -f x11grab -i :0.0
@@ -56,4 +61,5 @@
       v = "fd -H | fzf | xargs nvim";
     };
   };
+
 } 
