@@ -17,6 +17,7 @@
         inherit system pkgs;
         username = "hungz";
         homeDirectory = "/home/hungz";
+        stateVersion = "23.05";
         configuration = {
           imports = [
             ./home.nix
