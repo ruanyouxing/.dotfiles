@@ -11,25 +11,6 @@
     material-icons
     material-design-icons
 
-    #LSP and formatters
-    nodePackages.prettier
-    # nil
-    # nodePackages.eslint
-    # lua-language-server
-    # nodePackages.bash-language-server
-    # nodePackages.vscode-html-languageserver-bin
-    # nodePackages.vscode-css-languageserver-bin
-    # nodePackages.vscode-json-languageserver-bin
-    # nodePackages.pyright
-    # nodePackages.typescript-language-server
-    clang-tools
-    lldb_9
-    python310Packages.debugpy
-    black
-    stylua
-    shellcheck
-    alejandra
-
     #Tools
     # betterlockscreen
     cava
@@ -45,11 +26,9 @@
     du-dust
     lazygit
     luajit
-    mpd
     mpv
+    ncdu
     nodejs
-    ncmpcpp
-    ocs-url
     octofetch
     pipes
     # picom-jonaburg
@@ -61,7 +40,19 @@
     rsync
     unzip
     xtitle
+    xorg.lndir
     xorg.xsetroot
     yarn
   ];
+  # programs.rofi = {
+  #   enable = true;
+  #   package = pkgs.rofi.override{plugins = [pkgs.rofi-emoji];};
+  #   configPath = "~/.config/rofi/config.rasi";
+  # };
+  programs.git = {
+    enable = true;
+    delta.enable = true;
+    userEmail = "ruanyouxing7@gmail.com";
+    userName = "ruanyouxing";
+  };
 }

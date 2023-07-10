@@ -48,7 +48,6 @@
       GTK_IM_MODULE = "ibus";
       XMODIFIERS = "ibus";
       QT_IM_MODULE = "ibus";
-      EDITOR="nvim";
     };
     sessionPath = [
       "$HOME/.local/bin"
