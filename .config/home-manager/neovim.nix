@@ -17,6 +17,7 @@
             nodePackages.prettier
             nil
             nodePackages.eslint
+            efm-langserver
             lua-language-server
             rust-analyzer
             nodePackages.bash-language-server
