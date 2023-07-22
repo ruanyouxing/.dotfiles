@@ -37,6 +37,7 @@
     ranger
     ripgrep
     ttyper
+    silver-searcher
     rsync
     unzip
     xtitle
