@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.starship.enable = true;
   programs.zoxide.enable = true;
   programs.zsh = {
@@ -30,10 +30,11 @@
       cd(){
           if (( $# == 0  ))
             then builtin cd && builtin cd $(find . -type d -print | fzf );
-          else 
+          else
             builtin cd $1
           fi
-      }
+        }
+      export LD_LIBRARY_PATH=""
     '';
   };
   programs.exa = {
@@ -61,5 +62,4 @@
       v = "fd -H | fzf | xargs nvim";
     };
   };
-
-} 
+}

@@ -27,3 +27,5 @@
 # !./pacman.txt
 # !./README.md
 # !picom.conf
+
+./.config/polybar/scripts/notification-github.sh
