@@ -10,13 +10,14 @@
     source-code-pro
     material-icons
     material-design-icons
-
+    gcc
     #Tools
     # betterlockscreen
     cava
     nix-prefetch-github
     chafa
     cmus
+    discord
     fd
     feh
     flameshot
@@ -24,18 +25,25 @@
     haskellPackages.greenclip
     ibus-engines.bamboo
     du-dust
+    duf
+    jq
     lazygit
     luajit
     mpv
     ncdu
     nodejs
     octofetch
+    opera
+    pavucontrol
+    python311Packages.pip
     pipes
-    # picom-jonaburg
+    picom-jonaburg
+    polybar
     pscircle
     pywal
     ranger
     ripgrep
+    spotify
     ttyper
     silver-searcher
     rsync
@@ -44,12 +52,13 @@
     xorg.lndir
     xorg.xsetroot
     yarn
+    kitty
   ];
-  # programs.rofi = {
-  #   enable = true;
-  #   package = pkgs.rofi.override{plugins = [pkgs.rofi-emoji];};
-  #   configPath = "~/.config/rofi/config.rasi";
-  # };
+  programs.rofi = {
+    enable = true;
+    package = pkgs.rofi.override{plugins = [pkgs.rofi-emoji];};
+    configPath = "~/.config/rofi/config.rasi";
+  };
   programs.git = {
     enable = true;
     delta.enable = true;

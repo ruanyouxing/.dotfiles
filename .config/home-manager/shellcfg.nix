@@ -5,8 +5,16 @@
     enable = true;
     enableAutosuggestions = true;
     enableCompletion = true;
-    syntaxHighlighting.enable = true;
     plugins = [
+      {
+        name = "zsh-syntax-highlighting";
+        src = pkgs.fetchFromGitHub {
+          owner = "zsh-users";
+          repo = "zsh-syntax-highlighting";
+          rev = "1386f1213eb0b0589d73cd3cf7c56e6a972a9bfd";
+          sha256 = "iKx7lsQCoSAbpANYFkNVCZlTFdwOEI34rx/h1rnraSg=";
+        };
+      }
       {
         name = "zsh-autopair";
         src = pkgs.fetchFromGitHub {
@@ -34,7 +42,6 @@
             builtin cd $1
           fi
         }
-      export LD_LIBRARY_PATH=""
     '';
   };
   programs.exa = {
