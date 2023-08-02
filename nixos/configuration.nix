@@ -1,24 +1,25 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, lib, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
-   boot.kernelParams = ["quiet" "splash"];
-   boot.loader = {
-      grub = {
-         efiSupport = true;
-         device = "nodev";
-	 efiInstallAsRemovable = true;
-      };
-   };
+  boot.kernelParams = ["quiet" "splash"];
+  boot.loader = {
+    grub = {
+      efiSupport = true;
+      device = "nodev";
+      efiInstallAsRemovable = true;
+    };
+  };
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
   time.timeZone = "Asia/Ho_Chi_Minh";
@@ -49,16 +50,16 @@
   services.blueman.enable = true;
   hardware = {
     opengl = {
-       enable = true;
-       driSupport = true;
-       driSupport32Bit = true;
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
     };
     nvidia = {
-       modesetting.enable = true;
-       open = false;
-       nvidiaSettings = true;
-       package = config.boot.kernelPackages.nvidiaPackages.stable;
-       powerManagement.enable = true;
+      modesetting.enable = true;
+      open = false;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      powerManagement.enable = true;
     };
   };
   security.rtkit.enable = true;
@@ -75,11 +76,11 @@
     isNormalUser = true;
     description = "hungz";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       firefox
       kate
-    #  thunderbird
+      #  thunderbird
     ];
   };
   services.xserver.displayManager.autoLogin.enable = true;
@@ -118,25 +119,27 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  security.sudo.extraRules= [
-  {  users = [ "hungz" ];
-    commands = [
-       { command = "ALL" ;
-         options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
-      }
-    ];
-  }
-];
+  security.sudo.extraRules = [
+    {
+      users = ["hungz"];
+      commands = [
+        {
+          command = "ALL";
+          options = ["NOPASSWD"]; # "SETENV" # Adding the following could be a good idea
+        }
+      ];
+    }
+  ];
   nix = {
-   settings = {
+    settings = {
       experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
-   };
-   gc = {
-     automatic = true;
-     dates = "weekly";
-     options = "--delete-older-than 7d";
-   };
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
   };
   system.stateVersion = "23.05"; # Did you read the comment?
 }
