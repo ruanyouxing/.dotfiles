@@ -13,13 +13,8 @@
 
   # Bootloader.
   boot.kernelParams = ["quiet" "splash"];
-  boot.loader = {
-    grub = {
-      efiSupport = true;
-      device = "nodev";
-      efiInstallAsRemovable = true;
-    };
-  };
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.canTouchEfiVariables = true;
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
   time.timeZone = "Asia/Ho_Chi_Minh";
