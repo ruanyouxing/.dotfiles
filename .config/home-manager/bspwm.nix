@@ -11,10 +11,10 @@
       ];
     };
     settings = {
-      border_width = 3;
+      border_width = 0;
       single_monocle = false;
       focus_follows_pointer = true;
-      window_gap = 12;
+      window_gap = 10;
       split_ratio = 0.5;
       borderless_monocle = true;
       pointer_modifier = "mod4";

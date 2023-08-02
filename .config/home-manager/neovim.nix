@@ -13,7 +13,6 @@
       postBuild = let
         path = with pkgs;
           [
-            tree-sitter
             nodePackages.prettier
             nil
             nodePackages.eslint

@@ -21,6 +21,7 @@
     feh
     flameshot
     fzf
+    gcc
     haskellPackages.greenclip
     ibus-engines.bamboo
     du-dust
