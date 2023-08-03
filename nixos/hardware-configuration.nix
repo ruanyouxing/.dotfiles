@@ -14,13 +14,20 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/a8e95f89-2789-4cdd-836d-da2c0fc03c5a";
+    { device = "/dev/disk/by-uuid/6c7eee47-82c1-4b53-9a53-ca8e41bc23ee";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/B014-35F3";
+    { 
+    # device = "/dev/disk/by-uuid/4E5E-7F2C";
+      device = "/dev/disk/by-uuid/8EDE-E387";
       fsType = "vfat";
+    };
+
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/fd19a28e-77bd-4f18-a846-dd636e42cce1";
+      fsType = "ext4";
     };
 
   swapDevices = [ ];
