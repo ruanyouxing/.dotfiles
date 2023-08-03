@@ -26,7 +26,7 @@
       hungz = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          ./hm/home.nix
+          ./home-manager/home.nix
         ];
       };
     };
