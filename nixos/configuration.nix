@@ -7,11 +7,13 @@
     ./hardware-configuration.nix
   ];
   boot.kernelParams = ["quiet" "splash" "rd.udev.log_priority=3"];
-  boot.loader.systemd-boot = {
-    enable = true;
-    consoleMode = "auto";
-  };
+  # boot.loader.systemd-boot = {
+  #   enable = true;
+  #   consoleMode = "max";
+  # };
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.device = "nodev";
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
   time.timeZone = "Asia/Ho_Chi_Minh";
@@ -26,6 +28,12 @@
     LC_PAPER = "vi_VN";
     LC_TELEPHONE = "vi_VN";
     LC_TIME = "vi_VN";
+  };
+  console = {
+    earlySetup = true;
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-116n.psf.gz";
+    packages = with pkgs; [terminus_font];
+    keyMap = "us";
   };
   services.dbus.enable = true;
   services.xserver = {
@@ -113,5 +121,6 @@
       options = "--delete-older-than 7d";
     };
   };
+  xdg.portal.enable = true;
   system.stateVersion = "23.05";
 }
