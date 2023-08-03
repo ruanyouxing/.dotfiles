@@ -13,7 +13,10 @@
 
   # Bootloader.
   boot.kernelParams = ["quiet" "splash"];
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    consoleMode = "auto";
+  };
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
