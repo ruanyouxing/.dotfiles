@@ -8,3 +8,6 @@ if [ ! -d "${HOME}/.local/bin" ]; then
   mkdir ~/.local/bin
   cp -vr ./scripts/* ~/.local/bin
 fi
+if [ ! -d "${HOME}/.config/nvim" ]; then
+  git clone https://github.com/ruanyouxing/nvim ~/.config/nvim 
+fi
