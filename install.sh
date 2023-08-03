@@ -9,5 +9,5 @@ if [ ! -d "${HOME}/.local/bin" ]; then
   cp -vr ./scripts/* ~/.local/bin
 fi
 if [ ! -d "${HOME}/.config/nvim" ]; then
-  git clone https://github.com/ruanyouxing/nvim ~/.config/nvim 
+  git clone --branch nix https://github.com/ruanyouxing/nvim ~/.config/nvim 
 fi
