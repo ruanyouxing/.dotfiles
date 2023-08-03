@@ -29,3 +29,4 @@
 # !picom.conf
 
 ./.config/polybar/scripts/notification-github.sh
+./nixos/hardware-configuration.nix
