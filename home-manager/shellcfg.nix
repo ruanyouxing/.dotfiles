@@ -67,6 +67,8 @@
       output.mkv";
       startx = "startx ~/.xinitrc > /dev/null 2>&1";
       v = "fd -H | fzf | xargs nvim";
+      hm-switch = "home-manager switch --flake '/home/hungz/.dotfiles#hungz'";
+      nixos-switch = "sudo nixos-rebuild switch --flake '/home/hungz/.dotfiles#nixos'";
     };
   };
 }
