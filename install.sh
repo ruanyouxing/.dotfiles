@@ -11,3 +11,4 @@ fi
 if [ ! -d "${HOME}/.config/nvim" ]; then
   git clone --branch nix https://github.com/ruanyouxing/nvim ~/.config/nvim 
 fi
+cat /etc/nixos/hardware-configuration.nix > ./nixos/hardware-configuration.nix
