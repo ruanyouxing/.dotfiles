@@ -13,13 +13,12 @@
     home-manager,
     hyprland,
     ...
-  } @ inputs: let
+  }: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
         modules = [
           ./nixos/configuration.nix
         ];
@@ -29,6 +28,16 @@
       hungz = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
+          hyprland.homeManagerModules.default
+          {
+            wayland.windowManager.hyprland = {
+              enable = true;
+              nvidiaPatches = true;
+              xwayland.enable = true;
+              systemdIntegration = true;
+              recommendedEnvironment = true;
+            };
+          }
           ./home-manager/home.nix
         ];
       };
