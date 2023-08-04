@@ -55,6 +55,7 @@
       DOTFILES = "/home/hungz/.dotfiles";
       GTK_IM_MODULE = "ibus";
       XMODIFIERS = "ibus";
+      WLR_NO_HARDWARE_CURSORS = "1";
       QT_IM_MODULE = "ibus";
     };
     sessionPath = [
