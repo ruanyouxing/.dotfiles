@@ -1,5 +1,18 @@
-
-{
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    feh
+    polybar
+    kitty
+    picom-jonaburg
+    flameshot
+    betterlockscreen
+    cava
+    xorg.xsetroot
+    jq
+    xtitle
+    xorg.lndir
+    xfce.thunar
+  ];
   xsession.windowManager.bspwm = {
     enable = true;
     monitors = {
@@ -26,7 +39,6 @@
       normal_border_color = "#282A36";
       active_border_color = "#8BE0FD";
       presel_feedback_color = "#50FA7B";
-
     };
     startupPrograms = [
       "xsetroot -cursor_name left_ptr"
@@ -98,5 +110,9 @@
       config window_gap) {+,- 5}))";
     };
   };
-
+  programs.rofi = {
+    enable = true;
+    package = pkgs.rofi.override {plugins = [pkgs.rofi-emoji];};
+    configPath = "~/.config/rofi/config.rasi";
+  };
 }

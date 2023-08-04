@@ -3,6 +3,27 @@
   lib,
   ...
 }: {
+  home.packages = with pkgs; [
+    (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
+    noto-fonts-cjk-serif
+    noto-fonts-cjk-sans
+    source-han-serif
+    source-han-mono
+    source-han-sans
+    source-code-pro
+    material-icons
+    material-design-icons
+    gcc
+    fd
+    fzf
+    ripgrep
+    lazygit
+    luajit
+    nodejs
+    yarn
+    python311Packages.pip
+    haskellPackages.greenclip
+  ];
   programs.neovim = {
     enable = true;
     defaultEditor = true;
