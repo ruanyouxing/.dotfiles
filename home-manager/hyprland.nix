@@ -2,11 +2,16 @@
   home.packages = with pkgs; [
     hyprpaper
     waybar
+    slurp
+    grim
+    wl-clipboard
+    dunst
+    swaylock
   ];
   wayland.windowManager.hyprland = {
     extraConfig = ''
       monitor=,preferred,auto,auto
-      exec-once = waybar & hyprpaper & flameshot
+      exec-once = waybar & hyprpaper
       input {
           kb_layout = us
           kb_variant =
@@ -25,8 +30,8 @@
       general {
           gaps_in = 5
           gaps_out = 20
-          border_size = 2
-          col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
+          border_size = 3
+          col.active_border = rgb(4825ac) rgb(73128a) 45deg
           col.inactive_border = rgba(595959aa)
 
           layout = dwindle
@@ -66,14 +71,15 @@
             $mainMod = SUPER
             $altMod = ALT
             bind = $altModSHIFT,Return,exec, kitty
-            bind = $altModSHIFT,Q, exit,
-            bind = $mainMod, W, killactive,
-            bind = $mainMod, S, togglefloating,
-            # bind = $mainMod, R, exec, wofi --show drun
+            bind = $altModSHIFT,Q, exit
+            bind = $mainMod, W, killactive
+            bind = $mainMod, S, togglefloating
+            bind = $mainMod, F, fullscreen
             bind = $mainMod, R, exec, rofi -modi drun -show drun -width 5
             bind = $mainMod, P, pseudo, # dwindle
             bind = $mainMod SHIFT, R, exec, kitty -e ranger
-            bind = $mainMod SHIFT, S, exec, flameshot gui
+            bind = $mainMod SHIFT, S, exec, hyprshot -m region -o ~/Pictures
+            bind = ,Print, exec, hyprshot -m output -o /tmp
             bind = $mainMod, L, exec, betterlockscreen -l dimblur
             bind = $mainMod, J, togglesplit,
             bind = $mainMod, left, movefocus, l
