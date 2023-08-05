@@ -1,7 +1,4 @@
 {pkgs,...}:{
-  imports = [
-    ./picom.nix
-  ];
   home.packages = with pkgs; [
     feh
     polybar
