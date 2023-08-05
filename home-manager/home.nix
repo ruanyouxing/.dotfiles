@@ -3,6 +3,7 @@
     ./packages.nix
     ./shellcfg.nix
     ./bspwm.nix
+    ./mpd.nix
     ./hyprland.nix
     ./zathura.nix
     ./neovim.nix
