@@ -14,6 +14,7 @@
     material-icons
     material-design-icons
     gcc
+    gnumake
     fd
     fzf
     ripgrep
