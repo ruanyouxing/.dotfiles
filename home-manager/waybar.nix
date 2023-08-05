@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  home.packages = with pkgs; [
+    spotifyd
+    playerctl
+  ];
   programs.waybar = {
     enable = true;
     package = pkgs.waybar.overrideAttrs (oldAttrs: {
@@ -17,7 +21,6 @@
           "cpu"
           "memory"
           "wlr/workspaces"
-          "custom/weather"
         ];
         modules-center = ["custom/spotify"];
         modules-right = [
@@ -97,9 +100,9 @@
         };
 
         "custom/spotify" = {
-          exec = "python3 ~/.config/waybar/scripts/mediaplayer.py --player spotify";
+          exec = "~/.local/bin/spotify.sh";
           format = "{}  ";
-          return-type = "json";
+          return-type = "{}";
           on-click = "playerctl play-pause";
           on-double-click-right = "playerctl next";
           on-scroll-down = "playerctl previous";
@@ -171,23 +174,6 @@
       #custom-hyprPicker,
       #custom-power-menu,
       #custom-spotify,
-      #custom-weather,
-      #custom-weather.severe,
-      #custom-weather.sunnyDay,
-      #custom-weather.clearNight,
-      #custom-weather.cloudyFoggyDay,
-      #custom-weather.cloudyFoggyNight,
-      #custom-weather.rainyDay,
-      #custom-weather.rainyNight,
-      #custom-weather.showyIcyDay,
-      #custom-weather.snowyIcyNight,
-      #custom-weather.default {
-        padding: 0 10px;
-        color: #e5e5e5;
-        /* color: #bf616a; */
-        border-radius: 9.5px;
-        background-color: #1f2530;
-      }
       #window,
       #workspaces {
         margin: 0 4px;
@@ -213,30 +199,6 @@
         color: #6a92d7;
         border-radius: 7.5px;
         padding: 0 3px;
-      }
-      #custom-weather.severe {
-        color: #eb937d;
-      }
-      #custom-weather.sunnyDay {
-        color: #c2ca76;
-      }
-      #custom-weather.clearNight {
-        color: #cad3f5;
-      }
-      #custom-weather.cloudyFoggyDay,
-      #custom-weather.cloudyFoggyNight {
-        color: #c2ddda;
-      }
-      #custom-weather.rainyDay,
-      #custom-weather.rainyNight {
-        color: #5aaca5;
-      }
-      #custom-weather.showyIcyDay,
-      #custom-weather.snowyIcyNight {
-        color: #d6e7e5;
-      }
-      #custom-weather.default {
-        color: #dbd9d8;
       }
       .modules-left > widget:first-child > #workspaces {
         margin-left: 0;

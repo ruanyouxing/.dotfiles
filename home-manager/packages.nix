@@ -18,6 +18,7 @@
     spotify
     ttyper
     silver-searcher
+    python311Packages.requests
     rsync
     unzip
     google-chrome
