@@ -55,6 +55,11 @@
       driSupport = true;
       driSupport32Bit = true;
     };
+    pulseaudio = {
+      enable = true;
+      support32Bit = true;
+      extraConfig = "load-module module-combine-sink";
+    };
     nvidia = {
       modesetting.enable = true;
       open = false;
@@ -64,20 +69,20 @@
     };
   };
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
+  # services.pipewire = {
+  #   enable = true;
+  #   alsa.enable = true;
+  #   alsa.support32Bit = true;
+  #   pulse.enable = true;
+  #   jack.enable = true;
+  # };
   # services.xserver.libinput.enable = true;
   programs.zsh.enable = true;
   users.users.hungz = {
     isNormalUser = true;
     description = "hungz";
     shell = pkgs.zsh;
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "audio"];
     packages = with pkgs; [
       firefox
     ];
