@@ -34,7 +34,7 @@
             builtin cd $1
           fi
         }
-      # export LD_LIBRARY_PATH=""
+      export LD_LIBRARY_PATH=""
     '';
   };
   programs.exa = {
@@ -50,6 +50,7 @@
       XMODIFIERS = "ibus";
       QT_IM_MODULE = "ibus";
       WORKSPACE = "/windows/Users/hungz/my_workspace";
+      WLR_NO_HARDWARE_CURSOR = "1";
     };
     sessionPath = [
       "$HOME/.local/bin"
