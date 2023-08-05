@@ -5,6 +5,7 @@
     ./bspwm.nix
     ./zathura.nix
     ./neovim.nix
+    ./hyprland.nix
   ];
   programs.home-manager.enable = true;
   nixpkgs.config.allowUnfree = true;

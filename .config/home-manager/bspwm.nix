@@ -1,6 +1,19 @@
-{
+{pkgs,...}:{
   imports = [
     ./picom.nix
+  ];
+  home.packages = with pkgs; [
+    feh
+    polybar
+    # kitty
+    flameshot
+    # betterlockscreen
+    cava
+    xorg.xsetroot
+    jq
+    xtitle
+    xorg.lndir
+    xfce.thunar
   ];
   xsession.windowManager.bspwm = {
     enable = true;
