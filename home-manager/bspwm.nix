@@ -1,9 +1,11 @@
 {pkgs, ...}: {
+  imports = [
+    ./picom.nix
+  ];
   home.packages = with pkgs; [
     feh
     polybar
     kitty
-    picom-jonaburg
     flameshot
     betterlockscreen
     cava
