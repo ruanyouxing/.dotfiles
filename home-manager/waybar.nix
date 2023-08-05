@@ -5,117 +5,113 @@
       mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
     });
     settings = {
-      height = 30;
-      margin-top = 6;
-      margin-left = 10;
-      margin-bottom = 0;
-      margin-right = 10;
-      spacing = 5;
-      modules-left = [
-        "custom/launcher"
-        "cpu"
-        "memory"
-        "wlr/workspaces"
-        "custom/weather"
-      ];
-      modules-center = ["custom/spotify"];
-      modules-right = [
-        "tray"
-        "backlight"
-        "pulseaudio"
-        "network"
-        "battery"
-        "clock"
-        "custom/power-menu"
-      ];
-      "wlr/workspaces" = {
-        format = "{icon}";
-        on-click = "activate";
-        format-icons = {
-          "1" = "";
-          "2" = "";
-          "3" = "";
-          "4" = "";
-          "5" = "";
-          "urgent" = "";
-          "active" = "";
-          "default" = "";
+      mainBar = {
+        height = 30;
+        margin-top = 6;
+        margin-left = 10;
+        margin-bottom = 0;
+        margin-right = 10;
+        spacing = 5;
+        modules-left = [
+          "custom/launcher"
+          "cpu"
+          "memory"
+          "wlr/workspaces"
+          "custom/weather"
+        ];
+        modules-center = ["custom/spotify"];
+        modules-right = [
+          "tray"
+          "backlight"
+          "pulseaudio"
+          "network"
+          "battery"
+          "clock"
+          "custom/power-menu"
+        ];
+        "wlr/workspaces" = {
+          format = "{icon}";
+          on-click = "activate";
+          format-icons = {
+            "1" = "";
+            "2" = "";
+            "3" = "";
+            "4" = "";
+            "5" = "";
+            "urgent" = "";
+            "active" = "";
+            "default" = "";
+          };
         };
-      };
-      "hyprland/window" = {
-        format = "{}";
-      };
-      "tray" = {
-        spacing = 10;
-      };
-      "clock" = {
-        format = "<span color='#bf616a'> </span>{:%a %b %d}";
-        format-alt = "<span color='#bf616a'> </span>{:%I:%M %p}";
-        tooltip-format = "<big>{:%B%Y}</big>\n<tt><small>{calendar}</small></tt>";
-      };
-
-      "cpu" = {
-        interval = 1;
-        format = "󰍛 {}%";
-        max-length = 10;
-        on-click = "";
-      };
-      "memory" = {
-        interval = 1;
-        format = "󰋊 {}%";
-        format-alt = " {used:0.1f}G";
-        max-length = 10;
-      };
-      "backlight" = {
-        device = "DP-1";
-        format = "{icon} {percent}%";
-        format-icons = ["" "" "" "" "" "" "" "" ""];
-        on-click = "";
-      };
-      "network" = {
-        format-wifi = "󰖩 {signalStrength}%";
-        format-ethernet = "󰈀 wired";
-        format-disconnected = "󰖪 ";
-        on-click = "wifimenu";
-      };
-
-      pulseaudio = {
-        format = "{icon} {volume}%";
-        format-bluetooth = "  {volume}%";
-        format-bluetooth-muted = " ";
-        format-muted = "󰝟 ";
-        format-icons = {
-          headphone = "";
-          hands-free = "󰋌";
-          headset = "󰓃";
-          phone = "";
-          portable = "";
-          car = "";
-          default = ["" "" ""];
+        "hyprland/window" = {
+          format = "{}";
         };
-        on-click = "pavucontrol";
-      };
+        "tray" = {
+          spacing = 10;
+        };
+        "clock" = {
+          format = "<span color='#bf616a'> </span>{:%a %b %d}";
+          format-alt = "<span color='#bf616a'> </span>{:%I:%M %p}";
+          tooltip-format = "<big>{:%B%Y}</big>\n<tt><small>{calendar}</small></tt>";
+        };
 
-      "bluetooth" = {
-        on-click = "~/.config/waybar/scripts/rofi-bluetooth &";
-        format = " {status}";
-      };
+        "cpu" = {
+          interval = 1;
+          format = "󰍛 {}%";
+          max-length = 10;
+          on-click = "";
+        };
+        "memory" = {
+          interval = 1;
+          format = "󰋊 {}%";
+          format-alt = " {used:0.1f}G";
+          max-length = 10;
+        };
+        "network" = {
+          format-wifi = "󰖩 {signalStrength}%";
+          format-ethernet = "󰈀 wired";
+          format-disconnected = "󰖪 ";
+          on-click = "wifimenu";
+        };
 
-      "custom/spotify" = {
-        exec = "python3 ~/.config/waybar/scripts/mediaplayer.py --player spotify";
-        format = "{}  ";
-        return-type = "json";
-        on-click = "playerctl play-pause";
-        on-double-click-right = "playerctl next";
-        on-scroll-down = "playerctl previous";
-      };
-      "custom/power-menu" = {
-        "format" = " <span color='#6a92d7'>⏻ </span>";
-        "on-click" = "bash ~/.config/waybar/scripts/power-menu/powermenu.sh";
-      };
-      "custom/launcher" = {
-        format = " <span color='#6a92d7'>󱄅 </span>";
-        on-click = "rofi -show drun";
+        pulseaudio = {
+          format = "{icon} {volume}%";
+          format-bluetooth = "  {volume}%";
+          format-bluetooth-muted = " ";
+          format-muted = "󰝟 ";
+          format-icons = {
+            headphone = "";
+            hands-free = "󰋌";
+            headset = "󰓃";
+            phone = "";
+            portable = "";
+            car = "";
+            default = ["" "" ""];
+          };
+          on-click = "pavucontrol";
+        };
+
+        "bluetooth" = {
+          on-click = "~/.config/waybar/scripts/rofi-bluetooth &";
+          format = " {status}";
+        };
+
+        "custom/spotify" = {
+          exec = "python3 ~/.config/waybar/scripts/mediaplayer.py --player spotify";
+          format = "{}  ";
+          return-type = "json";
+          on-click = "playerctl play-pause";
+          on-double-click-right = "playerctl next";
+          on-scroll-down = "playerctl previous";
+        };
+        "custom/power-menu" = {
+          "format" = " <span color='#6a92d7'>⏻ </span>";
+          "on-click" = "bash ~/.config/waybar/scripts/power-menu/powermenu.sh";
+        };
+        "custom/launcher" = {
+          format = " <span color='#6a92d7'>󱄅 </span>";
+          on-click = "rofi -show drun";
+        };
       };
     };
     style = ''
@@ -160,12 +156,10 @@
         color: #64727d;
       }
       #clock,
-      #battery,
       #cpu,
       #memory,
       #disk,
       #temperature,
-      #backlight,
       #network,
       #pulseaudio,
       #custom-media,
