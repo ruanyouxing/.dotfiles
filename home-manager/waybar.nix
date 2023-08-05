@@ -101,7 +101,7 @@
 
         "custom/spotify" = {
           exec = "~/.local/bin/spotify.sh";
-          format = "{}  ";
+          format = "{}";
           return-type = "{}";
           on-click = "playerctl play-pause";
           on-double-click-right = "playerctl next";
