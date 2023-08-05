@@ -1,4 +1,7 @@
 {
+  imports = [
+    ./picom.nix
+  ];
   xsession.windowManager.bspwm = {
     enable = true;
     monitors = {
@@ -25,7 +28,6 @@
       normal_border_color = "#282A36";
       active_border_color = "#8BE0FD";
       presel_feedback_color = "#50FA7B";
-
     };
     startupPrograms = [
       "xsetroot -cursor_name left_ptr"
@@ -97,5 +99,4 @@
       config window_gap) {+,- 5}))";
     };
   };
-
 }
