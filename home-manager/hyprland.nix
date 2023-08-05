@@ -1,7 +1,9 @@
 {pkgs, ...}: {
+  imports = [
+    ./waybar.nix
+  ];
   home.packages = with pkgs; [
     hyprpaper
-    waybar
     slurp
     grim
     wl-clipboard
@@ -43,6 +45,13 @@
           shadow_range = 4
           shadow_render_power = 3
           col.shadow = rgba(1a1a1aee)
+          active_opacity = 0.9
+          inactive_opacity = 0.9
+          fullscreen_opacity = 0.9
+          blur {
+            enabled = true
+            size = 12
+          }
       }
 
       animations {
@@ -72,6 +81,8 @@
             $altMod = ALT
             bind = $altModSHIFT,Return,exec, kitty
             bind = $altModSHIFT,Q, exit
+            bind = $altMod, h, exec, scratchpad
+            bind = $altModSHIFT, h, exec, scratchpad -g
             bind = $mainMod, W, killactive
             bind = $mainMod, S, togglefloating
             bind = $mainMod, F, fullscreen
