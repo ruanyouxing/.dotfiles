@@ -1,0 +1,6 @@
+export DOTFILES="/home/hungz/.dotfiles"
+export GTK_IM_MODULE="ibus"
+export XMODIFIERS="ibus"
+export QT_IM_MODULE="ibus"
+export WORKSPACE="/windows/Users/hungz/my_workspace"
+export WLR_NO_HARDWARE_CURSOR="1"
