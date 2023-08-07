@@ -6,14 +6,17 @@
   imports = [
     ./hardware-configuration.nix
   ];
-  boot.kernelParams = ["quiet" "splash" "rd.udev.log_priority=3"];
-  # boot.loader.systemd-boot = {
-  #   enable = true;
-  #   consoleMode = "max";
-  # };
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.device = "nodev";
+  boot = {
+    kernelParams = ["quiet" "splash" "rd.udev.log_priority=3"];
+    loader = {
+      efi.canTouchEfiVariables = true;
+      grub = {
+        efiSupport = true;
+        device = "nodev";
+      };
+    };
+    supportedFilesystems = ["ntfs" "exfat"];
+  };
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
   time.timeZone = "Asia/Ho_Chi_Minh";
