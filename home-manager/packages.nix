@@ -3,13 +3,13 @@
     nix-prefetch-github
     cmus
     discord
-    ibus-engines.bamboo
     du-dust
     duf
     mpv
     ncdu
     octofetch
     opera
+    obs-studio
     pavucontrol
     pipes
     pscircle

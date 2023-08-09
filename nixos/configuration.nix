@@ -32,6 +32,10 @@
     LC_TELEPHONE = "vi_VN";
     LC_TIME = "vi_VN";
   };
+  i18n.inputMethod = {
+    enabled = "ibus";
+    ibus.engines = with pkgs.ibus-engines; [bamboo mozc libpinyin];
+  };
   console = {
     earlySetup = true;
     font = "${pkgs.terminus_font}/share/consolefonts/ter-116n.psf.gz";
@@ -131,7 +135,13 @@
       options = "--delete-older-than 7d";
     };
   };
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  xdg.portal = {
+    enable = true;
+    gtkUsePortal = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+    ];
+  };
   system.stateVersion = "23.05";
 }
