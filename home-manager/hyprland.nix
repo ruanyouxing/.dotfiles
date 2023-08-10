@@ -6,6 +6,7 @@
     hyprpaper
     slurp
     grim
+    wtype
     wl-clipboard
     dunst
     swaylock

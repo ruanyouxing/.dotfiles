@@ -9,10 +9,11 @@
     flameshot
     betterlockscreen
     cava
-    xorg.xsetroot
     jq
     xtitle
+    xdotool
     xorg.lndir
+    xorg.xsetroot
     xfce.thunar
   ];
   xsession.windowManager.bspwm = {
