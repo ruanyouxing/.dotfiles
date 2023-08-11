@@ -58,7 +58,7 @@
       rounded-corners-exclude = [
         "class_g = 'Rofi'"
       ];
-      round-borders = 5;
+      round-borders = 10;
       round-borders-exclude = [];
       round-borders-rule = [
         "15:class_g     = 'Signal'"

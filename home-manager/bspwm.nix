@@ -19,7 +19,7 @@
   xsession.windowManager.bspwm = {
     enable = true;
     monitors = {
-      "HDMI-0" = [
+      "0x00400002" = [
         "一"
         "二"
         "三"
@@ -28,7 +28,7 @@
       ];
     };
     settings = {
-      border_width = 3;
+      border_width = 0;
       single_monocle = false;
       focus_follows_pointer = true;
       window_gap = 12;

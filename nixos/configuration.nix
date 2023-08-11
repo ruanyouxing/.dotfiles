@@ -8,6 +8,7 @@
   ];
   boot = {
     kernelParams = ["quiet" "splash" "rd.udev.log_priority=3"];
+    initrd.kernelModules = ["amdgpu"];
     loader = {
       efi.canTouchEfiVariables = true;
       grub = {
@@ -48,7 +49,7 @@
     layout = "us";
     xkbVariant = "";
     displayManager.startx.enable = true;
-    videoDrivers = ["nvidia"];
+    videoDrivers = ["amdgpu"];
   };
   services.printing.enable = true;
   services.blueman.enable = true;
@@ -67,23 +68,8 @@
       support32Bit = true;
       extraConfig = "load-module module-combine-sink";
     };
-    nvidia = {
-      modesetting.enable = true;
-      open = false;
-      nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-      powerManagement.enable = true;
-    };
   };
   security.rtkit.enable = true;
-  # services.pipewire = {
-  #   enable = true;
-  #   alsa.enable = true;
-  #   alsa.support32Bit = true;
-  #   pulse.enable = true;
-  #   jack.enable = true;
-  # };
-  # services.xserver.libinput.enable = true;
   programs.zsh.enable = true;
   users.users.hungz = {
     isNormalUser = true;
