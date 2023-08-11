@@ -32,7 +32,6 @@
           {
             wayland.windowManager.hyprland = {
               enable = true;
-              nvidiaPatches = true;
               xwayland.enable = true;
               systemdIntegration = true;
               recommendedEnvironment = true;
