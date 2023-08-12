@@ -19,7 +19,7 @@
   xsession.windowManager.bspwm = {
     enable = true;
     monitors = {
-      "0x00400002" = [
+      "DP-2" = [
         "一"
         "二"
         "三"
