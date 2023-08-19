@@ -7,14 +7,15 @@
     enableCompletion = true;
     plugins = [
       {
-        name = "zsh-syntax-highlighting";
+        name = "fast-syntax-highlighting";
         src = pkgs.fetchFromGitHub {
-          owner = "zsh-users";
-          repo = "zsh-syntax-highlighting";
-          rev = "1386f1213eb0b0589d73cd3cf7c56e6a972a9bfd";
-          sha256 = "iKx7lsQCoSAbpANYFkNVCZlTFdwOEI34rx/h1rnraSg=";
+          owner = "zdharma-continuum";
+          repo = "fast-syntax-highlighting";
+          rev = "cf318e06a9b7c9f2219d78f41b46fa6e06011fd9";
+          hash = "sha256-RVX9ZSzjBW3LpFs2W86lKI6vtcvDWP6EPxzeTcRZua4=";
         };
       }
+
       {
         name = "zsh-autopair";
         src = pkgs.fetchFromGitHub {

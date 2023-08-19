@@ -6,6 +6,7 @@
     hyprpaper
     slurp
     grim
+    mpvpaper
     wtype
     wl-clipboard
     dunst
@@ -14,7 +15,7 @@
   wayland.windowManager.hyprland = {
     extraConfig = ''
       monitor=,preferred,auto,auto
-      exec-once = waybar & hyprpaper
+      exec-once = waybar & mpvpaper -vs -o "no-audio loop" "HDMI-A-2" ~/wallpaper.mp4
       input {
           kb_layout = us
           kb_variant =
