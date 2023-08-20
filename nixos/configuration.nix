@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -17,6 +13,9 @@
       };
     };
     supportedFilesystems = ["ntfs" "exfat"];
+    plymouth = {
+      enable = true;
+    };
   };
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
