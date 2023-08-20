@@ -19,7 +19,7 @@
   xsession.windowManager.bspwm = {
     enable = true;
     monitors = {
-      "HDMI-A-0" = [
+      "HDMI-A-1" = [
         "一"
         "二"
         "三"
