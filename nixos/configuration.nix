@@ -10,6 +10,7 @@
       grub = {
         efiSupport = true;
         device = "nodev";
+        splashImage = /home/hungz/.dotfiles/nixos/wallpaper.png;
       };
     };
     supportedFilesystems = ["ntfs" "exfat"];

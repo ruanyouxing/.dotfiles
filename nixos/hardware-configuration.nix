@@ -20,9 +20,9 @@
 
   fileSystems."/boot" =
     { 
-    # device = "/dev/disk/by-uuid/4E5E-7F2C";
-      device = "/dev/disk/by-uuid/8EDE-E387";
+      device = "/dev/disk/by-uuid/4E5E-7F2C";
       fsType = "vfat";
+      # label = "NixOS-efi";
     };
 
   fileSystems."/home" =
