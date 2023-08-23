@@ -1,23 +1,40 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  bad_apple = pkgs.callPackage ./plymouth.nix {};
+in {
   imports = [
     ./hardware-configuration.nix
   ];
   boot = {
-    kernelParams = ["quiet" "splash" "rd.udev.log_priority=3"];
+    kernelParams = [
+      "loglevel=3"
+      "quiet"
+      "splash"
+      "amdgpu"
+      "radeon.cik_support=0"
+      "amdgpu.cik_support=1"
+      "amdgpu.si_support=1"
+      "radeon.si_support=0"
+      "amdgpu.modeset=1"
+      "rd.udev.log_priority=3"
+      "vt.global_cursor_default=0"
+    ];
     initrd.kernelModules = ["amdgpu"];
     loader = {
       efi.canTouchEfiVariables = true;
       grub = {
         efiSupport = true;
         device = "nodev";
-        splashImage = /home/hungz/.dotfiles/nixos/wallpaper.png;
+        configurationLimit = 1;
       };
     };
     supportedFilesystems = ["ntfs" "exfat"];
     plymouth = {
       enable = true;
+      theme = "bad_apple";
+      themePackages = [bad_apple];
     };
   };
+  systemd.services.plymouth-quit.serviceConfig.ExecStartPre = "${pkgs.busybox}/bin/sleep 4";
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
   time.timeZone = "Asia/Ho_Chi_Minh";
