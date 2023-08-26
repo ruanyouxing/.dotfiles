@@ -15,7 +15,7 @@
   wayland.windowManager.hyprland = {
     extraConfig = ''
       monitor=,preferred,auto,auto
-      exec-once = waybar & mpvpaper -vs -o "no-audio loop" "HDMI-A-2" ~/wallpaper.mp4
+      exec-once = waybar & hyprpaper
       input {
           kb_layout = us
           kb_variant =
