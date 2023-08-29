@@ -25,10 +25,8 @@
         modules-center = ["custom/spotify"];
         modules-right = [
           "tray"
-          "backlight"
           "pulseaudio"
           "network"
-          "battery"
           "clock"
           "custom/power-menu"
         ];
@@ -55,7 +53,7 @@
           format = " {} ";
         };
         "tray" = {
-          spacing = 10;
+          spacing = 20;
         };
         "clock" = {
           format = " <span color='#bf616a'> </span>{:%a %b %d} ";
@@ -218,42 +216,17 @@
         color: #7d9bba;
       }
 
-      #backlight {
-        /* color: #EBCB8B; */
-        color: #8fbcbb;
-      }
-
       #clock {
         color: #c8d2e0;
         /* background-color: #14141e; */
       }
 
-      #battery {
-        color: #c0caf5;
-        /* background-color: #90b1b1; */
-      }
-
-      #battery.charging,
-      #battery.full,
-      #battery.plugged {
-        color: #26a65b;
-        /* background-color: #26a65b; */
-      }
 
       @keyframes blink {
         to {
           background-color: rgba(30, 34, 42, 0.5);
           color: #abb2bf;
         }
-      }
-
-      #battery.critical:not(.charging) {
-        color: #f53c3c;
-        animation-name: blink;
-        animation-duration: 0.5s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
       }
 
       label:focus {
