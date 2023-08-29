@@ -15,7 +15,7 @@
   wayland.windowManager.hyprland = {
     extraConfig = ''
       monitor=,preferred,auto,auto
-      exec-once = waybar & hyprpaper
+      exec-once = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY & waybar & hyprpaper
       input {
           kb_layout = us
           kb_variant =
