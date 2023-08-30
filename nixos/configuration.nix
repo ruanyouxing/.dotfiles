@@ -172,7 +172,7 @@ in {
       if [ -L "${user_dir}/.dotfiles/home-manager/home-manager" ]; then
         unlink ${user_dir}/.dotfiles/home-manager/home-manager
       fi
-    '';
+      '';
   };
   system.stateVersion = "23.05";
 }
