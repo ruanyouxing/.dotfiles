@@ -173,6 +173,13 @@ in {
         unlink ${user_dir}/.dotfiles/home-manager/home-manager
       fi
       '';
+      hmInstall.text = ''
+      if ! ${pkgs.nixVersions.nix_2_17}/bin/nix-channel --list | grep "home-manager" > /dev/null; then
+        ${pkgs.nixVersions.nix_2_17}/bin/nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+        ${pkgs.nixVersions.nix_2_17}/bin/nix-channel --update
+        ${pkgs.nixVersions.nix_2_17}/bin/nix-shell '<home-manager>' -A install
+      fi
+      '';
   };
   system.stateVersion = "23.05";
 }
