@@ -21,7 +21,8 @@
     initExtra = ''
       cd(){
           if (( $# == 0  ))
-            then builtin cd && builtin cd $(find . -type d -print | fzf );
+            then builtin cd && builtin cd $(${pkgs.findutils}/bin/find .
+            -type d -print | ${pkgs.fzf}/bin/fzf );
           else
             builtin cd $1
           fi
@@ -46,14 +47,15 @@
       "$HOME/.local/bin"
     ];
     shellAliases = {
-      lg = "lazygit";
+      lg = "${pkgs.lazygit}/bin/lazygit";
       g = "git";
-      record = "ffmpeg -video_size 1920x1080 -framerate 60 -f x11grab -i :0.0
+      record = "${pkgs.ffmpeg_6}/bin/ffmpeg -video_size 1920x1080 -framerate 60 -f x11grab -i :0.0
       output.mkv";
       startx = "startx ~/.xinitrc > /dev/null 2>&1";
-      v = "fd -H | fzf | xargs nvim";
+      v = "${pkgs.fd}/bin/fd -H | ${pkgs.fzf}/bin/fzf | ${pkgs.findutils}/bin/xargs nvim";
       hm-switch = "home-manager switch --flake '/home/hungz/.dotfiles#hungz'";
       nixos-switch = "sudo nixos-rebuild switch --flake '/home/hungz/.dotfiles#nixos'";
+      nix-shell = "nix-shell --command zsh";
     };
   };
 }
