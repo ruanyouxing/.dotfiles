@@ -3,10 +3,10 @@
     ./waybar.nix
   ];
   home.packages = with pkgs; [
-    hyprpaper
     slurp
     grim
     mpvpaper
+    swww
     wtype
     wl-clipboard
     dunst
@@ -15,7 +15,7 @@
   wayland.windowManager.hyprland = {
     extraConfig = ''
       monitor=,preferred,auto,auto
-      exec-once = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY & waybar & hyprpaper
+      exec-once = dbus-update-activation-environment --all & waybar & swww-init.sh
       input {
           kb_layout = us
           kb_variant =
