@@ -163,7 +163,7 @@ in {
       CONF_DIR=${user_dir}/.config/
       cd $DOTSDIR
       for conf_files in *; do
-      ${pkgs.toybox}/bin/ln -sf "$DOTSDIR$""$conf_files" "$CONF_DIR""$conf_files"
+      ${pkgs.toybox}/bin/ln -sf "$DOTSDIR$conf_files" "$CONF_DIR$conf_files"
         done
         ${pkgs.toybox}/bin/ln -sf ${user_dir}/.dotfiles/home-manager "$CONF_DIR"home-manager
     '';
