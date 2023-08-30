@@ -1,5 +1,6 @@
 {pkgs, ...}: let
   bad_apple = pkgs.callPackage ./plymouth.nix {};
+  user_dir = "/home/hungz";
 in {
   imports = [
     ./hardware-configuration.nix
@@ -101,6 +102,8 @@ in {
     };
   };
   services = {
+    gvfs.enable = true;
+    tumbler.enable = true;
     dbus.enable = true;
     xserver = {
       enable = true;
@@ -148,6 +151,22 @@ in {
       xdg-desktop-portal-gtk
       xdg-desktop-portal-wlr
     ];
+  };
+  system.userActivationScripts = {
+    linkScripts.text = ''
+      if [[ ! -h "${user_dir}/.local/bin" ]]; then
+        ln -sf "${user_dir}/.dotfiles/scripts" "${user_dir}/.local/bin"
+      fi
+    '';
+    linkConfigs.text = ''
+      DOTSDIR=${user_dir}/.dotfiles/.config/
+      CONF_DIR=${user_dir}/.config/
+      cd $DOTSDIR
+      for conf_files in *; do
+      ${pkgs.toybox}/bin/ln -sf "$DOTSDIR$""$conf_files" "$CONF_DIR""$conf_files"
+        done
+        ${pkgs.toybox}/bin/ln -sf ${user_dir}/.dotfiles/home-manager "$CONF_DIR"home-manager
+    '';
   };
   system.stateVersion = "23.05";
 }
