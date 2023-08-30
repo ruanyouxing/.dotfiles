@@ -164,8 +164,14 @@ in {
       cd $DOTSDIR
       for conf_files in *; do
       ${pkgs.toybox}/bin/ln -sf "$DOTSDIR$conf_files" "$CONF_DIR$conf_files"
+      if [ -L "$DOTSDIR$conf_files/$conf_files" ]; then 
+        unlink "$DOTSDIR$conf_files/$conf_files"
+      fi
         done
         ${pkgs.toybox}/bin/ln -sf ${user_dir}/.dotfiles/home-manager "$CONF_DIR"home-manager
+        if [ -L "${user_dir}/.dotfiles/home-manager/home-manager" ]; then
+         unlink ${user_dir}/.dotfiles/home-manager/home-manager
+        fi
     '';
   };
   system.stateVersion = "23.05";
