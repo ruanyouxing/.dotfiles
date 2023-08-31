@@ -9,6 +9,7 @@
     flameshot
     betterlockscreen
     cava
+    hsetroot
     jq
     xtitle
     xdotool
