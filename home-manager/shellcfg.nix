@@ -21,8 +21,7 @@
     initExtra = ''
       cd(){
           if (( $# == 0  ))
-            then builtin cd && builtin cd $(${pkgs.findutils}/bin/find .
-            -type d -print | ${pkgs.fzf}/bin/fzf );
+            then builtin cd && builtin cd $(${pkgs.findutils}/bin/find . -type d -print | ${pkgs.fzf}/bin/fzf );
           else
             builtin cd $1
           fi
