@@ -38,10 +38,10 @@
   home = {
     sessionVariables = {
       DOTFILES = "/home/hungz/.dotfiles";
-      GTK_IM_MODULE = "ibus";
-      XMODIFIERS = "ibus";
+      GTK_IM_MODULE = "fcitx5";
+      XMODIFIERS = "@im=fcitx5";
       WLR_NO_HARDWARE_CURSORS = "1";
-      QT_IM_MODULE = "ibus";
+      QT_IM_MODULE = "fcitx5";
     };
     sessionPath = [
       "$HOME/.local/bin"

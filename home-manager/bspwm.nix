@@ -52,9 +52,10 @@
       # "background-generate > /dev/null &"
       "flameshot"
       "sxhkd"
-      "if ! pgrep -x ibus-daemon >/dev/null; then
-      	ibus-setup
-      fi"
+      # "if ! pgrep -x ibus-daemon >/dev/null; then
+      # 	ibus-setup
+      # fi"
+      "fcitx5"
     ];
   };
   services.sxhkd = {

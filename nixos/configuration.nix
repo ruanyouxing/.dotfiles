@@ -79,8 +79,9 @@ in {
       LC_TIME = "vi_VN";
     };
     inputMethod = {
-      enabled = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [bamboo mozc libpinyin];
+      enabled = "fcitx5";
+      # ibus.engines = with pkgs.ibus-engines; [bamboo mozc libpinyin];
+      fcitx5.addons = with pkgs; [fcitx5-unikey fcitx5-mozc];
     };
   };
   networking = {
@@ -135,6 +136,7 @@ in {
     }
   ];
   programs.zsh.enable = true;
+  programs.dconf.enable = true;
   users.users.hungz = {
     isNormalUser = true;
     description = "hungz";
