@@ -92,7 +92,7 @@
             bind = $mainMod, P, pseudo, # dwindle
             bind = $mainMod SHIFT, R, exec, kitty -e ranger
             bind = $mainMod SHIFT, S, exec, hyprshot -m region -o ~/Pictures
-            bind = ,Print, exec, hyprshot -m output -o /tmp
+            bind = ,Print, exec, hyprshot -m output --clipboard-only
             bind = $mainMod, L, exec, betterlockscreen -l dimblur
             bind = $mainMod, J, togglesplit,
             bind = $mainMod, left, movefocus, l
