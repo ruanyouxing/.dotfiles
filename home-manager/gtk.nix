@@ -1,6 +1,5 @@
 {pkgs, ...}: let
   candy-icons = pkgs.callPackage ./builds/candy-icons.nix {};
-  sweet-cursors = pkgs.callPackage ./builds/sweet-cursors.nix {};
 in {
   gtk = {
     enable = true;
@@ -13,7 +12,7 @@ in {
       name = "candy-icons";
     };
     cursorTheme = {
-      package = sweet-cursors;
+      package = pkgs.sweet-nova;
       name = "Sweet-cursors";
     };
   };
