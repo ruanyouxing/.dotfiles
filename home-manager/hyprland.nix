@@ -15,7 +15,7 @@
   wayland.windowManager.hyprland = {
     extraConfig = ''
       monitor=,preferred,auto,auto
-      exec-once = swww-init.sh & dbus-update-activation-environment --all & waybar
+      exec-once = swww-init.sh & dbus-update-activation-environment --all & fcitx5 & waybar
       input {
           kb_layout = us
           kb_variant =
