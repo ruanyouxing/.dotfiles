@@ -1,4 +1,18 @@
 {pkgs, ...}: {
+  home.packages = with pkgs;[
+    cmus
+    du-dust
+    duf
+    ncdu
+    nix-prefetch-github
+    octofetch
+    pipes
+    ranger
+    rsync
+    ttyper
+    silver-searcher
+    unzip
+  ];
   programs.starship.enable = true;
   programs.zoxide.enable = true;
   programs.zsh = {
@@ -41,6 +55,7 @@
       XMODIFIERS = "@im=fcitx5";
       WLR_NO_HARDWARE_CURSORS = "1";
       QT_IM_MODULE = "fcitx5";
+      QT_QPA_PLATFORMTHEME = "gtk3";
     };
     sessionPath = [
       "$HOME/.local/bin"

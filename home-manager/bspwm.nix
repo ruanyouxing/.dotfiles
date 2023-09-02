@@ -11,6 +11,7 @@
     cava
     hsetroot
     jq
+    pscircle
     xtitle
     xdotool
     xorg.lndir
