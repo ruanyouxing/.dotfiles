@@ -14,20 +14,26 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/6c7eee47-82c1-4b53-9a53-ca8e41bc23ee";
-      fsType = "ext4";
-    };
-
-  fileSystems."/boot" =
-    { 
-      device = "/dev/disk/by-uuid/4E5E-7F2C";
-      fsType = "vfat";
-      # label = "NixOS-efi";
+    { device = "/dev/disk/by-uuid/26a1fa31-3790-45d0-95a7-afd2062f6c9b";
+      fsType = "btrfs";
+      options = [ "subvol=root" "compress=zstd"];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/fd19a28e-77bd-4f18-a846-dd636e42cce1";
-      fsType = "ext4";
+    { device = "/dev/disk/by-uuid/26a1fa31-3790-45d0-95a7-afd2062f6c9b";
+      fsType = "btrfs";
+      options = [ "subvol=home" "compress=zstd"];
+    };
+
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/26a1fa31-3790-45d0-95a7-afd2062f6c9b";
+      fsType = "btrfs";
+      options = [ "subvol=nix" "compress=zstd" "noatime"];
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/4E5E-7F2C";
+      fsType = "vfat";
     };
 
   swapDevices = [ ];
@@ -38,7 +44,7 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp2s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";

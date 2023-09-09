@@ -8,8 +8,7 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "ruanyouxing";
     repo = "bad-apple-plymouth";
-    rev = "";
-    # rev = "8914df276f544563baa0d9432e172ffde1ae6b5a";
+    rev = "8914df276f544563baa0d9432e172ffde1ae6b5a";
     hash = "sha256-tg91VHay1Qf0xPe/gcYF0I/VI5PunmTSMCzdBN3hotI=";
   };
   preferLocalBuild = true;
