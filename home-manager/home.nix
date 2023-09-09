@@ -5,6 +5,7 @@
     ./bspwm.nix
     ./gtk.nix
     ./mpd.nix
+    ./browser.nix
     ./hyprland.nix
     ./zathura.nix
     ./neovim.nix

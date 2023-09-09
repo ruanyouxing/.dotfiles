@@ -48,6 +48,7 @@ in {
     python3
     killall
     python311Packages.dbus-python
+    git
   ];
   sound.enable = true;
   hardware = {
@@ -142,9 +143,6 @@ in {
     description = "hungz";
     shell = pkgs.zsh;
     extraGroups = ["networkmanager" "wheel" "audio"];
-    packages = with pkgs; [
-      firefox
-    ];
   };
   xdg.portal = {
     enable = true;

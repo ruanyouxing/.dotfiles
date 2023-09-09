@@ -3,7 +3,6 @@
     discord
     distrobox
     mpv
-    opera
     obs-studio
     pavucontrol
     pywal
