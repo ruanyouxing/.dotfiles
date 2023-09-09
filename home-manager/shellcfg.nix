@@ -1,5 +1,6 @@
-{pkgs, ...}: {
-  home.packages = with pkgs;[
+ {pkgs, ...}: let zinit = pkgs.callPackage ./builds/zinit.nix{};in{
+   home.packages = with pkgs;[
+     zinit
     cmus
     du-dust
     duf
@@ -20,7 +21,7 @@
     enableAutosuggestions = true;
     enableCompletion = true;
     initExtraFirst = ''
-      source ${pkgs.zinit}/share/zinit/zinit.zsh
+      source ${zinit}/zinit.zsh
       zinit load hlissner/zsh-autopair
       zinit wait lucid for \
       atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
