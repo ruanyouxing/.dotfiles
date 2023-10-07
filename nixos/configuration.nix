@@ -48,6 +48,7 @@ in {
     python3
     killall
     python311Packages.dbus-python
+    virt-manager
     git
   ];
   sound.enable = true;
@@ -142,7 +143,7 @@ in {
     isNormalUser = true;
     description = "hungz";
     shell = pkgs.zsh;
-    extraGroups = ["networkmanager" "wheel" "audio"];
+    extraGroups = ["networkmanager" "wheel" "audio" "libvirtd"];
   };
   xdg.portal = {
     enable = true;
@@ -152,6 +153,7 @@ in {
       xdg-desktop-portal-wlr
     ];
   };
+  virtualisation.libvirtd.enable = true;
   system.userActivationScripts = {
     linkScripts.text = ''
       if [[ ! -h "${user_dir}/.local/bin" ]]; then
@@ -164,7 +166,7 @@ in {
       cd $DOTSDIR
       for conf_files in *; do
         ln -sf "$DOTSDIR$conf_files" "$CONF_DIR$conf_files"
-        if [ -L "$DOTSDIR$conf_files/$conf_files" ]; then 
+        if [ -L "$DOTSDIR$conf_files/$conf_files" ]; then
           unlink "$DOTSDIR$conf_files/$conf_files"
         fi
       done
@@ -172,14 +174,7 @@ in {
       if [ -L "${user_dir}/.dotfiles/home-manager/home-manager" ]; then
         unlink ${user_dir}/.dotfiles/home-manager/home-manager
       fi
-      '';
-      hmInstall.text = ''
-      if ! ${pkgs.nixVersions.nix_2_17}/bin/nix-channel --list | grep "home-manager" > /dev/null; then
-        ${pkgs.nixVersions.nix_2_17}/bin/nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-        ${pkgs.nixVersions.nix_2_17}/bin/nix-channel --update
-        ${pkgs.nixVersions.nix_2_17}/bin/nix-shell '<home-manager>' -A install
-      fi
-      '';
+    '';
   };
   system.stateVersion = "23.05";
 }
