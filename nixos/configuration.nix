@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   bad_apple = pkgs.callPackage ./plymouth.nix {};
   user_dir = "/home/hungz";
 in {
@@ -20,13 +24,13 @@ in {
       "vt.global_cursor_default=0"
     ];
     initrd.kernelModules = ["amdgpu"];
+    };
     loader = {
-      efi.canTouchEfiVariables = true;
-      grub = {
-        efiSupport = true;
-        device = "nodev";
-        configurationLimit = 1;
-      };
+      # grub = {
+      #   efiSupport = true;
+      #   device = "nodev";
+      #   configurationLimit = 1;
+      # };
     };
     supportedFilesystems = ["ntfs" "exfat"];
     plymouth = {

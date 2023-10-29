@@ -7,11 +7,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland";
+    lanzaboote.url = "github:nix-community/lanzaboote";
   };
   outputs = {
     nixpkgs,
     home-manager,
     hyprland,
+    lanzaboote,
     ...
   }: let
     system = "x86_64-linux";
@@ -21,6 +23,7 @@
       nixos = nixpkgs.lib.nixosSystem {
         modules = [
           ./nixos/configuration.nix
+          lanzaboote.nixosModules.lanzaboote
         ];
       };
     };
