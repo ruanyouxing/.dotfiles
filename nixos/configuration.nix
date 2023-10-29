@@ -24,8 +24,14 @@ in {
       "vt.global_cursor_default=0"
     ];
     initrd.kernelModules = ["amdgpu"];
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
     };
     loader = {
+      systemd-boot.enable = lib.mkForce false;
+      systemd-boot.configurationLimit = 1;
+      efi.canTouchEfiVariables = false;
       # grub = {
       #   efiSupport = true;
       #   device = "nodev";
