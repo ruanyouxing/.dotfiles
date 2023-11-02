@@ -1,7 +1,6 @@
  {pkgs, ...}: let zinit = pkgs.callPackage ./builds/zinit.nix{};in{
    home.packages = with pkgs;[
      zinit
-    cmus
     du-dust
     duf
     ncdu
