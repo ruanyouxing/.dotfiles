@@ -18,6 +18,7 @@ alias g="git"
 alias record="ffmpeg -video_size 1920x1080 -framerate 60 -f x11grab -i :0.0 output.mkv"
 alias startx="startx ~/.xinitrc > /dev/null 2>&1"
 alias v="fd -H | fzf | xargs nvim"
+alias leet='nvim leetcode.nvim'
 export PATH="$PATH:${HOME}/.local/bin"
 cd(){
   if (( $# == 0  ))
