@@ -2,49 +2,55 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: let
-  bad_apple = pkgs.callPackage ./plymouth.nix {};
+  # bad_apple = pkgs.callPackage ./plymouth.nix {};
   user_dir = "/home/hungz";
 in {
   imports = [
     ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
   ];
   boot = {
-    kernelParams = [
-      "loglevel=3"
-      "quiet"
-      "splash"
-      "amdgpu"
-      "radeon.cik_support=0"
-      "amdgpu.cik_support=1"
-      "amdgpu.si_support=1"
-      "radeon.si_support=0"
-      "amdgpu.modeset=1"
-      "rd.udev.log_priority=3"
-      "vt.global_cursor_default=0"
-    ];
-    initrd.kernelModules = ["amdgpu"];
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/etc/secureboot";
-    };
+    #    kernelParams = [
+    #      "loglevel=3"
+    #      "quiet"
+    #      "splash"
+    #      "amdgpu"
+    #      "radeon.cik_support=0"
+    #      "amdgpu.cik_support=1"
+    #      "amdgpu.si_support=1"
+    #      "radeon.si_support=0"
+    #      "amdgpu.modeset=1"
+    #      "rd.udev.log_priority=3"
+    #      "vt.global_cursor_default=0"
+    #    ];
+    #    initrd.kernelModules = ["amdgpu"];
+    #    lanzaboote = {
+    #      enable = true;
+    #      pkiBundle = "/etc/secureboot";
+    #    };
     loader = {
-      systemd-boot.enable = lib.mkForce false;
-      systemd-boot.configurationLimit = 1;
-      efi.canTouchEfiVariables = false;
-      # grub = {
-      #   efiSupport = true;
-      #   device = "nodev";
-      #   configurationLimit = 1;
-      # };
+      #      systemd-boot.enable = lib.mkForce false;
+      #      systemd-boot.configurationLimit = 1;
+      efi = {
+        canTouchEfiVariables = false;
+        efiSysMountPoint = "/boot";
+      };
+      grub = {
+        efiSupport = true;
+        device = "nodev";
+        efiInstallAsRemovable = true;
+        configurationLimit = 5;
+      };
     };
     supportedFilesystems = ["ntfs" "exfat"];
-    plymouth = {
-      enable = true;
-      theme = "bad_apple";
-      themePackages = [bad_apple];
-    };
+    # plymouth = {
+    #   enable = true;
+    #   theme = "bad_apple";
+    #   themePackages = [bad_apple];
+    # };
   };
   systemd.services.plymouth-quit.serviceConfig.ExecStartPre = "${pkgs.busybox}/bin/sleep 4";
   console = {
@@ -73,23 +79,17 @@ in {
     python311Packages.dbus-python
     virt-manager
     git
+    pcre
   ];
   environment.sessionVariables = {
     GTK_USE_PORTAL = "1";
   };
-  sound.enable = true;
   hardware = {
     enableAllFirmware = true;
     bluetooth.enable = true;
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-    };
-    pulseaudio = {
-      enable = true;
-      support32Bit = true;
-      extraConfig = "load-module module-combine-sink";
+      enable32Bit = true;
     };
   };
   time.timeZone = "Asia/Ho_Chi_Minh";
@@ -107,7 +107,7 @@ in {
       LC_TIME = "vi_VN";
     };
     inputMethod = {
-      enabled = "fcitx5";
+      type = "fcitx5";
       # ibus.engines = with pkgs.ibus-engines; [bamboo mozc libpinyin];
       fcitx5.addons = with pkgs; [fcitx5-unikey fcitx5-mozc];
     };
@@ -118,6 +118,7 @@ in {
   };
   nixpkgs.config.allowUnfree = true;
   nix = {
+    package = pkgs.nixVersions.latest;
     settings = {
       experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
@@ -134,17 +135,23 @@ in {
     gvfs.enable = true;
     tumbler.enable = true;
     dbus.enable = true;
+    pulseaudio = {
+      enable = false;
+      support32Bit = true;
+      extraConfig = "load-module module-combine-sink";
+    };
+    displayManager = {
+      autoLogin.enable = true;
+      autoLogin.user = "hungz";
+    };
     xserver = {
       enable = true;
-      layout = "us";
-      xkbVariant = "";
-      displayManager = {
-        startx.enable = true;
-        autoLogin.enable = true;
-        autoLogin.user = "hungz";
+      displayManager.startx.enable = true;
+      xkb = {
+        layout = "us";
+        variant = "";
       };
-
-      videoDrivers = ["amdgpu"];
+      #videoDrivers = ["amdgpu"];
     };
     printing.enable = true;
     blueman.enable = true;
@@ -165,11 +172,19 @@ in {
   ];
   programs.zsh.enable = true;
   programs.dconf.enable = true;
+  programs.hyprland.enable = true;
   users.users.hungz = {
     isNormalUser = true;
     description = "hungz";
     shell = pkgs.zsh;
     extraGroups = ["networkmanager" "wheel" "audio" "libvirtd"];
+  };
+  home-manager = {
+    extraSpecialArgs = {inherit inputs;};
+    backupFileExtension = ".bak";
+    users = {
+      "hungz" = import ../home-manager/home.nix;
+    };
   };
   xdg.portal = {
     enable = true;
@@ -178,16 +193,17 @@ in {
       xdg-desktop-portal-wlr
     ];
   };
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu = {
-      package = pkgs.qemu_kvm;
-      ovmf.enable = true;
-      ovmf.packages = [pkgs.OVMFFull.fd];
-      swtpm.enable = true;
-      runAsRoot = false;
-    };
-  };
+  virtualisation.vmware.guest.enable = true;
+  #  virtualisation.libvirtd = {
+  #    enable = true;
+  #    qemu = {
+  #      package = pkgs.qemu_kvm;
+  #      ovmf.enable = true;
+  #      ovmf.packages = [pkgs.OVMFFull.fd];
+  #      swtpm.enable = true;
+  #      runAsRoot = false;
+  #    };
+  #  };
   system.userActivationScripts = {
     linkScripts.text = ''
       if [[ ! -h "${user_dir}/.local/bin" ]]; then
@@ -210,5 +226,5 @@ in {
       fi
     '';
   };
-  system.stateVersion = "23.05";
+  system.stateVersion = "25.05";
 }

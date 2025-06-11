@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   services.picom = {
-    enable = true;
+    enable = false;
     package = pkgs.picom.overrideAttrs (o: {
       src = pkgs.fetchFromGitHub {
         repo = "picom";

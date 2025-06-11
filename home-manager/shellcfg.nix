@@ -1,6 +1,8 @@
- {pkgs, ...}: let zinit = pkgs.callPackage ./builds/zinit.nix{};in{
-   home.packages = with pkgs;[
-     zinit
+{pkgs, ...}: let
+  zinit = pkgs.callPackage ./builds/zinit.nix {};
+in {
+  home.packages = with pkgs; [
+    zinit
     du-dust
     duf
     ncdu
@@ -17,9 +19,9 @@
   programs.zoxide.enable = true;
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     enableCompletion = true;
-    initExtraFirst = ''
+    initContent = ''
       source ${zinit}/zinit.zsh
       zinit load hlissner/zsh-autopair
       zinit wait lucid for \
@@ -31,8 +33,7 @@
         zsh-users/zsh-autosuggestions
       zinit ice as"command" from"gh-r" \
       atpull"%atclone" src"init.zsh"
-    '';
-    initExtra = ''
+
       cd(){
           if (( $# == 0  ))
             then builtin cd && builtin cd $(${pkgs.findutils}/bin/find . -type d -print | ${pkgs.fzf}/bin/fzf );
@@ -44,8 +45,8 @@
   };
   programs.eza = {
     enable = true;
-    enableAliases = true;
-    icons = true;
+    enableZshIntegration = true;
+    icons = "auto";
     git = true;
   };
   home = {
@@ -63,6 +64,8 @@
     shellAliases = {
       lg = "${pkgs.lazygit}/bin/lazygit";
       g = "git";
+      nixcheck = "nix flake check";
+      nixupdate = "nix flake update";
       record = "${pkgs.ffmpeg_6}/bin/ffmpeg -video_size 1920x1080 -framerate 60 -f x11grab -i :0.0
       output.mkv";
       startx = "startx ~/.xinitrc > /dev/null 2>&1";

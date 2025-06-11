@@ -4,7 +4,9 @@
   ...
 }: {
   home.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
+    fira-code
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.iosevka
     noto-fonts-cjk-serif
     noto-fonts-cjk-sans
     source-han-serif
@@ -24,34 +26,17 @@
     yarn
     python311Packages.pip
     haskellPackages.greenclip
+    eslint_d
+    #				pkgs.nodePackages.prettier
+    pkgs.clang-tools
+    pkgs.lldb pkgs.python310Packages.debugpy pkgs.black
+    pkgs.stylua
+    pkgs.shellcheck
+    pkgs.alejandra
   ];
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    package = pkgs.symlinkJoin {
-      name = "neovim";
-      paths = [pkgs.neovim-unwrapped];
-      buildInputs = [pkgs.makeWrapper];
-      postBuild = let
-        path = with pkgs;
-          [
-            nodePackages.prettier
-            clang-tools
-            lldb_9
-            python310Packages.debugpy
-            black
-            stylua
-            shellcheck
-            alejandra
-          ]
-          ++ lib.optionals (!stdenv.isDarwin) [
-            xclip
-          ];
-      in ''
-        wrapProgram $out/bin/nvim\
-          --prefix PATH : ${lib.makeBinPath path} \
-          --set LD_LIBRARY_PATH ${pkgs.stdenv.cc.cc.lib}/lib
-      '';
-    };
+    package = pkgs.neovim-unwrapped;
   };
 }

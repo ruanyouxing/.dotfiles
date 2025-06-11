@@ -7,8 +7,8 @@
     pavucontrol
     pywal
     spotify
+    gh
     python311Packages.requests
-    google-chrome
   ];
   programs.git = {
     enable = true;
