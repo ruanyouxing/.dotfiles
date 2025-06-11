@@ -13,8 +13,9 @@
     swaylock
   ];
   wayland.windowManager.hyprland = {
+    enable = true;
     extraConfig = ''
-      monitor=,preferred,auto,auto
+      monitor=Virtual-1,1920x1080@75,0x0,1
       exec-once = swww-init.sh & dbus-update-activation-environment --all & fcitx5 & waybar
       input {
           kb_layout = us

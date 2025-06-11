@@ -3,4 +3,4 @@ if pgrep -x swww-daemon  > /dev/null
 then
   swww kill 
 fi
-swww init
+swww img ~/.dotfiles/image.png
