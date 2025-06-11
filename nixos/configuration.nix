@@ -5,6 +5,7 @@
   ...
 }: let
   # bad_apple = pkgs.callPackage ./plymouth.nix {};
+  pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
   user_dir = "/home/hungz";
 in {
   imports = [
@@ -78,7 +79,6 @@ in {
     python311Packages.dbus-python
     virt-manager
     git
-    pcre
   ];
   environment.sessionVariables = {
     GTK_USE_PORTAL = "1";
@@ -89,6 +89,8 @@ in {
     graphics = {
       enable = true;
       enable32Bit = true;
+      package = pkgs-unstable.mesa;
+      package32 = pkgs-unstable.pkgsi686Linux.mesa;
     };
   };
   time.timeZone = "Asia/Ho_Chi_Minh";
@@ -169,9 +171,21 @@ in {
       ];
     }
   ];
-  programs.zsh.enable = true;
-  programs.dconf.enable = true;
-  programs.hyprland.enable = true;
+  programs = {
+  zsh.enable = true;
+  dconf.enable = true;
+  hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
+  nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 7d --keep 5";
+    flake = "/home/hungz/.dotfiles";
+  };
+};
   users.users.hungz = {
     isNormalUser = true;
     description = "hungz";

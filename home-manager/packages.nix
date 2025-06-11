@@ -8,6 +8,7 @@
     pywal
     spotify
     gh
+    foot
     python311Packages.requests
   ];
   programs.git = {

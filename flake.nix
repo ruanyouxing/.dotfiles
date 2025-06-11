@@ -7,6 +7,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lanzaboote.url = "github:nix-community/lanzaboote";
+    hyprland.url = "github:hyprwm/Hyprland";
   };
   outputs = {
     nixpkgs,

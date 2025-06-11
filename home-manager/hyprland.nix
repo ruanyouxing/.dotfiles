@@ -15,7 +15,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = ''
-      monitor=Virtual-1,1920x1080@75,0x0,1
+    monitor=Virtual-1,1920x1080@75,0x0,1
       exec-once = swww-init.sh & dbus-update-activation-environment --all & fcitx5 & waybar
       input {
           kb_layout = us
@@ -44,10 +44,6 @@
 
       decoration {
           rounding = 10
-          drop_shadow = yes
-          shadow_range = 4
-          shadow_render_power = 3
-          col.shadow = rgba(1a1a1aee)
           active_opacity = 0.9
           inactive_opacity = 0.9
           fullscreen_opacity = 0.9
@@ -71,18 +67,12 @@
           pseudotile = yes
           preserve_split = yes
       }
-      master {
-          new_is_master = true
-      }
       gestures {
           workspace_swipe = off
       }
-      device:epic mouse V1 {
-          sensitivity = -0.5
-      }
             $mainMod = SUPER
             $altMod = ALT
-            bind = $altModSHIFT,Return,exec, kitty
+            bind = $altModSHIFT,Return,exec, foot
             bind = $altModSHIFT,Q, exit
             bind = $altMod, h, exec, scratchpad
             bind = $altModSHIFT, h, exec, scratchpad -g
