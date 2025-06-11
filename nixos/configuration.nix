@@ -203,27 +203,30 @@ in {
   #      runAsRoot = false;
   #    };
   #  };
-  system.userActivationScripts = {
-    linkScripts.text = ''
-      if [[ ! -h "${user_dir}/.local/bin" ]]; then
-        ln -sf "${user_dir}/.dotfiles/scripts" "${user_dir}/.local/bin"
-      fi
-    '';
-    linkConfigs.text = ''
-      DOTSDIR=${user_dir}/.dotfiles/.config/
-      CONF_DIR=${user_dir}/.config/
-      cd $DOTSDIR
-      for conf_files in *; do
-        ln -sf "$DOTSDIR$conf_files" "$CONF_DIR$conf_files"
-        if [ -L "$DOTSDIR$conf_files/$conf_files" ]; then
-          unlink "$DOTSDIR$conf_files/$conf_files"
+  system = {
+    userActivationScripts = {
+      linkScripts.text = ''
+        if [[ ! -h "${user_dir}/.local/bin" ]]; then
+          ln -sf "${user_dir}/.dotfiles/scripts" "${user_dir}/.local/bin"
         fi
-      done
-      ln -sf ${user_dir}/.dotfiles/home-manager "$CONF_DIR"home-manager
-      if [ -L "${user_dir}/.dotfiles/home-manager/home-manager" ]; then
-        unlink ${user_dir}/.dotfiles/home-manager/home-manager
-      fi
-    '';
+      '';
+      linkConfigs.text = ''
+        DOTSDIR=${user_dir}/.dotfiles/.config/
+        CONF_DIR=${user_dir}/.config/
+        cd $DOTSDIR
+        for conf_files in *; do
+          ln -sf "$DOTSDIR$conf_files" "$CONF_DIR$conf_files"
+          if [ -L "$DOTSDIR$conf_files/$conf_files" ]; then
+            unlink "$DOTSDIR$conf_files/$conf_files"
+          fi
+        done
+        ln -sf ${user_dir}/.dotfiles/home-manager "$CONF_DIR"home-manager
+        if [ -L "${user_dir}/.dotfiles/home-manager/home-manager" ]; then
+          unlink ${user_dir}/.dotfiles/home-manager/home-manager
+        fi
+      '';
+    };
+    autoUpgrade.channel = "https://nixos.org/channels/nixos-unstable";
+    stateVersion = "25.05";
   };
-  system.stateVersion = "25.05";
 }
