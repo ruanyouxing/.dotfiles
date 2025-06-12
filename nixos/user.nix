@@ -2,10 +2,7 @@
   pkgs,
   inputs,
   ...
-}: {
-  environment.extraInit = ''
-    export PATH=/home/hungz/.dotfiles/scripts:$PATH
-  '';
+}:{
   imports = [inputs.home-manager.nixosModules.default];
   programs.zsh.enable = true;
   users.users.hungz = {
@@ -15,8 +12,9 @@
     extraGroups = ["networkmanager" "wheel" "audio" "libvirtd"];
   };
   home-manager = {
+    useUserPackages = true;
     extraSpecialArgs = {inherit inputs;};
-    backupFileExtension = ".bak";
+    backupFileExtension = ".hm-bak";
     users = {
       "hungz" = import ../home-manager;
     };

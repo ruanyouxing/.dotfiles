@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   ...
 }: let
   zinit = pkgs.callPackage ./builds/zinit.nix {};
@@ -60,7 +61,12 @@ in {
       WLR_NO_HARDWARE_CURSORS = "1";
       QT_IM_MODULE = "fcitx5";
       QT_QPA_PLATFORMTHEME = "gtk3";
+      XDG_CONFIG_HOME = "${config.xdg.configHome}";
     };
+    sessionPath = [
+      "$HOME/.local/bin"
+      "$HOME/.dotfiles/scripts"
+    ];
     shellAliases = {
       lg = "${pkgs.lazygit}/bin/lazygit";
       g = "git";
