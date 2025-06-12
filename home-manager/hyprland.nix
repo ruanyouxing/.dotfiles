@@ -1,4 +1,15 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: let
+  workspaceBinds = builtins.concatMap (w: let
+    ws = toString w;
+  in [
+    "$mainMod, ${ws}, workspace , ${ws}"
+    "$mainModSHIFT, ${ws}, movetoworkspace, ${ws}"
+  ]) (lib.range 1 9);
+in {
   home.packages = with pkgs; [
     slurp
     grim
@@ -8,15 +19,18 @@
     wl-clipboard
     dunst
     swaylock
+    (rofi-wayland.override
+    {plugins = [pkgs.rofi-emoji-wayland];})
   ];
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
-    # package = null;
+    package = null;
     # plugins = [];
     settings = {
-      exec-once = "hyprland_startup.sh &";
-      monitor = "Virtual-1,1920x1080@75,0x0,1";
+      exec-once = [
+        "hyprland_startup.sh"
+      ];
       input = {
         kb_layout = "us";
         follow_mouse = 1;
@@ -62,55 +76,41 @@
         workspace_swipe = false;
       };
       "$mainMod" = "SUPER";
-      "altMod" = "ALT";
-      bind = [
-        "$altModSHIFT,Return,exec, foot"
-        "$altModSHIFT,Q, exit"
-        "$altMod, h, exec, scratchpad"
-        "$altModSHIFT, h, exec, scratchpad -g"
-        "$mainMod, W, killactive"
-        "$mainMod, S, togglefloating"
-        "$mainMod, F, fullscreen"
-        "$mainMod, R, exec, rofi_wayland -modi drun -show drun -width 5"
-        "$mainMod, P, pseudo, # dwindle"
-        "$mainMod SHIFT, R, exec, kitty -e ranger"
-        "$mainMod SHIFT, S, exec, hyprshot -m region -o ~/Pictures"
-        ",Print, exec, hyprshot -m output --clipboard-only"
-        "$mainMod, L, exec, betterlockscreen -l dimblur"
-        "$mainMod, J, togglesplit,"
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
-        "$mainMod, E, exec, Thunar"
-        "$mainMod, semicolon,exec, rofi_wayland -modi emoji -show emoji"
-        "$mainMod, 1, workspace, 1"
-        "$mainMod, 2, workspace, 2"
-        "$mainMod, 3, workspace, 3"
-        "$mainMod, 4, workspace, 4"
-        "$mainMod, 5, workspace, 5"
-        "$mainMod, 6, workspace, 6"
-        "$mainMod, 7, workspace, 7"
-        "$mainMod, 8, workspace, 8"
-        "$mainMod, 9, workspace, 9"
-        "$mainMod, 0, workspace, 10"
-        "$mainMod, SHIFT, 1, movetoworkspace, 1"
-        "$mainMod, SHIFT, 2, movetoworkspace, 2"
-        "$mainMod, SHIFT, 3, movetoworkspace, 3"
-        "$mainMod, SHIFT, 4, movetoworkspace, 4"
-        "$mainMod, SHIFT, 5, movetoworkspace, 5"
-        "$mainMod, SHIFT, 6, movetoworkspace, 6"
-        "$mainMod, SHIFT, 7, movetoworkspace, 7"
-        "$mainMod, SHIFT, 8, movetoworkspace, 8"
-        "$mainMod, SHIFT, 9, movetoworkspace, 9"
-        "$mainMod, SHIFT, 0, movetoworkspace, 0"
-      ];
+      "$altMod" = "ALT";
+      bind =
+        [
+          "$altModSHIFT,Return,exec, foot"
+          "$altModSHIFT,Q, exit"
+          "$altMod, h, exec, scratchpad"
+          "$altModSHIFT, h, exec, scratchpad -g"
+          "$mainMod, W, killactive"
+          "$mainMod, S, togglefloating"
+          "$mainMod, F, fullscreen"
+          "$mainMod, R, exec, rofi -modi drun -show drun -width 5"
+          "$mainMod, P, pseudo, # dwindle"
+          "$mainMod SHIFT, R, exec, kitty -e ranger"
+          "$mainMod SHIFT, S, exec, hyprshot -m region -o ~/Pictures"
+          ",Print, exec, hyprshot -m output --clipboard-only"
+          "$mainMod, L, exec, betterlockscreen -l dimblur"
+          "$mainMod, J, togglesplit,"
+          "$mainMod, left, movefocus, l"
+          "$mainMod, right, movefocus, r"
+          "$mainMod, up, movefocus, u"
+          "$mainMod, down, movefocus, d"
+          "$mainMod, mouse_down, workspace, e+1"
+          "$mainMod, mouse_up, workspace, e-1"
+          "$mainMod, E, exec, Thunar"
+          "$mainMod, semicolon,exec, rofi -modi emoji -show emoji"
+        ]
+        ++ workspaceBinds;
       bindm = [
         "$mainMod, mouse:272, movewindow"
-        "$mainmod, mouse:273, resizewindow"
+        "$mainMod, mouse:273, resizewindow"
       ];
     };
+
+    extraConfig = ''
+      monitor=Virtual-1,1920x1080@75,0x0,1
+    '';
   };
 }
