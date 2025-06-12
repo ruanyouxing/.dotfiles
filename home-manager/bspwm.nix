@@ -116,9 +116,4 @@
       config window_gap) {+,- 5}))";
     };
   };
-  programs.rofi = {
-    enable = true;
-    package = pkgs.rofi.override {plugins = [pkgs.rofi-emoji];};
-    configPath = "~/.config/rofi/config.rasi";
-  };
 }
