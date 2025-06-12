@@ -25,7 +25,7 @@
     (builtins.attrNames scriptsFiles);
 
   scriptsLinks = builtins.listToAttrs (builtins.map (name: {
-      name = ".local/bin/${name}";
+      name = "${config.home.homeDirectory}.local/bin/${name}";
       value = {
         source = "${scriptsDir}/${name}";
         executable = true;
