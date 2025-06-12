@@ -22,7 +22,13 @@ in {
     swayimg
     (rofi-wayland.override
       {plugins = [pkgs.rofi-emoji-wayland];})
-  ];
+    ];
+    # home.pointerCursor = {
+    #   gtk.enable = true;
+    #   name = "Sweet-Dark";
+    #   size = 16;
+    # };
+    gtk.enable = true;
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
@@ -30,13 +36,7 @@ in {
     # plugins = [];
     settings = {
       exec-once = [
-        "wl-paste --type image --watch cliphist store"
-        "wl-paste --type text --watch cliphist store"
-        "killall -q waybar && waybar"
-        "fcitx5"
-        "swww-init.sh"
-        "dbus-update-activation-environment --all"
-        "hyprctl setcursor Sweet-Dark 15"
+        "hyprland_startup.sh"
       ];
       input = {
         kb_layout = "us";

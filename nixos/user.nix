@@ -4,6 +4,7 @@
   ...
 }:{
   imports = [inputs.home-manager.nixosModules.default];
+  environment.sessionVariables.NIX_OZONE_WL = "1";
   programs.zsh.enable = true;
   users.users.hungz = {
     isNormalUser = true;
