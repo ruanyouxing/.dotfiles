@@ -1,4 +1,7 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  ...
+}: let
   zinit = pkgs.callPackage ./builds/zinit.nix {};
 in {
   home.packages = with pkgs; [
@@ -58,9 +61,6 @@ in {
       QT_IM_MODULE = "fcitx5";
       QT_QPA_PLATFORMTHEME = "gtk3";
     };
-    sessionPath = [
-      "$HOME/.local/bin"
-    ];
     shellAliases = {
       lg = "${pkgs.lazygit}/bin/lazygit";
       g = "git";

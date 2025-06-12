@@ -3,6 +3,9 @@
   inputs,
   ...
 }: {
+  environment.extraInit = ''
+    export PATH=/home/hungz/.dotfiles/scripts:$PATH
+  '';
   imports = [inputs.home-manager.nixosModules.default];
   programs.zsh.enable = true;
   users.users.hungz = {
