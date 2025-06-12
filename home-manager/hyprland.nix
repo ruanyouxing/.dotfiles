@@ -19,8 +19,9 @@ in {
     wl-clipboard
     dunst
     swaylock
+    swayimg
     (rofi-wayland.override
-    {plugins = [pkgs.rofi-emoji-wayland];})
+      {plugins = [pkgs.rofi-emoji-wayland];})
   ];
   wayland.windowManager.hyprland = {
     enable = true;
@@ -29,7 +30,13 @@ in {
     # plugins = [];
     settings = {
       exec-once = [
-        "hyprland_startup.sh"
+        "wl-paste --type image --watch cliphist store"
+        "wl-paste --type text --watch cliphist store"
+        "killall -q waybar && waybar"
+        "fcitx5"
+        "swww-init.sh"
+        "dbus-update-activation-environment --all"
+        "hyprctl setcursor Sweet-Dark 15"
       ];
       input = {
         kb_layout = "us";
@@ -109,8 +116,9 @@ in {
       ];
     };
 
+    # monitor=Virtual-1,1920x1080@75,0x0,1
     extraConfig = ''
-      monitor=Virtual-1,1920x1080@75,0x0,1
+      monitor=,preferred,auto,auto
     '';
   };
 }
