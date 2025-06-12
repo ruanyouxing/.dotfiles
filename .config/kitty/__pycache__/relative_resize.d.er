@@ -1,0 +1,10 @@
+##[pylyzer] failed /home/hungz/.dotfiles/.config/kitty/relative_resize.py 1749619870 3398
+.___v_desugar_1: Never
+.result_handler: Never
+.___v_desugar_2: Never
+.KeyEvent: Never
+.parse_shortcut: Never
+.encode_key_mapping: |Type_109 <: Structural({.encoded_key = (self: Obj, Type_144) -> Type_145}), Type_144: Type, Type_145: Type|(window: Type_109, key_mapping: Obj) -> Type_145
+.main: (args: Obj) -> NoneType
+.relative_resize_window: |Type_166 <: global::List(T, N) or global::GenericDict or Self, K: Type, T: Type, V: Type, N: Nat, Type_204: Type, Type_116 <: Structural({.window_id_map = Type_166; .active_tab = Type_202 and Type_204}), Self <: global::Indexable(K, V), Type_202: Type|(direction: {"left"}, amount: Obj, target_window_id: Obj, boss: Type_116) -> NoneType or T
+.handle_result: |Type_371 <: global::List(NoneType, N) or Self or global::GenericDict, K: Type, Type_110 <: {"left"}, V: Type, N: Nat, K :> {3, 2, 1}, Self <: global::Indexable(K, Type_110), Type_121 <: Structural({.window_id_map = Type_371}), Self <: global::Indexable(K, V)|(args: Self, result: Obj, target_window_id: Obj, boss: Type_121) -> NoneType

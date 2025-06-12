@@ -9,6 +9,7 @@
     ./hyprland.nix
     ./zathura.nix
     ./neovim.nix
+    ./dotfiles.nix
   ];
   programs.home-manager.enable = true;
   nixpkgs.config = {

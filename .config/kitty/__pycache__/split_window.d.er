@@ -1,0 +1,10 @@
+##[pylyzer] failed /home/hungz/.dotfiles/.config/kitty/split_window.py 1749619870 1271
+.___v_desugar_1: Never
+.result_handler: Never
+.___v_desugar_2: Never
+.KeyEvent: Never
+.parse_shortcut: Never
+.main: (args: Obj) -> NoneType
+.encode_key_mapping: |Type_535: Type, Type_536: Type, Type_501 <: Structural({.encoded_key = (self: Obj, Type_535) -> Type_536})|(window: Type_501, key_mapping: Obj) -> Type_536
+.split_window: |Type_552 :> {"--cwd=current"}, Type_559 :> {"--cwd=current"}, U: Type, Type_553 :> {"--location=hsplit", "--location=vsplit"}, Type_504 <: Structural({.active_tab = Type_577; .launch = (self: Obj, Type_552, Type_553) -> U and (self: Obj, Type_559, Type_560) -> U}), Type_560 :> {"--location=vsplit"}, Type_577: Type|(boss: Type_504, direction: {"up"}) -> NoneType
+.handle_result: |K: Type, K :> {2, 1}, Type_596 <: Self or global::GenericDict or global::List(NoneType, N), V: Type, Type_502 <: {"up"}, N: Nat, Type_509 <: Structural({.window_id_map = Type_596}), Self <: global::Indexable(K, V), Self <: global::Indexable(K, Type_502)|(args: Self, result: Obj, target_window_id: Obj, boss: Type_509) -> NoneType
