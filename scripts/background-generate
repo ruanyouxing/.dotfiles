@@ -21,5 +21,5 @@ while true; do
   --interval=1 \
   --output=/tmp/frame.png
 
-  hsetroot -fill /tmp/frame.png
+  swww img /tmp/frame.png
 done

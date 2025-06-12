@@ -116,4 +116,9 @@
       config window_gap) {+,- 5}))";
     };
   };
+  programs.rofi = {
+    enable = true;
+    package = pkgs.rofi-wayland;
+    plugins = [pkgs.rofi-emoji-wayland];
+  };
 }

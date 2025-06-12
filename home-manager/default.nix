@@ -6,10 +6,11 @@
     ./gtk.nix
     ./mpd.nix
     ./browser.nix
-    ./hyprland.nix
     ./zathura.nix
     ./neovim.nix
     ./dotfiles.nix
+    ./hyprland.nix
+    ./waybar.nix
   ];
   programs.home-manager.enable = true;
   nixpkgs.config = {
