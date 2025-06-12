@@ -8,8 +8,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "zdharma-continuum";
     repo = "zinit";
-    rev = "0a1ee8271ed1619daddc109317d6328c390152ef";
-    hash = "sha256-d1bo4otcQzVqYw+rtk1FxVcQ0+eEKhYYk5oT39EBWgk=";
+    rev = "2daaac2de245a640ca8a88330313e5f37113563e";
+    hash = "sha256-ycHI98KysBX2+nHxyC9PyZQBGYmBhvJ/slSd0gY1iTg=";
   };
   dontFixup = true;
   installPhase = ''
