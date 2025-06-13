@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   ...
 }: {
   home.packages = with pkgs; [
@@ -27,7 +26,7 @@
     python311Packages.pip
     haskellPackages.greenclip
     eslint_d
-    #				pkgs.nodePackages.prettier
+    nodePackages.prettier
     pkgs.clang-tools
     pkgs.lldb pkgs.python310Packages.debugpy pkgs.black
     pkgs.stylua

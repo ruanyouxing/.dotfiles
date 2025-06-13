@@ -15,5 +15,6 @@ stdenv.mkDerivation {
   installPhase = ''
     mkdir -p $out
     cp -R $src/* $out
+    rm $out/LICENSE $out/README.md
   '';
 }

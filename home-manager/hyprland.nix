@@ -28,7 +28,6 @@ in {
     #   name = "Sweet-Dark";
     #   size = 16;
     # };
-    gtk.enable = true;
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
