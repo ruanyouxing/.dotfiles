@@ -26,25 +26,29 @@ in {
     autosuggestion.enable = true;
     enableCompletion = true;
     initContent = ''
-      source ${zinit}/zinit.zsh
-      zinit load hlissner/zsh-autopair
-      zinit wait lucid for \
-      atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-        zdharma-continuum/fast-syntax-highlighting \
-      blockf \
-        zsh-users/zsh-completions \
-      atload"!_zsh_autosuggest_start" \
-        zsh-users/zsh-autosuggestions
-      zinit ice as"command" from"gh-r" \
-      atpull"%atclone" src"init.zsh"
+          source ${zinit}/zinit.zsh
+          zinit load hlissner/zsh-autopair
+          zinit wait lucid for \
+          atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+            zdharma-continuum/fast-syntax-highlighting \
+          blockf \
+            zsh-users/zsh-completions \
+          atload"!_zsh_autosuggest_start" \
+            zsh-users/zsh-autosuggestions
+          zinit ice as"command" from"gh-r" \
+          atpull"%atclone" src"init.zsh"
 
-      cd(){
-          if (( $# == 0  ))
-            then builtin cd && builtin cd $(${pkgs.findutils}/bin/find . -type d -print | ${pkgs.fzf}/bin/fzf );
-          else
-            builtin cd $1
-          fi
-        }
+          cd(){
+              if (( $# == 0  ))
+                then builtin cd && builtin cd $(${pkgs.findutils}/bin/find . -type d -print | ${pkgs.fzf}/bin/fzf );
+              else
+                builtin cd $1
+              fi
+            }
+
+      if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+        exec Hyprland
+      fi
     '';
   };
   programs.eza = {
@@ -56,10 +60,12 @@ in {
   home = {
     sessionVariables = {
       DOTFILES = "/home/hungz/.dotfiles";
-      GTK_IM_MODULE = "fcitx5";
+      # GTK_IM_MODULE = "fcitx5";
       XMODIFIERS = "@im=fcitx5";
+      GLFW_IM_MODULE = "ibus";
       WLR_NO_HARDWARE_CURSORS = "1";
       QT_IM_MODULE = "fcitx5";
+      QT_IM_MODULES = "wayland;fcitx;ibus";
       QT_QPA_PLATFORMTHEME = "gtk3";
       XDG_CONFIG_HOME = "${config.xdg.configHome}";
     };

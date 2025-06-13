@@ -22,6 +22,7 @@ in {
   };
   services = {
     displayManager = {
+      # ly.enable = true;
       autoLogin.enable = true;
       autoLogin.user = "hungz";
     };
@@ -35,23 +36,29 @@ in {
       videoDrivers = ["amdgpu"];
     };
   };
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-wlr
-    ];
-  };
-  environment.sessionVariables  = {
+  environment.sessionVariables = {
     GTK_USE_PORTAL = "1";
   };
   nix.settings = {
     substituters = ["https://hyprland.cachix.org"];
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+    ];
+    config = {
+      common = {
+        default = ["hyprland" "gtk"];
+      };
+    };
+  };
   programs.hyprland = {
     enable = true;
+    withUWSM = true;
     package = inputs.hyprland.packages.${system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
+    portalPackage =
+      inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
   };
 }

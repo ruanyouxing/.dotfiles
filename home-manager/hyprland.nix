@@ -23,14 +23,19 @@ in {
     (rofi-wayland.override
       {plugins = [pkgs.rofi-emoji-wayland];})
   ];
-  # home.pointerCursor = {
-  #   gtk.enable = true;
-  #   name = "Sweet-Dark";
-  #   size = 16;
-  # };
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+    ];
+    config = {
+      common = {
+        default = ["hyprland" "gtk"];
+      };
+    };
+  };
   wayland.windowManager.hyprland = {
     enable = true;
-    systemd.enable = true;
     package = null;
     # plugins = [];
     settings = {
@@ -122,5 +127,11 @@ in {
     extraConfig = ''
       monitor=HDMI-A-1,1920x1080@74.97,0x0,1
     '';
+  };
+  services.gammastep = {
+    enable = true;
+    provider = "manual";
+    latitude = 12.0;
+    longitude = 107.0;
   };
 }
