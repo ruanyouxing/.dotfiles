@@ -1,4 +1,4 @@
-{pkgs,...}:{
+{pkgs, ...}: {
   networking.networkmanager.enable = true;
   programs.dconf.enable = true;
   programs.vim.enable = true;
@@ -14,5 +14,6 @@
     wget
     killall
     python311Packages.dbus-python
+    ntfs3g
   ];
 }
