@@ -15,8 +15,13 @@
     };
     inputMethod = {
       type = "fcitx5";
-      # ibus.engines = with pkgs.ibus-engines; [bamboo mozc libpinyin];
-      fcitx5.addons = with pkgs; [fcitx5-unikey fcitx5-mozc];
+      enable = true;
+      fcitx5.addons = with pkgs; [
+        fcitx5-gtk
+        kdePackages.fcitx5-qt
+        fcitx5-unikey
+        fcitx5-mozc
+      ];
     };
   };
 }
