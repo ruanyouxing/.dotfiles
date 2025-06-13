@@ -8,7 +8,6 @@
     kitty
     flameshot
     betterlockscreen
-    cava
     hsetroot
     jq
     pscircle

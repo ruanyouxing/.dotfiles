@@ -1,5 +1,6 @@
 {
   imports = [
+    ./cava.nix
     ./packages.nix
     ./shellcfg.nix
     ./bspwm.nix
