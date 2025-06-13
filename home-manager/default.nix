@@ -13,6 +13,7 @@
     ./hyprland.nix
     ./waybar.nix
     ./ncmpcpp.nix
+    ./ranger.nix
   ];
   programs.home-manager.enable = true;
   nixpkgs.config = {
