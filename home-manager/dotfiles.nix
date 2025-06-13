@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: let
+let
   configDir = ../.config;
   configFiles = builtins.readDir configDir;
   configSymlinks =
