@@ -2,7 +2,7 @@
   programs.zathura = {
     enable = true;
     options = {
-      recolor = true;
+      recolor = false;
       recolor-keephue = false;
       incremental-search = false;
       scroll-page-aware = true;
