@@ -20,7 +20,6 @@
       "hungz" = import ../home-manager;
     };
   };
-  security.rtkit.enable = true;
   security.sudo.extraRules = [
     {
       users = ["hungz"];

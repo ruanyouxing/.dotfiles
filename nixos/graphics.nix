@@ -7,7 +7,6 @@
   pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${system};
 in {
   hardware = {
-    enableAllFirmware = true;
     graphics = {
       enable = true;
       enable32Bit = true;
@@ -33,7 +32,7 @@ in {
         layout = "us";
         variant = "";
       };
-      #videoDrivers = ["amdgpu"];
+      videoDrivers = ["amdgpu"];
     };
   };
   xdg.portal = {
