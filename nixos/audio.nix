@@ -11,9 +11,12 @@
       enable = true;
       powerOnBoot = true;
     };
-    alsa.config = ''
-      amixer -c 0 sset 'Auto-Mude Mode' Disabled
-    '';
+    alsa = {
+      enablePersistence = true;
+      config = ''
+        amixer -c 0 sset 'Auto-Mude Mode' Disabled
+      '';
+    };
   };
   services = {
     pulseaudio.enable = false;
