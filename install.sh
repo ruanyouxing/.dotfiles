@@ -9,3 +9,4 @@ fi
 
 nixos-generate-config --show-hardware-config > ./nixos/hardware-configuration.nix
 sudo NIX_CONFIG='experimental-features = nix-command flakes' nixos-rebuild switch --flake .#nixos
+sudo nixos-rebuild boot --flake .#nixos
