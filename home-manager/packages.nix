@@ -9,6 +9,7 @@
     spotify
     gh
     foot
+    htop
     python311Packages.requests
   ];
   programs.git = {
