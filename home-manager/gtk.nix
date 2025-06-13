@@ -1,6 +1,12 @@
 {pkgs, ...}: let
   candy-icons = pkgs.callPackage ./builds/candy-icons.nix {};
 in {
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.sweet-nova;
+    name = "Sweet-cursors";
+    size = 16;
+  };
   gtk = {
     enable = true;
     theme = {
