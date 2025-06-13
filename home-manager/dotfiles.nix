@@ -11,7 +11,7 @@
     configFiles;
   homeFileAttrs = builtins.listToAttrs (
     builtins.map (name: {
-      name = "${config.home.homeDirectory}.config/${name}";
+      name = ".config/${name}";
       value = configSymlinks.${name};
     }) (builtins.attrNames configSymlinks)
   );
