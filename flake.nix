@@ -8,6 +8,7 @@
     };
     lanzaboote.url = "github:nix-community/lanzaboote";
     hyprland.url = "github:hyprwm/Hyprland";
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
   };
   outputs = {
     nixpkgs,

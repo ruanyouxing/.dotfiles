@@ -1,10 +1,10 @@
-{pkgs, ...}: {
+{pkgs, inputs,...}: {
   home.packages = with pkgs; [
-    discord
+    (discord.override {withVencord = true;})
     distrobox
     mpv
     obs-studio
-    pavucontrol
+    inputs.nixpkgs-wayland.packages.x86_64-linux.obs-wlrobs
     pywal
     spotify
     gh
