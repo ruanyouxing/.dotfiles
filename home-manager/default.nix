@@ -12,6 +12,7 @@
     ./dotfiles.nix
     ./hyprland.nix
     ./waybar.nix
+    ./ncmpcpp.nix
   ];
   programs.home-manager.enable = true;
   nixpkgs.config = {
