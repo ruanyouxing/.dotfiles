@@ -22,12 +22,12 @@ in {
     swayimg
     (rofi-wayland.override
       {plugins = [pkgs.rofi-emoji-wayland];})
-    ];
-    # home.pointerCursor = {
-    #   gtk.enable = true;
-    #   name = "Sweet-Dark";
-    #   size = 16;
-    # };
+  ];
+  # home.pointerCursor = {
+  #   gtk.enable = true;
+  #   name = "Sweet-Dark";
+  #   size = 16;
+  # };
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
@@ -85,7 +85,7 @@ in {
       "$altMod" = "ALT";
       bind =
         [
-          "$altModSHIFT,Return,exec, foot"
+          "$altModSHIFT,Return,exec, kitty"
           "$altModSHIFT,Q, exit"
           "$altMod, h, exec, scratchpad"
           "$altModSHIFT, h, exec, scratchpad -g"
@@ -107,6 +107,9 @@ in {
           "$mainMod, mouse_up, workspace, e-1"
           "$mainMod, E, exec, Thunar"
           "$mainMod, semicolon,exec, rofi -modi emoji -show emoji"
+          ",XF86AudioRaiseVolume,exec, volume_control.sh up"
+          ",XF86AudioLowerVolume,exec, volume_control.sh down"
+          ",XF86AudioMute,exec, volume_control.sh mute"
         ]
         ++ workspaceBinds;
       bindm = [
@@ -117,7 +120,7 @@ in {
 
     # monitor=Virtual-1,1920x1080@75,0x0,1
     extraConfig = ''
-      monitor=,preferred,auto,auto
+      monitor=HDMI-A-1,1920x1080@74.97,0x0,1
     '';
   };
 }

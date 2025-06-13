@@ -1,21 +1,21 @@
-let
-  # bad_apple = pkgs.callPackage ./plymouth.nix {};
+{pkgs,...}:let
+   bad_apple = pkgs.callPackage ./plymouth.nix {};
 in{
   boot = {
-    #    kernelParams = [
-    #      "loglevel=3"
-    #      "quiet"
-    #      "splash"
-    #      "amdgpu"
-    #      "radeon.cik_support=0"
-    #      "amdgpu.cik_support=1"
-    #      "amdgpu.si_support=1"
-    #      "radeon.si_support=0"
-    #      "amdgpu.modeset=1"
-    #      "rd.udev.log_priority=3"
-    #      "vt.global_cursor_default=0"
-    #    ];
-    #    initrd.kernelModules = ["amdgpu"];
+        kernelParams = [
+          "loglevel=3"
+          "quiet"
+          "splash"
+          "amdgpu"
+          "radeon.cik_support=0"
+          "amdgpu.cik_support=1"
+          "amdgpu.si_support=1"
+          "radeon.si_support=0"
+          "amdgpu.modeset=1"
+          "rd.udev.log_priority=3"
+          "vt.global_cursor_default=0"
+        ];
+        initrd.kernelModules = ["amdgpu"];
     #    lanzaboote = {
     #      enable = true;
     #      pkiBundle = "/etc/secureboot";
@@ -32,14 +32,15 @@ in{
         device = "nodev";
         efiInstallAsRemovable = true;
         configurationLimit = 5;
+        gfxmodeEfi = "1920x1080";
       };
     };
     supportedFilesystems = ["ntfs" "exfat"];
-    # plymouth = {
-    #   enable = true;
-    #   theme = "bad_apple";
-    #   themePackages = [bad_apple];
-    # };
+    plymouth = {
+      enable = true;
+      theme = "bad_apple";
+      themePackages = [bad_apple];
+    };
   };
-  # systemd.services.plymouth-quit.serviceConfig.ExecStartPre = "${pkgs.busybox}/bin/sleep 4";
+  systemd.services.plymouth-quit.serviceConfig.ExecStartPre = "${pkgs.busybox}/bin/sleep 4";
 }
