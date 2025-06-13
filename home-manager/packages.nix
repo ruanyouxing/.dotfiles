@@ -1,4 +1,11 @@
-{pkgs, inputs,...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  nixpkgs.overlays = [
+    (import ./builds/spotify.nix)
+  ];
   home.packages = with pkgs; [
     (discord.override {withVencord = true;})
     distrobox
@@ -6,11 +13,10 @@
     obs-studio
     inputs.nixpkgs-wayland.packages.x86_64-linux.obs-wlrobs
     pywal
-    spotify
     gh
     foot
     htop
-    python311Packages.requests
+    spotify
   ];
   programs.git = {
     enable = true;
