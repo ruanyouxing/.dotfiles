@@ -61,4 +61,13 @@ in {
     portalPackage =
       inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
   };
+  programs.uwsm = {
+    waylandCompositors = {
+      hyprland = {
+        prettyName = "Hyprland";
+        comment = "Hyprland compositor (UWSM)";
+        binPath = "/run/current-system/sw/bin/Hyprland";
+      };
+    };
+  };
 }

@@ -86,6 +86,7 @@ in {
       gestures = {
         workspace_swipe = false;
       };
+      xwayland.force_zero_scaling = true;
       "$mainMod" = "SUPER";
       "$altMod" = "ALT";
       bind =
