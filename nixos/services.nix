@@ -9,6 +9,10 @@
     chrony.enable = true;
     openssh.enable = true;
   };
+  hardware.opentabletdriver= {
+    enable = true;
+    daemon.enable = true;
+  };
   environment.systemPackages = with pkgs; [
     edk2
     wget
