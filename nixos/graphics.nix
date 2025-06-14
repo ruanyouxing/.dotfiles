@@ -21,10 +21,17 @@ in {
     keyMap = "us";
   };
   services = {
+    # greetd = {
+    #   enable = true;
+    #   settings = {
+    #     default_session = {
+    #       user = "hungz";
+    #     };
+    #   };
+    # };
     displayManager = {
-      # ly.enable = true;
-      autoLogin.enable = true;
-      autoLogin.user = "hungz";
+      # autoLogin.enable = true;
+      # autoLogin.user = "hungz";
     };
     xserver = {
       enable = true;
