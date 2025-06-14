@@ -6,8 +6,8 @@
   workspaceBinds = builtins.concatMap (w: let
     ws = toString w;
   in [
-    "$mainMod, ${ws}, workspace , ${ws}"
-    "$mainModSHIFT, ${ws}, movetoworkspace, ${ws}"
+    "SUPER, ${ws}, workspace , ${ws}"
+    "SUPERSHIFT, ${ws}, movetoworkspace, ${ws}"
   ]) (lib.range 1 9);
 in {
   home.packages = with pkgs; [
@@ -54,7 +54,12 @@ in {
         border_size = 3;
         "col.active_border" = "rgb(4825ac) rgb(73128a) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
-        layout = "dwindle";
+        layout = "master";
+      };
+      master = {
+        mfact = 0.55;
+        new_status = "slave";
+        orientation = "right";
       };
       decoration = {
         rounding = 10;
@@ -87,40 +92,50 @@ in {
         workspace_swipe = false;
       };
       xwayland.force_zero_scaling = true;
-      "$mainMod" = "SUPER";
-      "$altMod" = "ALT";
+      windowrulev2 = [
+        "float, title:^.*([oO]pen|[sS]ave|[uU]pload|Volume Control|Preferences|Settings|Popup|.*Dialog.*).*$"
+        "size 800 600, title:^.*([oO]pen|[sS]ave|[uU]pload|Volume Control|Preferences|Settings|Popup|.*Dialog.*).*$"
+
+        "float,title:^(Picture-in-Picture)$"
+        "size 640 360, title:^(Picture-in-Picture)$"
+        "move 25 695, title:^(Picture-in-Picture)$"
+      ];
+
       bind =
         [
-          "$altModSHIFT,Return,exec, kitty"
-          "$altModSHIFT,Q, exit"
-          "$altMod, h, exec, scratchpad"
-          "$altModSHIFT, h, exec, scratchpad -g"
-          "$mainMod, W, killactive"
-          "$mainMod, S, togglefloating"
-          "$mainMod, F, fullscreen"
-          "$mainMod, R, exec, rofi -modi drun -show drun -width 5"
-          "$mainMod, P, pseudo, # dwindle"
-          "$mainMod SHIFT, R, exec, kitty -e ranger"
-          "$mainMod SHIFT, S, exec, hyprshot -m region -o ~/Pictures"
+          "ALTSHIFT,Return,exec, kitty"
+          "ALTSHIFT,Q, exec, uwsm stop"
+          "ALTSHIFT, h, exec, scratchpad -g"
+          "SUPER, W, killactive"
+          "SUPER, S, togglefloating"
+          "SUPER, F, fullscreen"
+          "SUPER, R, exec, rofi -modi drun -show drun -width 5"
+          "SUPER, P, pseudo, # dwindle"
+          "SUPER SHIFT, R, exec, kitty -e ranger"
+          "SUPER SHIFT, S, exec, hyprshot -m region -o ~/Pictures"
           ",Print, exec, hyprshot -m output --clipboard-only"
-          "$mainMod, L, exec, betterlockscreen -l dimblur"
-          "$mainMod, J, togglesplit,"
-          "$mainMod, left, movefocus, l"
-          "$mainMod, right, movefocus, r"
-          "$mainMod, up, movefocus, u"
-          "$mainMod, down, movefocus, d"
-          "$mainMod, mouse_down, workspace, e+1"
-          "$mainMod, mouse_up, workspace, e-1"
-          "$mainMod, E, exec, Thunar"
-          "$mainMod, semicolon,exec, rofi -modi emoji -show emoji"
+          "SUPER, L, exec, betterlockscreen -l dimblur"
+          "SUPER, J, togglesplit,"
+          "SUPER, left, movefocus, l"
+          "SUPER, right, movefocus, r"
+          "SUPER, up, movefocus, u"
+          "SUPER, down, movefocus, d"
+          "SUPER SHIFT, left, swapwindow, l"
+          "SUPER SHIFT, right, swapwindow, r"
+          "SUPER SHIFT, up, swapwindow, u"
+          "SUPER SHIFT, down, swapwindow, d"
+          "SUPER, mouse_down, workspace, e+1"
+          "SUPER, mouse_up, workspace, e-1"
+          "SUPER, E, exec, Thunar"
+          "SUPER, semicolon,exec, rofi -modi emoji -show emoji"
           ",XF86AudioRaiseVolume,exec, volume_control.sh up"
           ",XF86AudioLowerVolume,exec, volume_control.sh down"
           ",XF86AudioMute,exec, volume_control.sh mute"
         ]
         ++ workspaceBinds;
       bindm = [
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
+        "SUPER, mouse:272, movewindow"
+        "SUPER, mouse:273, resizewindow"
       ];
     };
 
