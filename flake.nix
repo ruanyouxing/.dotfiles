@@ -9,11 +9,13 @@
     lanzaboote.url = "github:nix-community/lanzaboote";
     hyprland.url = "github:hyprwm/Hyprland";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    naersk.url = "github:nmattia/naersk";
   };
   outputs = {
     nixpkgs,
     home-manager,
     lanzaboote,
+    naersk,
     ...
   } @ inputs: let
     system = "x86_64-linux";

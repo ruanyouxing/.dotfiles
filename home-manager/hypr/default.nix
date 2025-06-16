@@ -9,7 +9,12 @@
     "SUPER, ${ws}, workspace , ${ws}"
     "SUPERSHIFT, ${ws}, movetoworkspace, ${ws}"
   ]) (lib.range 1 9);
+  float_titles = "([oO]pen|[sS]ave|[uU]pload|Volume Control|Preferences|Settings|Popup|.*Dialog.*|Bluetooth Devices)";
+  hyprland-startup = pkgs.callPackage ./scripts/hyprland-startup.nix {};
 in {
+  imports = [
+    ./waybar.nix
+  ];
   home.packages = with pkgs; [
     slurp
     grim
@@ -40,7 +45,7 @@ in {
     # plugins = [];
     settings = {
       exec-once = [
-        "hyprland_startup.sh"
+        "${hyprland-startup}"
       ];
       input = {
         kb_layout = "us";
@@ -59,16 +64,18 @@ in {
       master = {
         mfact = 0.55;
         new_status = "slave";
-        orientation = "right";
+        orientation = "left";
       };
       decoration = {
         rounding = 10;
+        rounding_power = 3;
         active_opacity = 0.9;
         inactive_opacity = 0.9;
         fullscreen_opacity = 0.9;
         blur = {
           enabled = true;
-          size = 12;
+          size = 20;
+          passes = 3;
         };
       };
 
@@ -93,12 +100,17 @@ in {
       };
       xwayland.force_zero_scaling = true;
       windowrulev2 = [
-        "float, title:^.*([oO]pen|[sS]ave|[uU]pload|Volume Control|Preferences|Settings|Popup|.*Dialog.*).*$"
-        "size 800 600, title:^.*([oO]pen|[sS]ave|[uU]pload|Volume Control|Preferences|Settings|Popup|.*Dialog.*).*$"
-
+        "float, title:^.*${float_titles}.*$"
+        "size 800 600, title:^.*${float_titles}.*$"
         "float,title:^(Picture-in-Picture)$"
         "size 640 360, title:^(Picture-in-Picture)$"
         "move 25 695, title:^(Picture-in-Picture)$"
+        "float, class:kitty-float"
+        "size 1200 800, class:kitty-float"
+        "center class:kitty-float"
+        "float, title:mpv"
+        "size 960 540, title:mpv"
+        "center title:mpv"
       ];
 
       bind =
@@ -111,7 +123,7 @@ in {
           "SUPER, F, fullscreen"
           "SUPER, R, exec, rofi -modi drun -show drun -width 5"
           "SUPER, P, pseudo, # dwindle"
-          "SUPER SHIFT, R, exec, kitty -e ranger"
+          "SUPER SHIFT, R, exec, kitty --class kitty-float -e ranger"
           "SUPER SHIFT, S, exec, hyprshot -m region -o ~/Pictures"
           ",Print, exec, hyprshot -m output --clipboard-only"
           "SUPER, L, exec, betterlockscreen -l dimblur"
@@ -131,6 +143,9 @@ in {
           ",XF86AudioRaiseVolume,exec, volume_control.sh up"
           ",XF86AudioLowerVolume,exec, volume_control.sh down"
           ",XF86AudioMute,exec, volume_control.sh mute"
+          ",XF86AudioPlay, exec, playerctl play-pause"
+          ",XF86AudioPrev, exec, playerctl prev"
+          ",XF86AudioNext, exec, playerctl next"
         ]
         ++ workspaceBinds;
       bindm = [

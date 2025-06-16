@@ -1,5 +1,6 @@
 {
   imports = [
+    ./hypr
     ./cava.nix
     ./packages.nix
     ./shellcfg.nix
@@ -10,8 +11,6 @@
     ./zathura.nix
     ./neovim.nix
     ./dotfiles.nix
-    ./hyprland.nix
-    ./waybar.nix
     ./ncmpcpp.nix
     ./ranger.nix
   ];
