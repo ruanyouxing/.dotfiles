@@ -11,6 +11,7 @@
   ]) (lib.range 1 9);
   float_titles = "([oO]pen|[sS]ave|[uU]pload|Volume Control|Preferences|Settings|Popup|.*Dialog.*|Bluetooth Devices)";
   hyprland-startup = pkgs.callPackage ./scripts/hyprland-startup.nix {};
+  volume-control = pkgs.callPackage ./scripts/volume-control.nix {};
 in {
   imports = [
     ./waybar.nix
@@ -140,9 +141,9 @@ in {
           "SUPER, mouse_up, workspace, e-1"
           "SUPER, E, exec, Thunar"
           "SUPER, semicolon,exec, rofi -modi emoji -show emoji"
-          ",XF86AudioRaiseVolume,exec, volume_control.sh up"
-          ",XF86AudioLowerVolume,exec, volume_control.sh down"
-          ",XF86AudioMute,exec, volume_control.sh mute"
+          ",XF86AudioRaiseVolume,exec, ${volume-control} up"
+          ",XF86AudioLowerVolume,exec,${volume-control} down"
+          ",XF86AudioMute,exec, ${volume-control} mute"
           ",XF86AudioPlay, exec, playerctl play-pause"
           ",XF86AudioPrev, exec, playerctl prev"
           ",XF86AudioNext, exec, playerctl next"
