@@ -102,7 +102,7 @@ in {
           format-alt = " 󰖩 {signalStrength}% ";
           format-ethernet = " 󰈀 Wired ";
           format-disconnected = " 󰖪  ";
-          on-click-right = "wifimenu";
+          on-click-right = (toString ../../scripts/wifimenu);
         };
 
         pulseaudio = {
