@@ -24,13 +24,13 @@
     haskellPackages.greenclip
     eslint_d
     nodePackages.prettier
-    pkgs.clang-tools
-    pkgs.lldb
-    pkgs.python310Packages.debugpy
-    pkgs.black
-    pkgs.stylua
-    pkgs.shellcheck
-    pkgs.alejandra
+    clang-tools
+    lldb
+    python310Packages.debugpy
+    black
+    stylua
+    shellcheck
+    alejandra
   ];
   programs.neovim = {
     enable = true;

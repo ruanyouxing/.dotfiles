@@ -64,7 +64,7 @@ in {
           on-scroll-down = "hyprctl dispatch workspace e-1";
         };
         "hyprland/window" = {
-          format = "{title}";
+          format = "{title} ";
           max-length = 40;
           icon = true;
           icon-size = 18;
