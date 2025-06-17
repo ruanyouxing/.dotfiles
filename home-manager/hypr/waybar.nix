@@ -9,7 +9,7 @@
   };
   powermenu = pkgs.callPackage ./scripts/powermenu.nix {};
   music-bar = pkgs.callPackage ./scripts/music-bar.nix {};
-  output-toggle = pkgs.callPackage ./scripts/output-toggle.nix {};
+  output-toggle = pkgs.callPackage ./scripts/audio-toggle.nix {};
 in {
   home.packages = with pkgs; [
     spotifyd
