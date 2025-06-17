@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     fira-code
     nerd-fonts.jetbrains-mono
@@ -28,7 +25,9 @@
     eslint_d
     nodePackages.prettier
     pkgs.clang-tools
-    pkgs.lldb pkgs.python310Packages.debugpy pkgs.black
+    pkgs.lldb
+    pkgs.python310Packages.debugpy
+    pkgs.black
     pkgs.stylua
     pkgs.shellcheck
     pkgs.alejandra

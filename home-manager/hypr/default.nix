@@ -28,6 +28,7 @@ in {
     swayimg
     (rofi-wayland.override
       {plugins = [pkgs.rofi-emoji-wayland];})
+    foot
   ];
   xdg.portal = {
     enable = true;

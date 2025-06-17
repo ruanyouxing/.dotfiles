@@ -2,8 +2,8 @@
   pkgs,
   ...
 }: let
-  ranger-zoxide = pkgs.callPackage ./builds/ranger-zoxide.nix {};
-  ranger-devicons = pkgs.callPackage ./builds/ranger-devicons.nix {};
+  ranger-zoxide = pkgs.callPackage ./ranger-zoxide.nix {};
+  ranger-devicons = pkgs.callPackage ./ranger-devicons.nix {};
 in {
   home.packages = with pkgs; [
     ranger

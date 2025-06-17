@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  candy-icons = pkgs.callPackage ./builds/candy-icons.nix {};
+  candy-icons = pkgs.callPackage ./candy-icons.nix {};
 in {
   home.pointerCursor = {
     gtk.enable = true;

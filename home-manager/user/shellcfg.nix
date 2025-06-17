@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  zinit = pkgs.callPackage ./builds/zinit.nix {};
+  zinit = pkgs.callPackage ./zinit.nix {};
 in {
   home.packages = with pkgs; [
     zinit

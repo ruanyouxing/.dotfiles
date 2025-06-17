@@ -1,18 +1,11 @@
 {
   imports = [
     ./hypr
-    ./cava.nix
-    ./packages.nix
-    ./shellcfg.nix
-    ./bspwm.nix
-    ./gtk.nix
-    ./mpd.nix
-    ./browser.nix
-    ./zathura.nix
-    ./neovim.nix
-    ./dotfiles.nix
-    ./ncmpcpp.nix
-    ./ranger.nix
+    ./audio
+    ./gui
+    ./user
+    ./bspwm
+    ./tools
   ];
   programs.home-manager.enable = true;
   nixpkgs.config = {

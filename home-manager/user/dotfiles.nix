@@ -15,10 +15,10 @@ let
         ) (builtins.attrNames content);
     in files;
 
-  configFiles = getAllFiles ../.config;
+  configFiles = getAllFiles ../../.config;
 
   mkConfigEntry = path: let
-    relPath = lib.removePrefix (toString ../.config + "/") (toString path);
+    relPath = lib.removePrefix (toString ../../.config + "/") (toString path);
   in {
     name = ".config/${relPath}";
     value = {

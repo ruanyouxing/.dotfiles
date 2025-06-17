@@ -10,6 +10,10 @@
     hyprland.url = "github:hyprwm/Hyprland";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     naersk.url = "github:nmattia/naersk";
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {
     nixpkgs,
