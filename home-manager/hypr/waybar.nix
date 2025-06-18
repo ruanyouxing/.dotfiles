@@ -7,7 +7,6 @@
     naersk =
       pkgs.callPackage inputs.naersk {};
   };
-  powermenu = pkgs.callPackage ./scripts/powermenu.nix {};
   music-bar = pkgs.callPackage ./scripts/music-bar.nix {};
   output-toggle = pkgs.callPackage ./scripts/audio-toggle.nix {};
 in {
@@ -152,7 +151,7 @@ in {
         };
         "custom/power-menu" = {
           format = " <span color='#6a92d7'>⏻ </span>";
-          on-click = "${powermenu}";
+          on-click = "wlogout";
         };
         "custom/launcher" = {
           format = " <span color='#6a92d7'> 󱄅 </span> ";
