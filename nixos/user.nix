@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  customLib,
   ...
 }:{
   imports = [inputs.home-manager.nixosModules.default];
@@ -14,8 +15,8 @@
   };
   home-manager = {
     useUserPackages = true;
-    extraSpecialArgs = {inherit inputs;};
-    backupFileExtension = ".hm-bak";
+    extraSpecialArgs = {inherit inputs customLib;};
+    backupFileExtension = "hm-bak";
     users = {
       "hungz" = import ../home-manager;
     };

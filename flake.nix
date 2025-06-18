@@ -22,12 +22,13 @@
     naersk,
     ...
   } @ inputs: let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+    customLib = import ./lib nixpkgs.lib;
+    lib = nixpkgs.lib // customLib;
   in {
+    inherit lib;
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs customLib;};
         modules = [
           ./nixos/configuration.nix
           inputs.home-manager.nixosModules.default

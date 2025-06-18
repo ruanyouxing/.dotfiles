@@ -1,6 +1,7 @@
-{pkgs,...}:{
+{pkgs,customLib,...}:let
+  inherit (customLib.genSymLinks) genConfLinks;
+in {
   imports = [
-    ./dotfiles.nix
     ./shellcfg.nix
   ];
   home.packages = with pkgs; [
@@ -16,4 +17,5 @@
     userEmail = "ruanyouxing7@gmail.com";
     userName = "ruanyouxing";
   };
+  home.file = genConfLinks ../../.config {};
 }
