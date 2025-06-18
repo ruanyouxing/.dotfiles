@@ -15,6 +15,8 @@
 in {
   imports = [
     ./waybar.nix
+    ./wlogout.nix
+    ./swaylock.nix
   ];
   home.packages = with pkgs; [
     slurp
@@ -80,7 +82,10 @@ in {
           passes = 3;
         };
       };
-
+      debug = {
+        disable_logs = false;
+        enable_stdout_logs = true;
+      };
       animations = {
         enabled = true;
         bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
