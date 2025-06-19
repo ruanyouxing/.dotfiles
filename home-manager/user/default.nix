@@ -18,5 +18,5 @@ in {
     userEmail = "ruanyouxing7@gmail.com";
     userName = "ruanyouxing";
   };
-  home.file = genConfLinks ../../.config {};
+  home.file = genConfLinks ../../config {};
 }
