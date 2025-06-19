@@ -26,7 +26,6 @@ in {
     wtype
     wl-clipboard
     dunst
-    swaylock
     swayimg
     (rofi-wayland.override
       {plugins = [pkgs.rofi-emoji-wayland];})
@@ -146,6 +145,7 @@ in {
           "SUPER, mouse_down, workspace, e+1"
           "SUPER, mouse_up, workspace, e-1"
           "SUPER, E, exec, Thunar"
+          "SUPER, L, exec, swaylock"
           "SUPER, semicolon,exec, rofi -modi emoji -show emoji"
           ",XF86AudioRaiseVolume,exec, ${volume-control} up"
           ",XF86AudioLowerVolume,exec,${volume-control} down"
