@@ -69,6 +69,5 @@ in {
     portalPackage =
       inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
   };
-  security.pam.services.swaylock = {};
   programs.gdk-pixbuf.modulePackages = [pkgs.librsvg];
 }

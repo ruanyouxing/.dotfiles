@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   networking.networkmanager.enable = true;
   programs.dconf.enable = true;
   programs.vim.enable = true;
@@ -9,7 +10,7 @@
     chrony.enable = true;
     openssh.enable = true;
   };
-  hardware.opentabletdriver= {
+  hardware.opentabletdriver = {
     enable = true;
     daemon.enable = true;
   };

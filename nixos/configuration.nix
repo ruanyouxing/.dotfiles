@@ -9,5 +9,6 @@
     ./audio.nix
     ./nixconfig.nix
     ./services.nix
+    ./security.nix
   ];
 }
