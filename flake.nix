@@ -14,10 +14,12 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
   outputs = {
     nixpkgs,
     home-manager,
+    spicetify-nix,
     lanzaboote,
     naersk,
     ...
@@ -31,7 +33,8 @@
         specialArgs = {inherit inputs customLib;};
         modules = [
           ./nixos/configuration.nix
-          inputs.home-manager.nixosModules.default
+          home-manager.nixosModules.default
+          spicetify-nix.nixosModules.default
           lanzaboote.nixosModules.lanzaboote
         ];
       };
