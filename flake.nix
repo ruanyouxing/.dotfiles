@@ -34,7 +34,6 @@
         modules = [
           ./nixos/configuration.nix
           home-manager.nixosModules.default
-          spicetify-nix.nixosModules.default
           lanzaboote.nixosModules.lanzaboote
         ];
       };

@@ -1,4 +1,4 @@
-{
+{inputs,...}:{
   imports = [
     ./hypr
     ./audio
@@ -6,6 +6,7 @@
     ./user
     ./bspwm
     ./tools
+    inputs.spicetify-nix.homeManagerModules.default
   ];
   programs.home-manager.enable = true;
   nixpkgs.config = {
