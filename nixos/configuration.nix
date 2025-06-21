@@ -10,5 +10,6 @@
     ./nixconfig.nix
     ./services.nix
     ./security.nix
+    ../fonts
   ];
 }

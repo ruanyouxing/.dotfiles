@@ -1,5 +1,5 @@
 {
-  description = "ruanyouxing flake";
+  description = "ruanyouxing dotfiles flake";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {

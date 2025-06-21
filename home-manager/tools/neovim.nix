@@ -1,16 +1,5 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    fira-code
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.iosevka
-    noto-fonts-cjk-serif
-    noto-fonts-cjk-sans
-    source-han-serif
-    source-han-mono
-    source-han-sans
-    source-code-pro
-    material-icons
-    material-design-icons
     gcc
     gnumake
     fd

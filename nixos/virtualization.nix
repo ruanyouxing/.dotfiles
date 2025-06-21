@@ -15,7 +15,6 @@
       source = config.virtualisation.libvirtd.qemu.package + "/share/qemu/edk2-i386-vars.fd";
     };
   };
-  # virtualisation.vmware.guest.enable = true;
   # virtualisation.libvirtd = {
   #   enable = true;
   #   qemu = {
@@ -26,4 +25,5 @@
   #     runAsRoot = false;
   #   };
   # };
+  # virtualisation.vmware.guest.enable = true;
 }

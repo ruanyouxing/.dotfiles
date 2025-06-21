@@ -1,15 +1,11 @@
 { pkgs, ... }:
 let
   whichsong = pkgs.writeShellScript "whichsong.sh" ''
-    echo   $(playerctl metadata --format "{{ artist }} - {{ title }}")
+    echo   $(playerctl metadata --format "{{ artist }} - {{ title }}" -p spotify)
     '';
     weather = pkgs.callPackage ../scripts/weather.nix {};
 in
 {
-  home.packages = with pkgs; [
-    montserrat
-    nerd-fonts.iosevka
-  ];
   programs.hyprlock = {
     enable = true;
     settings = {
