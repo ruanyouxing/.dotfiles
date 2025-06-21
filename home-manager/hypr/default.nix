@@ -90,6 +90,10 @@ in
           size = 20;
           passes = 3;
         };
+        layerrule= [
+          "blur,waybar"
+          "blur,rofi"
+        ];
       };
       debug = {
         disable_logs = false;
