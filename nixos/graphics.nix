@@ -2,10 +2,12 @@
   pkgs,
   inputs,
   ...
-}: let
+}:
+let
   system = pkgs.stdenv.hostPlatform.system;
   pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${system};
-in {
+in
+{
   hardware = {
     graphics = {
       enable = true;
@@ -17,7 +19,7 @@ in {
   console = {
     earlySetup = true;
     font = "${pkgs.terminus_font}/share/consolefonts/ter-116n.psf.gz";
-    packages = with pkgs; [terminus_font];
+    packages = with pkgs; [ terminus_font ];
     keyMap = "us";
   };
   services = {
@@ -40,15 +42,15 @@ in {
         layout = "us";
         variant = "";
       };
-      videoDrivers = ["amdgpu"];
+      videoDrivers = [ "amdgpu" ];
     };
   };
   environment.sessionVariables = {
     GTK_USE_PORTAL = "1";
   };
   nix.settings = {
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    substituters = [ "https://hyprland.cachix.org" ];
+    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
   xdg.portal = {
     enable = true;
@@ -57,7 +59,10 @@ in {
     ];
     config = {
       common = {
-        default = ["hyprland" "gtk"];
+        default = [
+          "hyprland"
+          "gtk"
+        ];
       };
     };
   };
@@ -65,9 +70,9 @@ in {
   programs.hyprland = {
     enable = true;
     withUWSM = true;
-    package = inputs.hyprland.packages.${system}.hyprland;
-    portalPackage =
-      inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
+    # package = inputs.hyprland.packages.${system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
   };
-  programs.gdk-pixbuf.modulePackages = [pkgs.librsvg];
+  programs.gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
+  environment.sessionVariables.NIX_OZONE_WL = "1";
 }
