@@ -2,21 +2,27 @@
   lib,
   pkgs,
   ...
-}: let
-  workspaceBinds = builtins.concatMap (w: let
-    ws = toString w;
-  in [
-    "SUPER, ${ws}, workspace , ${ws}"
-    "SUPERSHIFT, ${ws}, movetoworkspace, ${ws}"
-  ]) (lib.range 1 9);
+}:
+let
+  workspaceBinds = builtins.concatMap (
+    w:
+    let
+      ws = toString w;
+    in
+    [
+      "SUPER, ${ws}, workspace , ${ws}"
+      "SUPERSHIFT, ${ws}, movetoworkspace, ${ws}"
+    ]
+  ) (lib.range 1 9);
   float_titles = "([oO]pen|[sS]ave|[uU]pload|Volume Control|Preferences|Settings|Popup|.*Dialog.*|Bluetooth Devices)";
-  hyprland-startup = pkgs.callPackage ./scripts/hyprland-startup.nix {};
-  volume-control = pkgs.callPackage ./scripts/volume-control.nix {};
-in {
+  hyprland-startup = pkgs.callPackage ./scripts/hyprland-startup.nix { };
+  volume-control = pkgs.callPackage ./scripts/volume-control.nix { };
+in
+{
   imports = [
     ./waybar.nix
     ./wlogout.nix
-    ./swaylock.nix
+    ./extras
   ];
   home.packages = with pkgs; [
     slurp
@@ -27,8 +33,7 @@ in {
     wl-clipboard
     dunst
     swayimg
-    (rofi-wayland.override
-      {plugins = [pkgs.rofi-emoji-wayland];})
+    (rofi-wayland.override { plugins = [ pkgs.rofi-emoji-wayland ]; })
     foot
   ];
   xdg.portal = {
@@ -38,7 +43,10 @@ in {
     ];
     config = {
       common = {
-        default = ["hyprland" "gtk"];
+        default = [
+          "hyprland"
+          "gtk"
+        ];
       };
     };
   };
@@ -53,7 +61,9 @@ in {
       input = {
         kb_layout = "us";
         follow_mouse = 1;
-        touchpad = {natural_scroll = false;};
+        touchpad = {
+          natural_scroll = false;
+        };
         sensitivity = 0;
       };
       general = {
@@ -119,42 +129,40 @@ in {
         "center title:mpv"
       ];
 
-      bind =
-        [
-          "ALTSHIFT,Return,exec, kitty"
-          "ALTSHIFT,Q, exec, uwsm stop"
-          "ALTSHIFT, h, exec, scratchpad -g"
-          "SUPER, W, killactive"
-          "SUPER, S, togglefloating"
-          "SUPER, F, fullscreen"
-          "SUPER, R, exec, rofi -modi drun -show drun -width 5"
-          "SUPER, P, pseudo, # dwindle"
-          "SUPER SHIFT, R, exec, kitty --class kitty-float -e ranger"
-          "SUPER SHIFT, S, exec, hyprshot -m region -o ~/Pictures"
-          ",Print, exec, hyprshot -m output --clipboard-only"
-          "SUPER, L, exec, betterlockscreen -l dimblur"
-          "SUPER, J, togglesplit,"
-          "SUPER, left, movefocus, l"
-          "SUPER, right, movefocus, r"
-          "SUPER, up, movefocus, u"
-          "SUPER, down, movefocus, d"
-          "SUPER SHIFT, left, swapwindow, l"
-          "SUPER SHIFT, right, swapwindow, r"
-          "SUPER SHIFT, up, swapwindow, u"
-          "SUPER SHIFT, down, swapwindow, d"
-          "SUPER, mouse_down, workspace, e+1"
-          "SUPER, mouse_up, workspace, e-1"
-          "SUPER, E, exec, Thunar"
-          "SUPER, L, exec, swaylock"
-          "SUPER, semicolon,exec, rofi -modi emoji -show emoji"
-          ",XF86AudioRaiseVolume,exec, ${volume-control} up"
-          ",XF86AudioLowerVolume,exec,${volume-control} down"
-          ",XF86AudioMute,exec, ${volume-control} mute"
-          ",XF86AudioPlay, exec, playerctl play-pause"
-          ",XF86AudioPrev, exec, playerctl prev"
-          ",XF86AudioNext, exec, playerctl next"
-        ]
-        ++ workspaceBinds;
+      bind = [
+        "ALTSHIFT,Return,exec, kitty"
+        "ALTSHIFT,Q, exec, uwsm stop"
+        "ALTSHIFT, h, exec, scratchpad -g"
+        "SUPER, W, killactive"
+        "SUPER, S, togglefloating"
+        "SUPER, F, fullscreen"
+        "SUPER, R, exec, rofi -modi drun -show drun -width 5"
+        "SUPER, P, pseudo, # dwindle"
+        "SUPER SHIFT, R, exec, kitty --class kitty-float -e ranger"
+        "SUPER SHIFT, S, exec, hyprshot -m region -o ~/Pictures"
+        ",Print, exec, hyprshot -m output --clipboard-only"
+        "SUPER, L, exec, betterlockscreen -l dimblur"
+        "SUPER, J, togglesplit,"
+        "SUPER, left, movefocus, l"
+        "SUPER, right, movefocus, r"
+        "SUPER, up, movefocus, u"
+        "SUPER, down, movefocus, d"
+        "SUPER SHIFT, left, swapwindow, l"
+        "SUPER SHIFT, right, swapwindow, r"
+        "SUPER SHIFT, up, swapwindow, u"
+        "SUPER SHIFT, down, swapwindow, d"
+        "SUPER, mouse_down, workspace, e+1"
+        "SUPER, mouse_up, workspace, e-1"
+        "SUPER, E, exec, Thunar"
+        "SUPER, L, exec, hyprlock"
+        "SUPER, semicolon,exec, rofi -modi emoji -show emoji"
+        ",XF86AudioRaiseVolume,exec, ${volume-control} up"
+        ",XF86AudioLowerVolume,exec,${volume-control} down"
+        ",XF86AudioMute,exec, ${volume-control} mute"
+        ",XF86AudioPlay, exec, playerctl play-pause"
+        ",XF86AudioPrev, exec, playerctl prev"
+        ",XF86AudioNext, exec, playerctl next"
+      ] ++ workspaceBinds;
       bindm = [
         "SUPER, mouse:272, movewindow"
         "SUPER, mouse:273, resizewindow"

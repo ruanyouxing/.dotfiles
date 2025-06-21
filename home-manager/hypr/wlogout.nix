@@ -6,7 +6,7 @@ in {
     layout = [
       {
         label = "lock";
-        action = "swaylock";
+        action = "hyprlock";
         text = "Lock screen";
         keybind = "l";
       }
@@ -41,7 +41,7 @@ in {
         keybind = "r";
       }
     ];
-    style = builtins.readFile ./wlogout.css;
+    style = builtins.readFile ./css/wlogout.css;
   };
   xdg.configFile."wlogout/assets".source = toString assetsFolder;
 }

@@ -159,6 +159,6 @@ in {
         };
       };
     };
-    style = builtins.readFile ./waybar.css;
+    style = builtins.readFile ./css/waybar.css;
   };
 }

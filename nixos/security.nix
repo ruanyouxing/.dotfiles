@@ -11,6 +11,6 @@
         ];
       }
     ];
-    pam.services.swaylock = { };
+    pam.services.hyprlock = { };
   };
 }
