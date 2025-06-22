@@ -17,8 +17,6 @@ let
   ) (lib.range 1 9);
   float_titles = "([oO]pen|[sS]ave|[uU]pload|Volume Control|Preferences|Settings|Popup|.*Dialog.*|Bluetooth Devices)";
   inherit (import ./scripts { inherit pkgs inputs; }) volume-control hyprland-startup;
-  # hyprland-startup = pkgs.callPackage ./scripts/hyprland-startup.nix { };
-  # volume-control = pkgs.callPackage ./scripts/volume-control.nix { };
 in
 {
   imports = [
