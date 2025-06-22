@@ -2,14 +2,11 @@
   pkgs,
   inputs,
   ...
-}: let
-  lizzy = pkgs.callPackage ./scripts/lizzy.nix {
-    naersk =
-      pkgs.callPackage inputs.naersk {};
-  };
-  music-bar = pkgs.callPackage ./scripts/music-bar.nix {};
-  output-toggle = pkgs.callPackage ./scripts/audio-toggle.nix {};
-in {
+}:
+let
+  inherit (import ./scripts { inherit pkgs inputs; }) audio-toggle music-bar lizzy;
+in
+{
   home.packages = with pkgs; [
     spotifyd
     playerctl
@@ -17,7 +14,7 @@ in {
   programs.waybar = {
     enable = true;
     package = pkgs.waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
+      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     });
     settings = {
       mainBar = {
@@ -34,7 +31,10 @@ in {
           "hyprland/workspaces"
           "hyprland/window"
         ];
-        modules-center = ["custom/music" "custom/music-bar"];
+        modules-center = [
+          "custom/music"
+          "custom/music-bar"
+        ];
         modules-right = [
           "tray"
           "pulseaudio"
@@ -101,7 +101,7 @@ in {
           format-alt = " 󰖩 {signalStrength}% ";
           format-ethernet = " 󰈀 Wired ";
           format-disconnected = " 󰖪  ";
-          on-click-right = (toString ../../scripts/wifimenu);
+          on-click-right = toString ../../scripts/wifimenu;
         };
 
         pulseaudio = {
@@ -116,10 +116,14 @@ in {
             phone = "  ";
             portable = "  ";
             car = "   ";
-            default = ["  " "  " "  "];
+            default = [
+              "  "
+              "  "
+              "  "
+            ];
           };
-          on-scroll-up = output-toggle;
-          on-scroll-down = output-toggle;
+          on-scroll-up = audio-toggle;
+          on-scroll-down = audio-toggle;
           on-click = "pavucontrol";
         };
 

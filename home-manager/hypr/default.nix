@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -15,8 +16,9 @@ let
     ]
   ) (lib.range 1 9);
   float_titles = "([oO]pen|[sS]ave|[uU]pload|Volume Control|Preferences|Settings|Popup|.*Dialog.*|Bluetooth Devices)";
-  hyprland-startup = pkgs.callPackage ./scripts/hyprland-startup.nix { };
-  volume-control = pkgs.callPackage ./scripts/volume-control.nix { };
+  inherit (import ./scripts { inherit pkgs inputs; }) volume-control hyprland-startup;
+  # hyprland-startup = pkgs.callPackage ./scripts/hyprland-startup.nix { };
+  # volume-control = pkgs.callPackage ./scripts/volume-control.nix { };
 in
 {
   imports = [
@@ -70,7 +72,7 @@ in
         gaps_in = 5;
         gaps_out = 20;
         border_size = 3;
-        "col.active_border" = "rgb(4825ac) rgb(73128a) 45deg";
+        "col.active_border" = "rgba(3DDCFFee) rgba(A78BFAee) 90deg";
         "col.inactive_border" = "rgba(595959aa)";
         layout = "master";
       };
@@ -90,7 +92,7 @@ in
           size = 20;
           passes = 3;
         };
-        layerrule= [
+        layerrule = [
           "blur,waybar"
           "blur,rofi"
         ];
@@ -160,6 +162,7 @@ in
         "SUPER, E, exec, Thunar"
         "SUPER, L, exec, hyprlock"
         "SUPER, semicolon,exec, rofi -modi emoji -show emoji"
+        "ALT,F4, exec, wlogout"
         ",XF86AudioRaiseVolume,exec, ${volume-control} up"
         ",XF86AudioLowerVolume,exec,${volume-control} down"
         ",XF86AudioMute,exec, ${volume-control} mute"
