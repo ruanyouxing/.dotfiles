@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  inputs,
   ...
 }:
 let
@@ -16,7 +15,7 @@ let
     ]
   ) (lib.range 1 9);
   float_titles = "([oO]pen|[sS]ave|[uU]pload|Volume Control|Preferences|Settings|Popup|.*Dialog.*|Bluetooth Devices)";
-  inherit (import ./scripts { inherit pkgs inputs; }) volume-control hyprland-startup;
+  inherit (import ./scripts { inherit pkgs; }) volume-control hyprland-startup lockAndSleep;
 in
 {
   imports = [
@@ -158,7 +157,7 @@ in
         "SUPER, mouse_down, workspace, e+1"
         "SUPER, mouse_up, workspace, e-1"
         "SUPER, E, exec, Thunar"
-        "SUPER, L, exec, hyprlock"
+        "SUPER, L, exec, ${lockAndSleep}"
         "SUPER, semicolon,exec, rofi -modi emoji -show emoji"
         "ALT,F4, exec, wlogout"
         ",XF86AudioRaiseVolume,exec, ${volume-control} up"
@@ -172,6 +171,10 @@ in
         "SUPER, mouse:272, movewindow"
         "SUPER, mouse:273, resizewindow"
       ];
+      misc = {
+        mouse_move_enables_dpms = true;
+        key_press_enables_dpms = true;
+      };
     };
 
     # monitor=Virtual-1,1920x1080@75,0x0,1

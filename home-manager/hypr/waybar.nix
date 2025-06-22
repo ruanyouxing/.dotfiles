@@ -4,7 +4,10 @@
   ...
 }:
 let
-  inherit (import ./scripts { inherit pkgs inputs; }) audio-toggle music-bar lizzy;
+  inherit (import ./scripts { inherit pkgs; }) audio-toggle music-bar;
+  lizzy = pkgs.callPackage ./scripts/lizzy.nix {
+    naersk = pkgs.callPackage inputs.naersk { };
+  };
 in
 {
   home.packages = with pkgs; [
