@@ -1,25 +1,32 @@
-{pkgs, ...}: let
-  candy-icons = pkgs.callPackage ./candy-icons.nix {};
-in {
+{ pkgs, ... }:
+let
+  catpuccin-icons = pkgs.callPackage ./catppuccin-icons.nix { };
+in
+{
   home.pointerCursor = {
     gtk.enable = true;
-    package = pkgs.sweet-nova;
-    name = "Sweet-cursors";
+    package = pkgs.catppuccin-cursors.macchiatoSapphire;
+    name = "Catppuccin Macchiato Sapphire";
     size = 16;
   };
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.sweet;
-      name = "Sweet-Dark";
+      name = "Catppuccin-GTK-Purple-Dark-Compact-Macchiato";
+      package = pkgs.magnetic-catppuccin-gtk.override {
+        accent = [ "purple" ];
+        shade = "dark";
+        size = "compact";
+        tweaks = [ "macchiato" ];
+      };
     };
     iconTheme = {
-      package = candy-icons;
-      name = "candy-icons";
+      package = catpuccin-icons;
+      name = "Catppuccin-Frappe";
     };
     cursorTheme = {
-      package = pkgs.sweet-nova;
-      name = "Sweet-cursors";
+      package = pkgs.catppuccin-cursors.macchiatoSapphire;
+      name = "Catppuccin Macchiato Sapphire";
     };
   };
 }

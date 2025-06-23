@@ -13,6 +13,6 @@ pkgs.writeShellScript "hyprland-startup" ''
   gammastep-indicator & \
   hyprlock & \
   # hypridle & \
-  hyprctl setcursor Sweet-Dark 15
+  hyprctl setcursor "Catppuccin Macchiato Sapphire" 24
   # swww-init.sh & \
 ''
