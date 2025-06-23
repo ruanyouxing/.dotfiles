@@ -9,10 +9,10 @@ pkgs.writeShellScript "hyprland-startup" ''
   dbus-update-activation-environment --systemd --all & \
   waybar  & \
   fcitx5  & \
+  flameshot & \
   qs -p "${volume-path}" & \
   gammastep-indicator & \
   hyprlock & \
-  # hypridle & \
   hyprctl setcursor "Catppuccin Macchiato Sapphire" 24
   # swww-init.sh & \
 ''
