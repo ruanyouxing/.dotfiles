@@ -2,9 +2,11 @@
   pkgs,
   config,
   ...
-}: let
-  zinit = pkgs.callPackage ./zinit.nix {};
-in {
+}:
+let
+  zinit = pkgs.callPackage ./zinit.nix { };
+in
+{
   home.packages = with pkgs; [
     zinit
     du-dust
@@ -88,6 +90,7 @@ in {
       nixos-boot = "nh os boot --ask /home/hungz/.dotfiles";
       nixos-cleanall = "nh clean all --ask";
       nixos-search = "nh search";
+      sudo = "doas";
       nix-shell = "nix-shell --command zsh";
     };
   };
