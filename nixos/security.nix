@@ -1,16 +1,16 @@
 {
   security = {
-    sudo.extraRules = [
-      {
-        users = [ "hungz" ];
-        commands = [
-          {
-            command = "ALL";
-            options = [ "NOPASSWD" ];
-          }
-        ];
-      }
-    ];
+    sudo.enable = false;
+    doas = {
+      enable  =true;
+      extraRules = [
+        {
+          users = ["hungz"];
+          keepEnv = true;
+          noPass = true;
+        }
+      ];
+    };
     pam.services.hyprlock = { };
   };
 }

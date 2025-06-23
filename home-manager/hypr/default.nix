@@ -86,7 +86,7 @@ in
         fullscreen_opacity = 0.9;
         blur = {
           enabled = true;
-          size = 20;
+          size = 10;
           passes = 3;
         };
         layerrule = [
