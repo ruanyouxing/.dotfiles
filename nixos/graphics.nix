@@ -6,6 +6,7 @@
 let
   system = pkgs.stdenv.hostPlatform.system;
   pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${system};
+  username = "hungz";
 in
 {
   hardware = {
@@ -23,14 +24,20 @@ in
     keyMap = "us";
   };
   services = {
-    # greetd = {
-    #   enable = true;
-    #   settings = {
-    #     default_session = {
-    #       user = "hungz";
-    #     };
-    #   };
-    # };
+    greetd = {
+      enable = true;
+      vt = 3;
+      settings = {
+        initial_session = {
+          user = username;
+          command = "Hyprland";
+        };
+        default_session = {
+          user = username;
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a * %h | %F' --cmd 'uwsm start hyprland-uwsm.desktop'";
+        };
+      };
+    };
     displayManager = {
       # autoLogin.enable = true;
       # autoLogin.user = "hungz";

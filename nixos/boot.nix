@@ -22,6 +22,7 @@ in {
     #      pkiBundle = "/etc/secureboot";
     #    };
     loader = {
+      timeout = 10;
       #      systemd-boot.enable = lib.mkForce false;
       #      systemd-boot.configurationLimit = 1;
       efi = {
