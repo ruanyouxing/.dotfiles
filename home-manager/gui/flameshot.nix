@@ -4,10 +4,12 @@
     enable = true;
     package = pkgs.flameshot.override { enableWlrSupport = true; };
     settings = {
-      showStartupLaunchMessage = false;
-      # useGrimAdapter = true;
-      uiColor = "#3DDCFF";
-      jpegQuality = 100;
+      General = {
+        showStartupLaunchMessage = false;
+        uiColor = "#3DDCFF";
+        jpegQuality = 100;
+        disabledGrimWarning = true;
+      };
     };
   };
 }

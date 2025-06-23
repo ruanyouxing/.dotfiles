@@ -65,7 +65,7 @@
       WLR_NO_HARDWARE_CURSORS = "1";
       QT_IM_MODULE = "fcitx5";
       QT_IM_MODULES = "wayland;fcitx;ibus";
-      QT_QPA_PLATFORMTHEME = "gtk3";
+      QT_QPA_PLATFORMTHEME = "qt5ct";
       XDG_CONFIG_HOME = "${config.xdg.configHome}";
     };
     sessionPath = [

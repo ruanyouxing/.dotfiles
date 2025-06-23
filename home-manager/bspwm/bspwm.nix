@@ -3,10 +3,7 @@
     ./picom.nix
   ];
   home.packages = with pkgs; [
-    feh
     polybar
-    kitty
-    flameshot
     betterlockscreen
     hsetroot
     jq
@@ -15,7 +12,6 @@
     xdotool
     xorg.lndir
     xorg.xsetroot
-    xfce.thunar
   ];
   xsession.windowManager.bspwm = {
     enable = true;

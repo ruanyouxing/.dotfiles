@@ -10,6 +10,7 @@
     ./browser.nix
     ./spotify.nix
     ./flameshot.nix
+    ./qt.nix
   ];
   home.packages = with pkgs; [
     obs-studio
@@ -17,5 +18,6 @@
     (discord.override { withVencord = true; })
     xfce.thunar
     feh
+    kitty
   ];
 }
