@@ -3,9 +3,6 @@
   config,
   ...
 }:
-let
-  zinit = pkgs.callPackage ./zinit.nix { };
-in
 {
   home.packages = with pkgs; [
     zinit
@@ -28,7 +25,7 @@ in
     autosuggestion.enable = true;
     enableCompletion = true;
     initContent = ''
-          source ${zinit}/zinit.zsh
+          source ${pkgs.zinit}/share/zinit/zinit.zsh
           zinit load hlissner/zsh-autopair
           zinit wait lucid for \
           atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
@@ -91,6 +88,7 @@ in
       nixos-cleanall = "nh clean all --ask";
       nixos-search = "nh search";
       nix-shell = "nix-shell --command zsh";
+      cp = "xcp";
     };
   };
 }

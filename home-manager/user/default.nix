@@ -10,6 +10,7 @@ in {
     pywal
     gh
     htop
+    xcp
   ];
   programs.git = {
     enable = true;
