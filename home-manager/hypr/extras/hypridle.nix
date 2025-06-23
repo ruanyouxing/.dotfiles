@@ -9,6 +9,7 @@ in
     settings = {
       general = {
         lock_cmd = "pidof hyprlock || hyprlock";
+        on_unlock_cmd = "pkill -SIGUSR2 waybar";
         after_sleep_cmd = "loginctl lock-session";
         ignore_dbus_inhibit = false;
       };

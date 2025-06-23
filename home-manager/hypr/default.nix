@@ -171,10 +171,10 @@ in
         "SUPER, mouse:272, movewindow"
         "SUPER, mouse:273, resizewindow"
       ];
-      misc = {
-        mouse_move_enables_dpms = true;
-        key_press_enables_dpms = true;
-      };
+      # misc = {
+      #   mouse_move_enables_dpms = true;
+      #   # key_press_enables_dpms = true;
+      # };
     };
 
     # monitor=Virtual-1,1920x1080@75,0x0,1

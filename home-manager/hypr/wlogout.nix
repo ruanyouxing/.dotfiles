@@ -1,12 +1,15 @@
+{ pkgs,... }:
 let
   assetsFolder = ./assets;
-in {
+  inherit (import ./scripts { inherit pkgs; }) lockAndSleep;
+in
+{
   programs.wlogout = {
     enable = true;
     layout = [
       {
         label = "lock";
-        action = "hyprlock";
+        action = "${lockAndSleep}";
         text = "Lock screen";
         keybind = "l";
       }
