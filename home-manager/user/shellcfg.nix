@@ -90,7 +90,6 @@ in
       nixos-boot = "nh os boot --ask /home/hungz/.dotfiles";
       nixos-cleanall = "nh clean all --ask";
       nixos-search = "nh search";
-      sudo = "doas";
       nix-shell = "nix-shell --command zsh";
     };
   };
