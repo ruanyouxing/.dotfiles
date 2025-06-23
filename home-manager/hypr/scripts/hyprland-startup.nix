@@ -11,6 +11,7 @@ pkgs.writeShellScript "hyprland-startup" ''
   fcitx5  & \
   qs -p "${volume-path}" & \
   gammastep-indicator & \
+  hyprlock & \
   # hypridle & \
   hyprctl setcursor Sweet-Dark 15
   # swww-init.sh & \

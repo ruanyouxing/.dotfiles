@@ -12,4 +12,5 @@ in
   volume-control = callPackage ./volume-control.nix { };
   weather = callPackage ./weather.nix { };
   lockAndSleep  = callPackage ./LockAndSleep.nix {};
+  whichsong = callPackage ./whichsong.nix {};
 }

@@ -4,10 +4,7 @@
   ...
 }:
 let
-  whichsong = pkgs.writeShellScript "whichsong.sh" ''
-    echo   $(playerctl metadata --format "{{ artist }} - {{ title }}" -p spotify)
-  '';
-  inherit (import ../scripts { inherit pkgs inputs; }) weather;
+  inherit (import ../scripts { inherit pkgs inputs; }) weather whichsong;
 in
 {
   programs.hyprlock = {
