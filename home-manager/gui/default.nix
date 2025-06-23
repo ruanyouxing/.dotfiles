@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   ...
 }:
 {
@@ -11,10 +10,9 @@
     ./spotify.nix
     ./flameshot.nix
     ./qt.nix
+    ./obs.nix
   ];
   home.packages = with pkgs; [
-    obs-studio
-    inputs.nixpkgs-wayland.packages.x86_64-linux.obs-wlrobs
     (discord.override { withVencord = true; })
     xfce.thunar
     feh
