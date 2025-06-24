@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 {
   imports = [
     ./quickshell
@@ -19,5 +16,6 @@
     feh
     kitty
     qbittorrent-enhanced
+    peazip
   ];
 }

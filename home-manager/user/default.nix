@@ -5,7 +5,6 @@ in {
     ./shellcfg.nix
   ];
   home.packages = with pkgs; [
-    distrobox
     pywal
     gh
     htop

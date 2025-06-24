@@ -6,7 +6,7 @@
     package = (
       pkgs.mpv-unwrapped.wrapper {
         scripts = with pkgs.mpvScripts; [
-          uosc
+          # uosc
           sponsorblock
           mpris
           visualizer
@@ -14,6 +14,9 @@
           mpv-playlistmanager
           mpv-cheatsheet
           mpv-discord
+          memo
+          eisa01.smartskip
+          modernz
         ];
 
         mpv = pkgs.mpv-unwrapped.override {
@@ -27,7 +30,22 @@
     config = {
       profile = "high-quality";
       ytdl-format = "bestvideo+bestaudio";
-      cache-default = 4000000;
+      osc = false;
+    };
+    scriptOpts = {
+      modernz = {
+        seekbarfg_color = "#a78bfa";
+        seekbarbg_color = "#3ddcff";
+        seekbar_cache_color = "#85B0F7";
+        title_color = "#e5e5e5";
+        hover_effect_color = "#af8bfa";
+        speed_button = true;
+        fadein = true;
+        fadeduration = 300;
+        icon_theme = "material";
+        cache_info = true;
+        cache_info_speed = true;
+      };
     };
   };
 }
