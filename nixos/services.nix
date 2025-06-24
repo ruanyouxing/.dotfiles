@@ -19,6 +19,5 @@
     wget
     killall
     python311Packages.dbus-python
-    ntfs3g
   ];
 }

@@ -16,7 +16,7 @@ in {
       "rd.udev.log_priority=3"
       "vt.global_cursor_default=0"
     ];
-    initrd.kernelModules = ["amdgpu"];
+    initrd.kernelModules = ["amdgpu" "ntfs3"];
     #    lanzaboote = {
     #      enable = true;
     #      pkiBundle = "/etc/secureboot";
@@ -33,13 +33,12 @@ in {
         efiSupport = true;
         device = "nodev";
         efiInstallAsRemovable = true;
-        configurationLimit = 5;
+        configurationLimit = 10;
         gfxmodeEfi = "1920x1080";
         theme = Grub-theme-particle;
         splashImage = "${Grub-theme-particle}/background.jpg";
       };
     };
-    supportedFilesystems = ["ntfs" "exfat"];
     plymouth = {
       enable = true;
       theme = "bad_apple";
