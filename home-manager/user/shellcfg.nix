@@ -60,12 +60,6 @@
     sessionVariables = {
       DOTFILES = "/home/hungz/.dotfiles";
       # GTK_IM_MODULE = "fcitx5";
-      XMODIFIERS = "@im=fcitx5";
-      GLFW_IM_MODULE = "ibus";
-      WLR_NO_HARDWARE_CURSORS = "1";
-      QT_IM_MODULE = "fcitx5";
-      QT_IM_MODULES = "wayland;fcitx;ibus";
-      QT_QPA_PLATFORMTHEME = "qt5ct";
       XDG_CONFIG_HOME = "${config.xdg.configHome}";
     };
     sessionPath = [

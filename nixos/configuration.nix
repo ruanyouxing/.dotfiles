@@ -10,6 +10,7 @@
     ./nixconfig.nix
     ./services.nix
     ./security.nix
+    ./extra-mounts.nix
     ../fonts
   ];
 }

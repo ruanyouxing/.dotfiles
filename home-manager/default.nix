@@ -1,4 +1,5 @@
-{inputs,...}:{
+{ inputs, ... }:
+{
   imports = [
     ./hypr
     ./audio
@@ -13,16 +14,15 @@
     allowUnfree = true;
     allowUnfreePredicate = _: true;
   };
-  fonts.fontconfig.enable = true;
-  dconf.settings = {
-    "org/virt-manager/virt-manager/connections" = {
-      autoconnect = ["qemu:///system"];
-      uris = ["qemu:///system"];
-    };
-  };
   home = {
     username = "hungz";
     homeDirectory = "/home/hungz";
     stateVersion = "23.05";
+  };
+  dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = [ "qemu:///system" ];
+      uris = [ "qemu:///system" ];
+    };
   };
 }

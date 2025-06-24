@@ -26,7 +26,8 @@
       runAsRoot = false;
     };
   };
-  users.groups.libvirtd.members = ["hungz"];
+  users.groups.libvirtd.members = [ "hungz" ];
   virtualisation.spiceUSBRedirection.enable = true;
+  services.spice-vdagentd.enable = true;
   # virtualisation.vmware.guest.enable = true;
 }

@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 let
   nerdfonts = with pkgs.nerd-fonts; [
     iosevka
@@ -12,6 +9,7 @@ in
 {
   fonts = {
     fontDir.enable = true;
+    fontconfig.enable = true;
     enableGhostscriptFonts = true;
     packages =
       with pkgs;
