@@ -11,7 +11,7 @@
           mpris
           visualizer
           thumbfast
-          playlistmanager
+          mpv-playlistmanager
           mpv-cheatsheet
           mpv-discord
         ];

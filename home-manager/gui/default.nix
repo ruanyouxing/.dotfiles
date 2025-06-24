@@ -18,5 +18,6 @@
     xfce.thunar
     feh
     kitty
+    qbittorrent-enhanced
   ];
 }

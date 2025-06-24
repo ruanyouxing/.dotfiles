@@ -6,7 +6,6 @@ in {
   ];
   home.packages = with pkgs; [
     distrobox
-    mpv
     pywal
     gh
     htop
