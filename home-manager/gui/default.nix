@@ -11,6 +11,7 @@
     ./flameshot.nix
     ./qt.nix
     ./obs.nix
+    ./mpv.nix
   ];
   home.packages = with pkgs; [
     (discord.override { withVencord = true; })
