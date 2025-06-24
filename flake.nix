@@ -15,28 +15,32 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    bad-apple-plymouth.url = "github:ruanyouxing/bad-apple-plymouth";
   };
-  outputs = {
-    nixpkgs,
-    home-manager,
-    spicetify-nix,
-    lanzaboote,
-    naersk,
-    ...
-  } @ inputs: let
-    customLib = import ./lib nixpkgs.lib;
-    lib = nixpkgs.lib // customLib;
-  in {
-    inherit lib;
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs customLib;};
-        modules = [
-          ./nixos/configuration.nix
-          home-manager.nixosModules.default
-          lanzaboote.nixosModules.lanzaboote
-        ];
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      spicetify-nix,
+      lanzaboote,
+      naersk,
+      ...
+    }@inputs:
+    let
+      customLib = import ./lib nixpkgs.lib;
+      lib = nixpkgs.lib // customLib;
+    in
+    {
+      inherit lib;
+      nixosConfigurations = {
+        nixos = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs customLib; };
+          modules = [
+            ./nixos/configuration.nix
+            home-manager.nixosModules.default
+            lanzaboote.nixosModules.lanzaboote
+          ];
+        };
       };
     };
-  };
 }

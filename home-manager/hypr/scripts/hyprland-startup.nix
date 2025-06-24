@@ -13,6 +13,5 @@ pkgs.writeShellScript "hyprland-startup" ''
   qs -p "${volume-path}" & \
   gammastep-indicator & \
   hyprlock & \
-  hyprctl setcursor "Catppuccin Macchiato Sapphire" 24
   # swww-init.sh & \
 ''

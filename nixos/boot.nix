@@ -1,7 +1,13 @@
-{pkgs, ...}: let
-  bad_apple = pkgs.callPackage ./plymouth.nix {};
-  Grub-theme-particle = pkgs.callPackage ./grub-theme-particles.nix {};
-in {
+{
+  pkgs,
+  inputs,
+  ...
+}:
+let
+  bad_apple = inputs.bad-apple-plymouth.packages.${pkgs.system}.default;
+  Grub-theme-particle = pkgs.callPackage ./grub-theme-particles.nix { };
+in
+{
   boot = {
     kernelParams = [
       "loglevel=3"
@@ -16,7 +22,10 @@ in {
       "rd.udev.log_priority=3"
       "vt.global_cursor_default=0"
     ];
-    initrd.kernelModules = ["amdgpu" "ntfs3"];
+    initrd.kernelModules = [
+      "amdgpu"
+      "ntfs3"
+    ];
     #    lanzaboote = {
     #      enable = true;
     #      pkiBundle = "/etc/secureboot";
@@ -42,7 +51,7 @@ in {
     plymouth = {
       enable = true;
       theme = "bad_apple";
-      themePackages = [bad_apple];
+      themePackages = [ bad_apple ];
     };
   };
   systemd.services.plymouth-quit.serviceConfig.ExecStartPre = "${pkgs.busybox}/bin/sleep 4";

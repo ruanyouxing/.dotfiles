@@ -81,5 +81,9 @@ in
     portalPackage = inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
   };
   programs.gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
-  environment.sessionVariables.NIX_OZONE_WL = "1";
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  services = {
+    gvfs.enable = true;
+    tumbler.enable = true;
+  };
 }
