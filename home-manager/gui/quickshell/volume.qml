@@ -3,7 +3,7 @@ import QtQuick.Layouts
 import Quickshell
 import Quickshell.Services.Pipewire
 import Quickshell.Widgets
-
+import Quickshell.Wayland
 Scope {
   id: root
   PwObjectTracker {
@@ -28,6 +28,7 @@ Scope {
   LazyLoader {
     active: root.shouldShowOsd
     PanelWindow {
+      WlrLayershell.layer: WlrLayer.Overlay
       anchors.bottom: true
       margins.bottom: screen.height / 7
 
@@ -61,7 +62,7 @@ Scope {
           Rectangle {
             Layout.fillWidth: true
 
-            implicitHeight: 30
+            implicitHeight: 25
             radius:20
             color: "#50ffffff"
 
