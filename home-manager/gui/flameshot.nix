@@ -6,7 +6,7 @@
     settings = {
       General = {
         showStartupLaunchMessage = false;
-        uiColor = "#3DDCFF";
+        uiColor = "#a78bfa";
         jpegQuality = 100;
         disabledGrimWarning = true;
       };

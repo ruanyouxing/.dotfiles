@@ -130,6 +130,11 @@ in
         "float, title:mpv"
         "size 960 540, title:mpv"
         "center title:mpv"
+        "noanim, class:(flameshot)"
+        "move 0 0, class:(flameshot)"
+        "pin, class:(flameshot)"
+        "fullscreenstate, class:(flameshot)"
+        "float, class:(flameshot)"
       ];
 
       bind = [

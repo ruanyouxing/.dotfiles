@@ -18,5 +18,7 @@
     qbittorrent-enhanced
     peazip
     handbrake
+    xfce.ristretto
+    vscode
   ];
 }

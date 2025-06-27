@@ -1,8 +1,6 @@
 {
-  stdenv,
   fetchFromGitHub,
   runCommand,
-  rsync,
   ...
 }:
 let
@@ -13,7 +11,7 @@ let
     "hash" = "sha256-7F4FrhM+kBFPeLp2mjmYkoDiF9iKDUkC27LUBuFyz7g=";
   };
 in
-  runCommand "catppuccin-icons" {inherit src; } ''
-      mkdir -p $out/share/icons
-      cp -r $src/icons/* $out/share/icons
-  ''
+runCommand "catppuccin-icons" { inherit src; } ''
+  mkdir -p $out/share/icons
+  cp -r $src/icons/* $out/share/icons
+''
