@@ -1,6 +1,8 @@
-{pkgs,customLib,...}:let
-  inherit (customLib.genSymLinks) genConfLinks;
-in {
+{
+  pkgs,
+  ...
+}:
+{
   imports = [
     ./shellcfg.nix
   ];
@@ -17,5 +19,8 @@ in {
     userEmail = "ruanyouxing7@gmail.com";
     userName = "ruanyouxing";
   };
-  home.file = genConfLinks ../../config {};
+  home.file.".config" = {
+    source = ../../config;
+    recursive = true;
+  };
 }
