@@ -1,16 +1,6 @@
 {
-  pkgs,
-  ...
-}:
-{
   imports = [
     ./shellcfg.nix
-  ];
-  home.packages = with pkgs; [
-    pywal
-    gh
-    htop
-    xcp
   ];
   programs.git = {
     enable = true;

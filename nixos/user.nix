@@ -5,7 +5,9 @@
   ...
 }:
 {
-  imports = [ inputs.home-manager.nixosModules.default ];
+  imports = [
+    inputs.home-manager.nixosModules.default
+  ];
   programs.zsh.enable = true;
   users.users.hungz = {
     isNormalUser = true;
@@ -20,7 +22,7 @@
   };
   home-manager = {
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs customLib; };
+    extraSpecialArgs = { inherit inputs pkgs customLib; };
     backupFileExtension = "hm-bak";
     users = {
       "hungz" = import ../home-manager;

@@ -119,22 +119,12 @@ in
       };
       xwayland.force_zero_scaling = true;
       windowrulev2 = [
-        "float, title:^.*${float_titles}.*$"
-        "size 800 600, title:^.*${float_titles}.*$"
-        "float,title:^(Picture-in-Picture)$"
-        "size 640 360, title:^(Picture-in-Picture)$"
-        "move 25 695, title:^(Picture-in-Picture)$"
-        "float, class:kitty-float"
-        "size 1200 800, class:kitty-float"
-        "center class:kitty-float"
-        "float, title:mpv"
-        "size 960 540, title:mpv"
-        "center title:mpv"
-        "noanim, class:(flameshot)"
-        "move 0 0, class:(flameshot)"
-        "pin, class:(flameshot)"
-        "fullscreenstate, class:(flameshot)"
-        "float, class:(flameshot)"
+        "float, size 800 600, float, title:^.*${float_titles}.*$"
+        "float, size 640 360, move 25 695, title:^(Picture-in-Picture)$"
+        "float, size 960 540, center, class:mpv"
+        "float, size 1200 800, center, class:kitty-float"
+        "noanim, move 0 0,pin, fullscreenstate, float, class:(flameshot)"
+        "noblur,opacity 0.9, class:kitty"
       ];
 
       bind = [
@@ -146,7 +136,7 @@ in
         "SUPER, F, fullscreen"
         "SUPER, R, exec, rofi -modi drun -show drun -width 5"
         "SUPER, P, pseudo, # dwindle"
-        "SUPER SHIFT, R, exec, kitty --class kitty-float -e ranger"
+        "SUPER SHIFT, R, exec, kitty --class kitty-float -e yazi"
         "Ctrl, Print, exec, flameshot gui"
         ",Print, exec, flameshot full"
         "SUPER, L, exec, betterlockscreen -l dimblur"

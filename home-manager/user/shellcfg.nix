@@ -4,20 +4,6 @@
   ...
 }:
 {
-  home.packages = with pkgs; [
-    zinit
-    du-dust
-    duf
-    ncdu
-    nix-prefetch-github
-    octofetch
-    pipes
-    ranger
-    rsync
-    ttyper
-    silver-searcher
-    unzip
-  ];
   programs.starship.enable = true;
   programs.zoxide.enable = true;
   programs.zsh = {

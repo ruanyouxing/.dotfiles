@@ -16,6 +16,10 @@
     };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     bad-apple-plymouth.url = "github:ruanyouxing/bad-apple-plymouth";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
@@ -24,6 +28,7 @@
       spicetify-nix,
       lanzaboote,
       naersk,
+      nur,
       ...
     }@inputs:
     let
@@ -39,6 +44,7 @@
             ./nixos/configuration.nix
             home-manager.nixosModules.default
             lanzaboote.nixosModules.lanzaboote
+            nur.modules.nixos.default
           ];
         };
       };

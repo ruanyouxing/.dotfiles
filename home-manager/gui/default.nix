@@ -20,5 +20,6 @@
     handbrake
     xfce.ristretto
     vscode
+    gparted
   ];
 }
