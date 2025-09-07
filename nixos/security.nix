@@ -1,5 +1,6 @@
 {
   security = {
+    polkit.enable = true;
     sudo.extraRules = [
       {
         users = [ "hungz" ];

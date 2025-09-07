@@ -18,6 +18,8 @@
       "wheel"
       "audio"
       "libvirtd"
+      "kvm"
+      "adbusers"
     ];
   };
   home-manager = {

@@ -33,7 +33,7 @@ in
         ];
       };
       background = {
-        path = toString ../../../backgrounds/lockscreen.png;
+        path = toString ../../../backgrounds/chihiro.png;
         blur_passes = 3;
         blur_size = 8;
       };
