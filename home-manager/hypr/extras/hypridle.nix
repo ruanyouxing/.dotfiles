@@ -16,7 +16,7 @@ in
       listener = [
         {
           timeout = 300;
-          on-timeout = "hyprctl dispatch dpms off && pkill -SIGUSR2 waybar";
+          on-timeout = "hyprctl dispatch dpms off";
         }
         {
           timeout = 600;

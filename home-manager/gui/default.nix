@@ -9,6 +9,7 @@
     ./qt.nix
     ./obs.nix
     ./mpv.nix
+    ./vscode.nix
   ];
   home.packages = with pkgs; [
     (discord.override { withVencord = true; })
@@ -19,7 +20,9 @@
     peazip
     handbrake
     xfce.ristretto
-    vscode
     gparted
+    qownnotes
+    kdePackages.okular
+    # xournalpp
   ];
 }

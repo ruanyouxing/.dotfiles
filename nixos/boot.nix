@@ -9,6 +9,9 @@ let
 in
 {
   boot = {
+    extraModprobeConfig = ''
+      options v4l2loopback devices=1 video_nr=0 card_label="OBS-Virtual-Camera" exclusive_caps=1
+    '';
     kernelParams = [
       "loglevel=3"
       "quiet"
@@ -22,10 +25,12 @@ in
       "rd.udev.log_priority=3"
       "vt.global_cursor_default=0"
     ];
-    initrd.kernelModules = [
+    kernelModules = [
       "amdgpu"
       "ntfs3"
+      "v4l2loopback"
     ];
+    extraModulePackages = [ pkgs.linuxPackages.v4l2loopback ];
     #    lanzaboote = {
     #      enable = true;
     #      pkiBundle = "/etc/secureboot";
@@ -42,7 +47,7 @@ in
         efiSupport = true;
         device = "nodev";
         efiInstallAsRemovable = true;
-        configurationLimit = 10;
+        configurationLimit = 2;
         gfxmodeEfi = "1920x1080";
         theme = Grub-theme-particle;
         splashImage = "${Grub-theme-particle}/background.jpg";
