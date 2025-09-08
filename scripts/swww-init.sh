@@ -4,4 +4,4 @@ then
   swww kill 
 fi
 swww-daemon
-swww img ~/.dotfiles/wallpaper.png
+swww img ~/.dotfiles/backgrounds/laptop_background.jpg
