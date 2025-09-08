@@ -4,6 +4,7 @@
     ./graphics.nix
     ./extra-mounts.nix
     ./hardware-configuration.nix
-    ../modules/nixos
+    ../../modules/nixos
+    ../../fonts
   ];
 }

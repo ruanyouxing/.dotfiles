@@ -1,7 +1,7 @@
 {
   imports = [
-    ../fonts
-    ../modules/nixos
+    ../../fonts
+    ../../modules/nixos
     ./hardware-configuration.nix
     ./boot.nix
     ./graphics.nix
