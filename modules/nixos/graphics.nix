@@ -15,7 +15,6 @@ in
       enable32Bit = true;
       package = pkgs-unstable.mesa;
       package32 = pkgs-unstable.pkgsi686Linux.mesa;
-      extraPackages = [ pkgs.amdvlk ];
     };
   };
   console = {
@@ -50,15 +49,7 @@ in
         layout = "us";
         variant = "";
       };
-      videoDrivers = [ "amdgpu" ];
     };
-  };
-  environment.sessionVariables = {
-    GTK_USE_PORTAL = "1";
-  };
-  nix.settings = {
-    substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
   xdg.portal = {
     enable = true;
@@ -74,15 +65,6 @@ in
       };
     };
   };
-  qt.enable = true;
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-    # package = inputs.hyprland.packages.${system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
-  };
-  programs.gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   services = {
     gvfs.enable = true;
     tumbler.enable = true;
@@ -96,4 +78,18 @@ in
     ];
     enableVirtualCamera = true;
   };
+  environment.sessionVariables.GTK_USE_PORTAL = "1";
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  nix.settings = {
+    substituters = [ "https://hyprland.cachix.org" ];
+    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+  };
+  qt.enable = true;
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+    # package = inputs.hyprland.packages.${system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
+  };
+  programs.gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
 }

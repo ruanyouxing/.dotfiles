@@ -38,12 +38,21 @@
     {
       inherit lib;
       nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
+        nixosPC = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs customLib; };
           modules = [
-            ./nixos/configuration.nix
+            ./nixosPC
             home-manager.nixosModules.default
             lanzaboote.nixosModules.lanzaboote
+            nur.modules.nixos.default
+          ];
+        };
+        dell5411 = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs customLib;};
+          modules = [
+            ./dell5411
+            home-manager.nixosModules.default
+            # lanzaboote.nixosModules.lanzaboote
             nur.modules.nixos.default
           ];
         };

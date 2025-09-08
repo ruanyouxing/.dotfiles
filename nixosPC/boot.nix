@@ -5,13 +5,9 @@
 }:
 let
   bad_apple = inputs.bad-apple-plymouth.packages.${pkgs.system}.default;
-  Grub-theme-particle = pkgs.callPackage ./grub-theme-particles.nix { };
 in
 {
   boot = {
-    extraModprobeConfig = ''
-      options v4l2loopback devices=1 video_nr=0 card_label="OBS-Virtual-Camera" exclusive_caps=1
-    '';
     kernelParams = [
       "loglevel=3"
       "quiet"
@@ -35,24 +31,6 @@ in
     #      enable = true;
     #      pkiBundle = "/etc/secureboot";
     #    };
-    loader = {
-      timeout = 10;
-      #      systemd-boot.enable = lib.mkForce false;
-      #      systemd-boot.configurationLimit = 1;
-      efi = {
-        canTouchEfiVariables = false;
-        efiSysMountPoint = "/boot";
-      };
-      grub = {
-        efiSupport = true;
-        device = "nodev";
-        efiInstallAsRemovable = true;
-        configurationLimit = 2;
-        gfxmodeEfi = "1920x1080";
-        theme = Grub-theme-particle;
-        splashImage = "${Grub-theme-particle}/background.jpg";
-      };
-    };
     plymouth = {
       enable = true;
       theme = "bad_apple";
