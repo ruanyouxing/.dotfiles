@@ -54,6 +54,7 @@ window#waybar.hidden {
 #network,
 #pulseaudio,
 #custom-media,
+#battery,
 #tray,
 #mode,
 #idle_inhibitor,
@@ -104,6 +105,18 @@ window#waybar.hidden {
 
 #pulseaudio {
   color: #7d9bba;
+}
+
+#battery {
+  color: #b1bacc;
+}
+
+#battery.warning {
+  background: orange;
+}
+
+#battery.critical {
+  background: red;
 }
 
 #clock {

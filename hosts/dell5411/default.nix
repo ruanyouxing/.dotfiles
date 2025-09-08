@@ -7,4 +7,9 @@
     ./graphics.nix
     ./services.nix
   ];
+  home-manager = {
+    users = {
+      "hungz" = import ./home-manager;
+    };
+  };
 }

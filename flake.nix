@@ -48,7 +48,7 @@
           ];
         };
         dell5411 = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs customLib;};
+          specialArgs = { inherit inputs customLib; };
           modules = [
             ./hosts/dell5411
             home-manager.nixosModules.default

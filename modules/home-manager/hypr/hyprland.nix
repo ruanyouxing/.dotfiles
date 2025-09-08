@@ -1,4 +1,8 @@
-{pkgs,lib,...}:
+{
+  pkgs,
+  lib,
+  ...
+}:
 let
   workspaceBinds = builtins.concatMap (
     w:
@@ -138,10 +142,5 @@ in
       #   # key_press_enables_dpms = true;
       # };
     };
-
-    # monitor=Virtual-1,1920x1080@75,0x0,1
-    extraConfig = ''
-      monitor=HDMI-A-1,1920x1080@74.97,0x0,1
-    '';
   };
 }

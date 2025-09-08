@@ -16,9 +16,6 @@ in
   ];
   programs.waybar = {
     enable = true;
-    package = pkgs.waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    });
     settings = {
       mainBar = {
         height = 30;
@@ -40,11 +37,27 @@ in
         ];
         modules-right = [
           "tray"
+          "battery"
           "pulseaudio"
           "network"
           "clock"
           "custom/power-menu"
         ];
+        "battery" = {
+          format = " {capacity}% {icon} ";
+          interval = "60";
+          format-icons = [
+            "󱊡"
+            "󰁻"
+            "󰁽"
+            "󰂀"
+            "󰁹"
+          ];
+          states = {
+            "warning" = 30;
+            "critical" = 15;
+          };
+        };
         "hyprland/workspaces" = {
           format = "{icon}";
           format-icons = {

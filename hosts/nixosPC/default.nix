@@ -7,4 +7,5 @@
     ../../modules/nixos
     ../../fonts
   ];
+  home-manager.users.hungz = import ./home-manager;
 }
