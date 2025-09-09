@@ -1,0 +1,6 @@
+{ lib, ... }:
+{
+  wayland.windowManager.hyprland.extraConfig = lib.mkForce ''
+    monitor=HDMI-A-1,1920x1080@74.97,0x0,1
+  '';
+}
