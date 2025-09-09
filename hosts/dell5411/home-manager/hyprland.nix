@@ -1,5 +1,11 @@
-{ pkgs, lib,... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 let
+  system = pkgs.stdenv.hostPlatform.system;
   hyprland-startup = pkgs.writeShellScript "laptop-startup" ''
     # wl-paste --type image --watch cliphist store \\
     # wl-paste --type text --watch cliphist store \\
@@ -15,15 +21,24 @@ let
     flameshot & \
     gammastep-indicator & \
     # hyprlock & \
-    # swww-init.sh & \
   '';
 in
 {
   wayland.windowManager.hyprland = {
-    settings.exec-once = lib.mkForce [
-      "${hyprland-startup}"
-    ];
-    settings.input.touchpad.natural_scroll = lib.mkForce true;
+    package = inputs.hyprland.packages.${system}.hyprland;
+    settings = {
+      exec-once = lib.mkForce [
+        "${hyprland-startup}"
+      ];
+      input.touchpad.natural_scroll = lib.mkForce true;
+      gestures = {
+        workspace_swipe = true;
+        workspace_swipe_fingers = 3;
+      };
+      gesture = [
+        "3,left,workspace, e+1"
+      ];
+    };
     extraConfig = ''
       monitor=eDP-1,1920x1080@60,0x0,1.2
     '';

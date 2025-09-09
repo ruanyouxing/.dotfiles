@@ -20,7 +20,6 @@ in
 {
   wayland.windowManager.hyprland = {
     enable = true;
-    package = null;
     # plugins = [];
     settings = {
       exec-once = [
@@ -82,9 +81,6 @@ in
       dwindle = {
         pseudotile = true;
         preserve_split = true;
-      };
-      gestures = {
-        workspace_swipe = false;
       };
       xwayland.force_zero_scaling = true;
       windowrulev2 = [
