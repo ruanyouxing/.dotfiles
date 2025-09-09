@@ -1,11 +1,15 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  options,
+  ...
+}:
 {
   networking.networkmanager.enable = true;
   programs.dconf.enable = true;
   programs.vim.enable = true;
   services = {
     dbus.enable = true;
-    chrony.enable = true;
+    ntp.enable = true;
     openssh.enable = true;
   };
   hardware.opentabletdriver = {
@@ -23,4 +27,5 @@
   programs.adb = {
     enable = true;
   };
+  networking.timeServers = options.networking.timeServers.default ++ [ "0.asia.pool.ntp.org" ];
 }
