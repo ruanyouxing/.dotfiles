@@ -1,3 +1,3 @@
 {
-  services.logind.lidSwitch = "lock";
+  services.logind.settings.Login.HandleLidSwitch = "lock";
 }

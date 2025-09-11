@@ -14,14 +14,14 @@ in
         ignore_dbus_inhibit = false;
       };
       listener = [
-        {
-          timeout = 300;
-          on-timeout = "hyprctl dispatch dpms off";
-        }
-        {
-          timeout = 600;
-          on-timeout = "${lockAndSleep}";
-        }
+        # {
+        #   timeout = 300;
+        #   on-timeout = "hyprctl dispatch dpms off";
+        # }
+        # {
+        #   timeout = 600;
+        #   on-timeout = "${lockAndSleep}";
+        # }
       ];
     };
   };

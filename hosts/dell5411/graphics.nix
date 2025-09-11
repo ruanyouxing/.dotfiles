@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }:
 let
@@ -16,5 +17,5 @@ in
     };
   };
   environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
-  programs.hyprland.package = inputs.hyprland.packages.${system}.hyprland;
+  programs.hyprland.package = lib.mkForce inputs.hyprland.packages.${system}.hyprland;
 }

@@ -1,11 +1,10 @@
 {
   pkgs,
   lib,
-  inputs,
+  # inputs,
   ...
 }:
 let
-  system = pkgs.stdenv.hostPlatform.system;
   hyprland-startup = pkgs.writeShellScript "laptop-startup" ''
     # wl-paste --type image --watch cliphist store \\
     # wl-paste --type text --watch cliphist store \\
@@ -25,18 +24,20 @@ let
 in
 {
   wayland.windowManager.hyprland = {
-    package = inputs.hyprland.packages.${system}.hyprland;
+    package = null;
     settings = {
       exec-once = lib.mkForce [
         "${hyprland-startup}"
       ];
       input.touchpad.natural_scroll = lib.mkForce true;
-      gestures = {
-        workspace_swipe = true;
-        workspace_swipe_fingers = 3;
-      };
+      # gestures = {
+      #   workspace_swipe = true;
+      #   workspace_swipe_fingers = 3;
+      # };
       gesture = [
-        "3,left,workspace, e+1"
+        "3,right,workspace, e+1"
+        "3,left, workspace, e-1"
+        "3,vertical, fullscreen "
       ];
     };
     extraConfig = ''
