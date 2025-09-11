@@ -1,9 +1,7 @@
-{ pkgs, ... }:
-let
-  inherit (import ../scripts { inherit pkgs; }) lockAndSleep;
-in
-{
-  home.packages = with pkgs; [ hypridle ];
+{pkgs, ...}: let
+  inherit (import ../scripts {inherit pkgs;}) lockAndSleep;
+in {
+  home.packages = with pkgs; [hypridle];
   services.hypridle = {
     enable = true;
     settings = {
@@ -14,14 +12,14 @@ in
         ignore_dbus_inhibit = false;
       };
       listener = [
-        # {
-        #   timeout = 300;
-        #   on-timeout = "hyprctl dispatch dpms off";
-        # }
-        # {
-        #   timeout = 600;
-        #   on-timeout = "${lockAndSleep}";
-        # }
+        {
+          timeout = 300;
+          on-timeout = "hyprctl dispatch dpms off";
+        }
+        {
+          timeout = 600;
+          on-timeout = "${lockAndSleep}";
+        }
       ];
     };
   };
