@@ -13,7 +13,7 @@ let
       swww kill
     fi
     swww-daemon & \
-    swww img ~/.dotfiles/backgrounds/laptop_background.jpg \
+    swww img /home/hungz/.dotfiles/backgrounds/wallpapaer2.jpeg \
     dbus-update-activation-environment --systemd --all & \
     waybar  & \
     fcitx5  & \
@@ -30,10 +30,9 @@ in
         "${hyprland-startup}"
       ];
       input.touchpad.natural_scroll = lib.mkForce true;
-      # gestures = {
-      #   workspace_swipe = true;
-      #   workspace_swipe_fingers = 3;
-      # };
+      gestures = {
+        # workspace_swipe_distance = 100;
+      };
       gesture = [
         "3,right,workspace, e+1"
         "3,left, workspace, e-1"
