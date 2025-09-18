@@ -14,7 +14,7 @@
     wtype
     wl-clipboard
     dunst
-    (rofi-wayland.override { plugins = [ pkgs.rofi-emoji-wayland ]; })
+    (rofi.override { plugins = [ pkgs.rofi-emoji ]; })
   ];
   services.gammastep = {
     enable = true;
