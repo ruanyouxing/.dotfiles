@@ -6,8 +6,8 @@
 }:
 let
   hyprland-startup = pkgs.writeShellScript "laptop-startup" ''
-    # wl-paste --type image --watch cliphist store \\
-    # wl-paste --type text --watch cliphist store \\
+    wl-paste --type image --watch cliphist store \\
+    wl-paste --type text --watch cliphist store \\
     if pgrep -x swww-daemon  > /dev/null
     then
       swww kill
