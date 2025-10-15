@@ -6,8 +6,8 @@
 let
   volume-path = toString ../../../modules/home-manager/gui/quickshell/volume.qml;
   desktop-startup = pkgs.writeShellScript "hyprland-startup" ''
-    wl-paste --type image --watch cliphist store \\
-    wl-paste --type text --watch cliphist store \\
+    wl-paste --type image --watch cliphist store & \
+    wl-paste --type text --watch cliphist store  & \
     mpvpaper -o "no-audio loop" HDMI-A-1 ~/.dotfiles/backgrounds/chihiro.mp4  & \
     dbus-update-activation-environment --systemd --all & \
     waybar  & \
