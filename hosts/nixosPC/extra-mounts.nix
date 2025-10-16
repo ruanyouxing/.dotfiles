@@ -6,7 +6,7 @@
     "exfat"
   ];
   fileSystems."/windows" = {
-    device = "/dev/nvme0n1p2";
+    device = "/dev/nvme0n1p3";
     fsType = "ntfs-3g";
     options = [
       "rw"
