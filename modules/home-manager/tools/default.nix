@@ -21,7 +21,7 @@ in
     htop
     xcp
     zinit
-    du-dust
+    dust
     duf
     ncdu
     nix-prefetch-github

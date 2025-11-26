@@ -31,9 +31,9 @@
               fi
             }
 
-      if uwsm check may-start; then
-        exec uwsm start hyprland-uwsm.desktop
-      fi
+      # if uwsm check may-start; then
+      #   exec uwsm start hyprland-uwsm.desktop
+      # fi
     '';
   };
   programs.eza = {

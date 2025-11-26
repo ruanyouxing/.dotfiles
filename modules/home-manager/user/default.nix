@@ -2,12 +2,17 @@
   imports = [
     ./shellcfg.nix
   ];
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+  };
   programs.git = {
     enable = true;
-    delta.enable = true;
     lfs.enable = true;
-    userEmail = "ruanyouxing7@gmail.com";
-    userName = "ruanyouxing";
+    settings.user = {
+      email = "ruanyouxing7@gmail.com";
+      name = "ruanyouxing";
+    };
   };
   home.file.".config" = {
     source = ../../../config;

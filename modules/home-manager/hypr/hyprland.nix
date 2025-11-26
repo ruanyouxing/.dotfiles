@@ -25,6 +25,7 @@ in
       exec-once = [
         "${hyprland-startup}"
       ];
+      ecosystem.no_update_news = true;
       input = {
         kb_layout = "us";
         follow_mouse = 1;
@@ -89,9 +90,9 @@ in
         "float, size 960 540, center, class:mpv"
         "float, size 1200 800, center, class:kitty-float"
         "noanim, move 0 0,pin, fullscreenstate, float, class:(flameshot)"
-        "noblur, opacity 0.9, class:kitty"
-        "noblur, opacity 0.9, class:code"
-        "noblur, opacity 0.9, class:discord"
+        # "noblur, opacity 0.9, class:kitty"
+        # "noblur, opacity 0.9, class:code"
+        # "oblur, opacity 0.9, class:discord"
       ];
 
       bind = [
@@ -128,7 +129,8 @@ in
         ",XF86AudioPlay, exec, playerctl play-pause"
         ",XF86AudioPrev, exec, playerctl prev"
         ",XF86AudioNext, exec, playerctl next"
-      ] ++ workspaceBinds;
+      ]
+      ++ workspaceBinds;
       bindm = [
         "SUPER, mouse:272, movewindow"
         "SUPER, mouse:273, resizewindow"
