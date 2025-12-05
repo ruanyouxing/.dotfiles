@@ -59,8 +59,8 @@ in
           passes = 3;
         };
         layerrule = [
-          "blur,waybar"
-          "blur,rofi"
+          "blur = on,match:namespace (waybar)"
+          "blur = on,match:namespace rofi"
         ];
       };
       debug = {
@@ -84,12 +84,12 @@ in
         preserve_split = true;
       };
       xwayland.force_zero_scaling = true;
-      windowrulev2 = [
-        "float, size 800 600, float, title:^.*${float_titles}.*$"
-        "float, size 640 360, move 25 695, title:^(Picture-in-Picture)$"
-        "float, size 960 540, center, class:mpv"
-        "float, size 1200 800, center, class:kitty-float"
-        "noanim, move 0 0,pin, fullscreenstate, float, class:(flameshot)"
+      windowrule = [
+        "float = on, pin = on, size 800 600, match:title ^.*${float_titles}.*$"
+        "float = on, size 640 360, move 25 695, match:title ^(Picture-in-Picture)$"
+        "float = on, size 960 540, center = on, match:class mpv"
+        "float = on, size 1200 800, center = on, match:class kitty-float"
+        "fullscreen_state = 3 3, move 0 0,pin = on, match:class (flameshot)"
         # "noblur, opacity 0.9, class:kitty"
         # "noblur, opacity 0.9, class:code"
         # "oblur, opacity 0.9, class:discord"
