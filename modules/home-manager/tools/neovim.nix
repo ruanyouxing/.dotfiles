@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     gcc
     gnumake
@@ -18,6 +19,7 @@
     eslint_d
     nodePackages.prettier
     clang-tools
+    ccls
     lldb
     python310Packages.debugpy
     black
