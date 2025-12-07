@@ -2,6 +2,7 @@
   description = "ruanyouxing dotfiles flake";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nvim-config.url = "github:ruanyouxing/nvim";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

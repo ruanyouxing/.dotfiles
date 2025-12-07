@@ -1,8 +1,11 @@
 {
+  inputs,
   pkgs,
-  lib,
   ...
 }:
+let
+  nvim-config = inputs.nvim-config;
+in
 {
   home.packages = with pkgs; [
     gcc
@@ -32,4 +35,5 @@
     defaultEditor = true;
     package = pkgs.neovim-unwrapped;
   };
+  xdg.configFile."nvim".source = nvim-config;
 }

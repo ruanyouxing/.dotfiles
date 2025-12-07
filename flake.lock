@@ -719,6 +719,22 @@
     },
     "nixpkgs_7": {
       "locked": {
+        "lastModified": 1764950072,
+        "narHash": "sha256-BmPWzogsG2GsXZtlT+MTcAWeDK5hkbGRZTeZNW42fwA=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "f61125a668a320878494449750330ca58b78c557",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_8": {
+      "locked": {
         "lastModified": 1762977756,
         "narHash": "sha256-4PqRErxfe+2toFJFgcRKZ0UI9NSIOJa+7RXVtBhy4KE=",
         "owner": "NixOS",
@@ -751,6 +767,24 @@
       "original": {
         "owner": "nix-community",
         "repo": "NUR",
+        "type": "github"
+      }
+    },
+    "nvim-config": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_7"
+      },
+      "locked": {
+        "lastModified": 1765091991,
+        "narHash": "sha256-Iuro/fgBDOTi5JWLhv1t+r0IuEmuuciC1OL+O1zXFGk=",
+        "owner": "ruanyouxing",
+        "repo": "nvim",
+        "rev": "d1c0c4d5aa6a5d81a59e6e7dab6a9e9ce20b6a43",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ruanyouxing",
+        "repo": "nvim",
         "type": "github"
       }
     },
@@ -830,6 +864,7 @@
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-wayland": "nixpkgs-wayland",
         "nur": "nur",
+        "nvim-config": "nvim-config",
         "quickshell": "quickshell",
         "spicetify-nix": "spicetify-nix"
       }
@@ -874,7 +909,7 @@
     },
     "spicetify-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_7",
+        "nixpkgs": "nixpkgs_8",
         "systems": "systems_3"
       },
       "locked": {
