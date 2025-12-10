@@ -11,6 +11,6 @@ pkgs.writeShellScript "hyprland-startup" ''
   fcitx5  & \
   flameshot & \
   qs -p "${volume-path}" & \
-  gammastep-indicator & \
+  # gammastep-indicator & \
   swww-init.sh & \
 ''

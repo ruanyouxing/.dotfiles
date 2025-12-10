@@ -1,12 +1,5 @@
 { inputs, ... }:
 let
-  nvim-config = inputs.nvim-config;
+  nvim-config = inputs.nvim-config.hmConfig;
 in
-{
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
-  xdg.configFile."nvim".source = nvim-config;
-  home.packages = nvim-config.utils;
-}
+nvim-config

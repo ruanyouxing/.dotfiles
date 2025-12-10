@@ -17,7 +17,7 @@
     (rofi.override { plugins = [ pkgs.rofi-emoji ]; })
   ];
   services.gammastep = {
-    enable = true;
+    enable = false;
     provider = "manual";
     latitude = 12.0;
     longitude = 107.0;
