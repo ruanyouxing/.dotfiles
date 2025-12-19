@@ -30,7 +30,7 @@ in
       settings = {
         initial_session = {
           user = username;
-          command = "Hyprland";
+          command = "start-hyprland";
         };
         default_session = {
           user = username;
