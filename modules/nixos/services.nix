@@ -23,9 +23,7 @@
     python311Packages.dbus-python
     jmtpfs
     v4l-utils
+    android-tools
   ];
-  programs.adb = {
-    enable = true;
-  };
   networking.timeServers = options.networking.timeServers.default ++ [ "0.asia.pool.ntp.org" ];
 }
