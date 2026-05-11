@@ -1,5 +1,12 @@
-{ inputs, ... }:
-let
-  nvim-config = inputs.nvim-config.hmConfig;
-in
-nvim-config
+{
+  inputs,
+  pkgs,
+  ...
+}:
+{
+  home.packages = [
+	pkgs.luajitPackages.luarocks
+	pkgs.luajit
+	inputs.nvim-config.packages.${pkgs.system}.default
+];
+}
