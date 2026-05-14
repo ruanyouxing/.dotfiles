@@ -852,11 +852,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1778732397,
-        "narHash": "sha256-moZfrQZ//7KM42qhnTCV2B1WSqZIMNmmUXX5wBA/i3I=",
+        "lastModified": 1778748027,
+        "narHash": "sha256-Z+EFyJXBmCDH0Ktq9SRkXEUEhQoQbz0quBpCQN13AIs=",
         "owner": "ruanyouxing",
         "repo": "nvim",
-        "rev": "c6a49ba4ef6baec28aef6cfaedf74b79f1cbf414",
+        "rev": "cc1fa00fe8a3b6b2123b338c0aca2f4e95de3a3c",
         "type": "github"
       },
       "original": {
