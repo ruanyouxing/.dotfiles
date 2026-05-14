@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  networking.hostName = "nixos";
+  networking.hostName = "veritas";
   nixpkgs.config.allowUnfree = true;
   nix = {
     package = pkgs.nixVersions.latest;
