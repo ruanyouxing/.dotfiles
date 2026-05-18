@@ -23,6 +23,9 @@ let
   '';
 in
 {
+  home.packages = [
+    pkgs.brightnessctl
+  ];
   wayland.windowManager.hyprland = {
     package = null;
     settings = {
@@ -37,6 +40,10 @@ in
         "3,right,workspace, e+1"
         "3,left, workspace, e-1"
         "3,vertical, fullscreen "
+      ];
+      bind = [
+        ", XF86MonBrightnessUp, exec, brightnessctl s +5%"
+        ", XF86MonBrightnessDown, exec, brightnessctl s -5%"
       ];
     };
     extraConfig = ''
