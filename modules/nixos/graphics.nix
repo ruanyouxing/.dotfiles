@@ -90,4 +90,5 @@ in {
     # portalPackage = inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
   };
   programs.gdk-pixbuf.modulePackages = [pkgs.librsvg];
+  environment.pathsToLink = ["/share/hypr"];
 }
