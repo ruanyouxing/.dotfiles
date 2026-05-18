@@ -1,6 +1,5 @@
 {
   lib,
-  username,
   homeDir,
   ...
 }: {

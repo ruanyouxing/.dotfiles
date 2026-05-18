@@ -8,12 +8,12 @@
   hyprland-startup = pkgs.writeShellScript "laptop-startup" ''
     wl-paste --type image --watch cliphist store & \
     wl-paste --type text --watch cliphist store & \
-    if pgrep -x swww-daemon  > /dev/null
+    if pgrep -x awww-daemon  > /dev/null
     then
-      swww kill
+      awww kill
     fi
-    swww-daemon & \
-    swww img ${homeDir}/.dotfiles/backgrounds/wallpapaer2.jpeg & \
+    awww-daemon & \
+    awww img ${homeDir}/.dotfiles/backgrounds/wallpapaer2.jpeg & \
     dbus-update-activation-environment --systemd --all & \
     waybar  & \
     fcitx5  & \
