@@ -1,4 +1,4 @@
-{
+{username, ...}: {
   imports = [
     ./boot.nix
     ./graphics.nix
@@ -7,5 +7,5 @@
     ../../modules/nixos
     ../../fonts
   ];
-  home-manager.users.hungz = import ./home-manager;
+  home-manager.users.${username} = import ./home-manager;
 }
