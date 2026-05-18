@@ -22,41 +22,50 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs =
-    {
-      nixpkgs,
-      home-manager,
-      spicetify-nix,
-      lanzaboote,
-      naersk,
-      nur,
-      ...
-    }@inputs:
-    let
-      customLib = import ./lib nixpkgs.lib;
-      lib = nixpkgs.lib // customLib;
-    in
-    {
-      inherit lib;
-      nixosConfigurations = {
-        nixosPC = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs customLib; };
-          modules = [
-            ./hosts/nixosPC
-            home-manager.nixosModules.default
-            lanzaboote.nixosModules.lanzaboote
-            nur.modules.nixos.default
-          ];
-        };
-        dell5411 = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs customLib; };
-          modules = [
-            ./hosts/dell5411
-            home-manager.nixosModules.default
-            # lanzaboote.nixosModules.lanzaboote
-            nur.modules.nixos.default
-          ];
-        };
+  outputs = {
+    nixpkgs,
+    home-manager,
+    # lanzaboote,
+    nur,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+    customLib = import ./lib nixpkgs.lib;
+    lib = nixpkgs.lib // customLib;
+    username = "hungz";
+  in {
+    inherit lib;
+
+    nixosConfigurations = {
+      nixosPC = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs customLib username;};
+        modules = [
+          ./hosts/nixosPC
+          home-manager.nixosModules.default
+          # lanzaboote.nixosModules.lanzaboote
+          nur.modules.nixos.default
+        ];
+      };
+      dell5411 = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs customLib username;};
+        modules = [
+          ./hosts/dell5411
+          home-manager.nixosModules.default
+          nur.modules.nixos.default
+        ];
       };
     };
+    homeConfigurations = {
+      "homeConfig" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {inherit inputs customLib username;};
+        modules = [
+          ./modules/home-manager/default.nix
+        ];
+      };
+    };
+  };
 }

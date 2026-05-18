@@ -1,5 +1,8 @@
-{ inputs, ... }:
 {
+  inputs,
+  username,
+  ...
+}: {
   imports = [
     ./hypr
     ./audio
@@ -15,14 +18,14 @@
     allowUnfreePredicate = _: true;
   };
   home = {
-    username = "hungz";
+    inherit username;
     homeDirectory = "/home/hungz";
     stateVersion = "23.05";
   };
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
-      autoconnect = [ "qemu:///system" ];
-      uris = [ "qemu:///system" ];
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
     };
   };
 }
