@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  homeDir,
+  ...
+}: {
   networking.hostName = "veritas";
   nixpkgs.config.allowUnfree = true;
   nix = {
@@ -18,11 +22,11 @@
       enable = true;
       clean.enable = true;
       clean.extraArgs = "--keep-since 7d --keep 5";
-      flake = "/home/hungz/.dotfiles";
+      flake = "${homeDir}/.dotfiles";
     };
   };
   system = {
     autoUpgrade.channel = "https://nixos.org/channels/nixos-unstable";
-    stateVersion = "25.05";
+    stateVersion = "26.05";
   };
 }

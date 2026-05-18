@@ -2,11 +2,9 @@
   inputs,
   pkgs,
   ...
-}:
-{
+}: {
   home.packages = [
-	pkgs.luajitPackages.luarocks
-	pkgs.luajit
-	inputs.nvim-config.packages.${pkgs.system}.default
-];
+    inputs.nvim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.nvim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-dependencies
+  ];
 }

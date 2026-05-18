@@ -10,7 +10,7 @@
     slurp
     grim
     mpvpaper
-    swww
+    awww
     wtype
     wl-clipboard
     dunst

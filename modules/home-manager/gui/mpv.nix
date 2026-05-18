@@ -4,7 +4,7 @@
     enable = true;
 
     package = (
-      pkgs.mpv-unwrapped.wrapper {
+      pkgs.mpv.override {
         scripts = with pkgs.mpvScripts; [
           # uosc
           sponsorblock
@@ -19,7 +19,7 @@
           modernz
         ];
 
-        mpv = pkgs.mpv-unwrapped.override {
+        mpv = pkgs.mpv.override {
           waylandSupport = true;
           jackaudioSupport = true;
           ffmpeg = pkgs.ffmpeg-full;

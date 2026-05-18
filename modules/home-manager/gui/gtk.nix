@@ -29,7 +29,7 @@ in
     theme = {
       name = "Catppuccin-GTK-Purple-Dark-Compact-Macchiato";
       package = pkgs.magnetic-catppuccin-gtk.override {
-        accent = [ "purple" ];
+        accent = [ "blue" ];
         shade = "dark";
         size = "compact";
         tweaks = [ "macchiato" ];

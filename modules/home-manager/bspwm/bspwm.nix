@@ -10,8 +10,8 @@
     pscircle
     xtitle
     xdotool
-    xorg.lndir
-    xorg.xsetroot
+    lndir
+    xsetroot
   ];
   xsession.windowManager.bspwm = {
     enable = true;

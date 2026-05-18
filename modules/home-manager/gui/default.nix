@@ -8,18 +8,18 @@
     ./flameshot.nix
     ./qt.nix
     ./obs.nix
-    ./mpv.nix
+    # ./mpv.nix
     ./vscode.nix
   ];
   home.packages = with pkgs; [
     (discord.override { withVencord = true; })
-    xfce.thunar
+    thunar
     feh
     kitty
     qbittorrent-enhanced
     peazip
     handbrake
-    xfce.ristretto
+    ristretto
     gparted
     qownnotes
     kdePackages.okular

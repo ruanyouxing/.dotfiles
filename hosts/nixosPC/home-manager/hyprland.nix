@@ -2,8 +2,7 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   volume-path = toString ../../../modules/home-manager/gui/quickshell/volume.qml;
   desktop-startup = pkgs.writeShellScript "hyprland-startup" ''
     wl-paste --type image --watch cliphist store & \
@@ -17,12 +16,11 @@ let
     # gammastep-indicator & \
     # swww-init.sh & \
   '';
-in
-{
+in {
   wayland.windowManager.hyprland.extraConfig = lib.mkForce ''
     monitor=HDMI-A-1,1920x1080@74.97,0x0,1
   '';
   services.gammastep.enable = lib.mkForce false;
 
-  wayland.windowManager.hyprland.settings.exec-once = lib.mkForce [ "${desktop-startup}" ];
+  wayland.windowManager.hyprland.settings.exec-once = lib.mkForce ["${desktop-startup}"];
 }

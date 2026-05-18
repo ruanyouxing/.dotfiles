@@ -1,14 +1,12 @@
 {
   pkgs,
   inputs,
+  username,
   ...
-}:
-let
+}: let
   system = pkgs.stdenv.hostPlatform.system;
   pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${system};
-  username = "hungz";
-in
-{
+in {
   hardware = {
     graphics = {
       enable = true;
@@ -20,7 +18,7 @@ in
   console = {
     earlySetup = true;
     font = "${pkgs.terminus_font}/share/consolefonts/ter-116n.psf.gz";
-    packages = with pkgs; [ terminus_font ];
+    packages = with pkgs; [terminus_font];
     keyMap = "us";
   };
   services = {
@@ -40,7 +38,7 @@ in
     };
     displayManager = {
       # autoLogin.enable = true;
-      # autoLogin.user = "hungz";
+      # autoLogin.user = username;
     };
     xserver = {
       enable = true;
@@ -81,8 +79,8 @@ in
   environment.sessionVariables.GTK_USE_PORTAL = "1";
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   nix.settings = {
-    substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
   qt.enable = true;
   programs.hyprland = {
@@ -91,5 +89,5 @@ in
     # package = inputs.hyprland.packages.${system}.hyprland;
     # portalPackage = inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
   };
-  programs.gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
+  programs.gdk-pixbuf.modulePackages = [pkgs.librsvg];
 }

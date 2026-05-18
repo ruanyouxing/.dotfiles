@@ -1,17 +1,17 @@
-{
+{username, ...}: {
   security = {
     polkit.enable = true;
     sudo.extraRules = [
       {
-        users = [ "hungz" ];
+        users = [username];
         commands = [
           {
             command = "ALL";
-            options = [ "NOPASSWD" ];
+            options = ["NOPASSWD"];
           }
         ];
       }
     ];
-    pam.services.hyprlock = { };
+    pam.services.hyprlock = {};
   };
 }

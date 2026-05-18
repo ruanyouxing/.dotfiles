@@ -1,6 +1,7 @@
 {
   inputs,
   username,
+  homeDir,
   ...
 }: {
   imports = [
@@ -19,8 +20,8 @@
   };
   home = {
     inherit username;
-    homeDirectory = "/home/hungz";
-    stateVersion = "23.05";
+    homeDirectory = homeDir;
+    stateVersion = "26.05";
   };
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {

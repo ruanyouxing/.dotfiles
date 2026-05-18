@@ -3,6 +3,7 @@
   inputs,
   customLib,
   username,
+  homeDir,
   ...
 }: {
   imports = [
@@ -11,7 +12,7 @@
   programs.zsh.enable = true;
   users.users.${username} = {
     isNormalUser = true;
-    description = "hungz";
+    description = username;
     shell = pkgs.zsh;
     extraGroups = [
       "networkmanager"
@@ -24,7 +25,7 @@
   };
   home-manager = {
     useUserPackages = true;
-    extraSpecialArgs = {inherit inputs pkgs customLib;};
+    extraSpecialArgs = {inherit inputs pkgs customLib username homeDir;};
     backupFileExtension = "hm-bak";
     users = {
       ${username} = import ../../modules/home-manager;

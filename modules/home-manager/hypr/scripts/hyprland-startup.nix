@@ -12,5 +12,5 @@ pkgs.writeShellScript "hyprland-startup" ''
   flameshot & \
   qs -p "${volume-path}" & \
   # gammastep-indicator & \
-  swww-init.sh & \
+  awww-init.sh & \
 ''

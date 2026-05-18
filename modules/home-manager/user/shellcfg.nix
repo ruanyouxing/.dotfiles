@@ -1,9 +1,9 @@
 {
   pkgs,
   config,
+  homeDir,
   ...
-}:
-{
+}: {
   programs.starship.enable = true;
   programs.zoxide.enable = true;
   programs.zsh = {
@@ -44,13 +44,13 @@
   };
   home = {
     sessionVariables = {
-      DOTFILES = "/home/hungz/.dotfiles";
+      DOTFILES = "/${homeDir}/.dotfiles";
       # GTK_IM_MODULE = "fcitx5";
       XDG_CONFIG_HOME = "${config.xdg.configHome}";
     };
     sessionPath = [
-      "$HOME/.local/bin"
-      "$HOME/.dotfiles/scripts"
+      "${homeDir}/.local/bin"
+      "${homeDir}/.dotfiles/scripts"
     ];
     shellAliases = {
       lg = "${pkgs.lazygit}/bin/lazygit";
@@ -61,9 +61,9 @@
       output.mkv";
       startx = "startx ~/.xinitrc > /dev/null 2>&1";
       v = "${pkgs.fd}/bin/fd -H | ${pkgs.fzf}/bin/fzf | ${pkgs.findutils}/bin/xargs nvim";
-      nixos-switch = "nh os switch --ask /home/hungz/.dotfiles";
-      nixos-test = "nh os test --ask /home/hungz/.dotfiles";
-      nixos-boot = "nh os boot --ask /home/hungz/.dotfiles";
+      nixos-switch = "nh os switch --ask ${homeDir}/.dotfiles";
+      nixos-test = "nh os test --ask ${homeDir}/.dotfiles";
+      nixos-boot = "nh os boot --ask ${homeDir}/.dotfiles";
       nixos-cleanall = "nh clean all --ask";
       nixos-search = "nh search";
       nix-shell = "nix-shell --command zsh";
