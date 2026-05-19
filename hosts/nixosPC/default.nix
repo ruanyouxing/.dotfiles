@@ -7,5 +7,7 @@
     ../../modules/nixos
     ../../fonts
   ];
-  home-manager.users.${username} = import ./home-manager;
+
+  environment.sessionVariables.HOSTNAME = "nixosPC";
+  home-manager.users.${username} = import ./hm_override.nix;
 }

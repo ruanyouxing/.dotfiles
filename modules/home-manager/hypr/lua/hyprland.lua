@@ -1,23 +1,16 @@
 require("bindings")
 require("animation")
 require("rules")
-hl.on("hyprland.start", function()
-  hl.exec_cmd("wl-paste --type image --watch cliphist store")
-  hl.exec_cmd("wl-paste --type text --watch cliphist store")
-  hl.exec_cmd('mpvpaper -o "no-audio loop" HDMI-A-1 ~/.dotfiles/backgrounds/chihiro.mp4')
-  hl.exec_cmd("dbus-update-activation-environment --systemd --all ")
-  hl.exec_cmd("waybar")
-  hl.exec_cmd("fcitx5")
-  hl.exec_cmd("flameshot")
-  hl.exec_cmd("awww-init.sh")
-  -- hl.exec_cmd("gammastep-indicator")
-  -- hl.exec_cmd("qs - p ${volume-path}")
-end)
 
-hl.config({
+local hostName = os.getenv("HOSTNAME")
+if hostName == "dell5411" then
+  require("dell5411_config")
+elseif hostName == "nixosPC" then
+  require("nixosPC_config")
+end
+local opts = {
   general = {
     border_size = 3,
-    -- active_border = "rgba(3DDCFFee) rgba(A78BFAee) 90deg",
     col = {
       active_border = { colors = { "rgba(3DDCFFee)", "rgba(A78BFAee)", angle = 90 } },
       inactive_border = "rgba(595959ff)",
@@ -65,4 +58,8 @@ hl.config({
   xwayland = {
     force_zero_scaling = true
   }
-})
+}
+if hostName == "dell5411" then
+  opts.input.touchpad.natural_scroll = false;
+end
+hl.config(opts)

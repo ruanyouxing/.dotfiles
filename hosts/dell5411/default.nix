@@ -10,7 +10,8 @@
   home-manager = {
     extraSpecialArgs = {inherit username;};
     users = {
-      ${username} = import ./home-manager;
+      ${username} = import ./hm_override.nix;
     };
   };
+  environment.sessionVariables.HOSTNAME = "dell5411";
 }
