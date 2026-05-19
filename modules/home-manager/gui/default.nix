@@ -8,7 +8,6 @@
     ./qt.nix
     ./obs.nix
     # ./mpv.nix
-    ./vscode.nix
     ./rofi
   ];
   home.packages = with pkgs; [

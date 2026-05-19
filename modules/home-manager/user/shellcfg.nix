@@ -47,6 +47,7 @@
       DOTFILES = "/${homeDir}/.dotfiles";
       # GTK_IM_MODULE = "fcitx5";
       XDG_CONFIG_HOME = "${config.xdg.configHome}";
+      EDITOR="nvim";
     };
     sessionPath = [
       "${homeDir}/.local/bin"
