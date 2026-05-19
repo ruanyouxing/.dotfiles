@@ -16,7 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    bad-apple-plymouth.url = "github:ruanyouxing/bad-apple-plymouth";
+    bad-apple-plymouth.url = "github:ruanyouxing/bad-apple-plymouth/test";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";

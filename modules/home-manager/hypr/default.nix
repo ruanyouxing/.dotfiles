@@ -12,7 +12,6 @@
     wtype
     wl-clipboard
     dunst
-    (rofi.override {plugins = [pkgs.rofi-emoji];})
   ];
   services.gammastep = {
     enable = false;

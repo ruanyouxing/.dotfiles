@@ -2,17 +2,15 @@
   pkgs,
   inputs,
   ...
-}:
-let
-  mocword = pkgs.callPackage ./mocword.nix { naersk = pkgs.callPackage inputs.naersk { }; };
-in
-{
+}: let
+  mocword = pkgs.callPackage ./mocword.nix {naersk = pkgs.callPackage inputs.naersk {};};
+in {
   imports = [
     ./neovim.nix
-    ./ranger.nix
     ./zathura.nix
     ./btop.nix
     ./yazi.nix
+    ./kitty
   ];
   home.packages = with pkgs; [
     mocword

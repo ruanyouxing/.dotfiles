@@ -38,15 +38,16 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1750789520,
-        "narHash": "sha256-qvhnODlR3v0rYkOyec19e11Ju+8Fgskb07mVafgXRWo=",
+        "lastModified": 1779177891,
+        "narHash": "sha256-QQqs8P4BzOFoGpcajQ6nhS/qpSsBhqYwbc2JPD4vjQY=",
         "owner": "ruanyouxing",
         "repo": "bad-apple-plymouth",
-        "rev": "a82c7a16b9943021d6b7de097f7292c1b514c989",
+        "rev": "88b70342b78759f4227b082759c55e70476176eb",
         "type": "github"
       },
       "original": {
         "owner": "ruanyouxing",
+        "ref": "test",
         "repo": "bad-apple-plymouth",
         "type": "github"
       }

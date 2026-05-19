@@ -37,5 +37,5 @@ in
       themePackages = [ bad_apple ];
     };
   };
-  systemd.services.plymouth-quit.serviceConfig.ExecStartPre = "${pkgs.busybox}/bin/sleep 4";
+  # systemd.services.plymouth-quit.serviceConfig.ExecStartPre = "${pkgs.busybox}/bin/sleep 4";
 }

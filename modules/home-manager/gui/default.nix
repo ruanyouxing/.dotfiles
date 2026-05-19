@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./quickshell
     ./gtk.nix
@@ -10,12 +9,12 @@
     ./obs.nix
     # ./mpv.nix
     ./vscode.nix
+    ./rofi
   ];
   home.packages = with pkgs; [
-    (discord.override { withVencord = true; })
+    (discord.override {withVencord = true;})
     thunar
     feh
-    kitty
     qbittorrent-enhanced
     peazip
     handbrake

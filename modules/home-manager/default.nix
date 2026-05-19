@@ -9,7 +9,6 @@
     ./audio
     ./gui
     ./user
-    ./bspwm
     ./tools
     inputs.spicetify-nix.homeManagerModules.default
   ];
