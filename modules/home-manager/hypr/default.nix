@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
-    ./waybar.nix
-    ./wlogout.nix
+    ./waybar
+    ./wlogout
     ./extras
   ];
   home.packages = with pkgs; [

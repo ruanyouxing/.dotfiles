@@ -4,8 +4,8 @@
   ...
 }:
 let
-  inherit (import ./scripts { inherit pkgs; }) audio-toggle music-bar;
-  lizzy = pkgs.callPackage ./scripts/lizzy.nix {
+  inherit (import ../scripts { inherit pkgs; }) audio-toggle music-bar;
+  lizzy = pkgs.callPackage ../scripts/lizzy.nix {
     naersk = pkgs.callPackage inputs.naersk { };
   };
 in
@@ -178,6 +178,6 @@ in
         };
       };
     };
-    style = builtins.readFile ./css/waybar.css;
+    style = builtins.readFile ./waybar.css;
   };
 }
