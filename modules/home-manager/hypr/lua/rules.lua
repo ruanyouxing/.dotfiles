@@ -2,7 +2,7 @@
 
 hl.layer_rule({
   match = {
-    namespace = "waybar" or "rofi",
+    namespace = "waybar" or "rofi" or "kitty",
   },
   blur = true,
 })
