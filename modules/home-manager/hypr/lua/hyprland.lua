@@ -2,10 +2,20 @@ require("bindings")
 require("animation")
 require("rules")
 
-local hostName = os.getenv("HOSTNAME")
-if hostName == "dell5411" then
+local function get_system_hostname()
+  local f = io.popen("hostname")
+  if f then
+    local s = f:read("*a")
+    f:close()
+    return s:gsub("%s+", "")
+  end
+  return "unknown"
+end
+
+local hostName = get_system_hostname()
+if hostName == "veritas-laptop" then
   require("dell5411_config")
-elseif hostName == "nixosPC" then
+elseif hostName == "veritas" then
   require("nixosPC_config")
 end
 local opts = {
@@ -59,7 +69,7 @@ local opts = {
     force_zero_scaling = true
   }
 }
--- if hostName == "dell5411" then
---   opts.input.touchpad.natural_scroll = false;
--- end
+if hostName == "veritas-laptop" then
+  opts.input.touchpad.natural_scroll = false;
+end
 hl.config(opts)

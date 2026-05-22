@@ -1,4 +1,8 @@
-{username, ...}: {
+{
+  username,
+  lib,
+  ...
+}: {
   imports = [
     ../../fonts
     ../../modules/nixos
@@ -13,5 +17,5 @@
       ${username} = import ./hm_override.nix;
     };
   };
-  environment.sessionVariables.HOSTNAME = "dell5411";
+  networking.hostName = lib.mkForce "veritas-laptop";
 }
