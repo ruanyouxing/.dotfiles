@@ -1,4 +1,4 @@
-{
+{username, ...}: {
   imports = [
     ../../fonts
     ../../modules/nixos
@@ -8,8 +8,10 @@
     ./services.nix
   ];
   home-manager = {
+    extraSpecialArgs = {inherit username;};
     users = {
-      "hungz" = import ./home-manager;
+      ${username} = import ./hm_override.nix;
     };
   };
+  environment.sessionVariables.HOSTNAME = "dell5411";
 }

@@ -1,4 +1,4 @@
-{
+{username, ...}: {
   imports = [
     ./boot.nix
     ./graphics.nix
@@ -7,5 +7,7 @@
     ../../modules/nixos
     ../../fonts
   ];
-  home-manager.users.hungz = import ./home-manager;
+
+  environment.sessionVariables.HOSTNAME = "nixosPC";
+  home-manager.users.${username} = import ./hm_override.nix;
 }

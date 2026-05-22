@@ -1,5 +1,4 @@
 {pkgs, ...}: let
-  inherit (import ../scripts {inherit pkgs;}) lockAndSleep;
 in {
   home.packages = with pkgs; [hypridle];
   services.hypridle = {
@@ -18,7 +17,7 @@ in {
         }
         {
           timeout = 600;
-          on-timeout = "${lockAndSleep}";
+          on-timeout = "lockandsleep";
         }
       ];
     };

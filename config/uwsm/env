@@ -1,4 +1,0 @@
-export GTK_THEME=Sweet-Dark
-export HYPRCURSOR_SIZE=24
-export GDK_BACKEND=wayland,x11,*
-export QT_QPA_PLATFORM=wayland;xcb

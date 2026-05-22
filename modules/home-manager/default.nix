@@ -1,12 +1,16 @@
-{ inputs, ... }:
 {
+  inputs,
+  username,
+  homeDir,
+  ...
+}: {
   imports = [
     ./hypr
     ./audio
     ./gui
     ./user
-    ./bspwm
     ./tools
+    ../scripts
     inputs.spicetify-nix.homeManagerModules.default
   ];
   programs.home-manager.enable = true;
@@ -15,14 +19,14 @@
     allowUnfreePredicate = _: true;
   };
   home = {
-    username = "hungz";
-    homeDirectory = "/home/hungz";
-    stateVersion = "23.05";
+    inherit username;
+    homeDirectory = homeDir;
+    stateVersion = "26.05";
   };
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
-      autoconnect = [ "qemu:///system" ];
-      uris = [ "qemu:///system" ];
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
     };
   };
 }

@@ -1,20 +1,17 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
-    ./waybar.nix
-    ./wlogout.nix
-    ./hyprland.nix
+    ./waybar
+    ./wlogout
     ./extras
   ];
   home.packages = with pkgs; [
     slurp
     grim
     mpvpaper
-    swww
+    awww
     wtype
     wl-clipboard
     dunst
-    (rofi.override { plugins = [ pkgs.rofi-emoji ]; })
   ];
   services.gammastep = {
     enable = false;
@@ -36,4 +33,13 @@
       };
     };
   };
+  xdg.configFile."hypr" = {
+    source = ./lua;
+    recursive = true;
+  };
+  # wayland.windowManager.hyprland = {
+  #   enable = true;
+  #   configType = "lua";
+  #   # plugins = [];
+  # };
 }

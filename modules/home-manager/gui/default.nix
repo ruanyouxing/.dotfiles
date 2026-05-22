@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./quickshell
     ./gtk.nix
@@ -8,18 +7,17 @@
     ./flameshot.nix
     ./qt.nix
     ./obs.nix
-    ./mpv.nix
-    ./vscode.nix
+    # ./mpv.nix
+    ./rofi
   ];
   home.packages = with pkgs; [
-    (discord.override { withVencord = true; })
-    xfce.thunar
+    (discord.override {withVencord = true;})
+    thunar
     feh
-    kitty
     qbittorrent-enhanced
     peazip
     handbrake
-    xfce.ristretto
+    ristretto
     gparted
     qownnotes
     kdePackages.okular

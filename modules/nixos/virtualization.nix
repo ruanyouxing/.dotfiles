@@ -1,9 +1,9 @@
 {
   config,
   pkgs,
+  username,
   ...
-}:
-{
+}: {
   programs.virt-manager.enable = true;
   environment.etc = {
     "ovmf/edk2-x86_64-secure-code.fd" = {
@@ -26,7 +26,7 @@
       runAsRoot = false;
     };
   };
-  users.groups.libvirtd.members = [ "hungz" ];
+  users.groups.libvirtd.members = [username];
   virtualisation.spiceUSBRedirection.enable = true;
   services.spice-vdagentd.enable = true;
   # virtualisation.vmware.guest.enable = true;

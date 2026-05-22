@@ -2,16 +2,17 @@
   pkgs,
   inputs,
   customLib,
+  username,
+  homeDir,
   ...
-}:
-{
+}: {
   imports = [
     inputs.home-manager.nixosModules.default
   ];
   programs.zsh.enable = true;
-  users.users.hungz = {
+  users.users.${username} = {
     isNormalUser = true;
-    description = "hungz";
+    description = username;
     shell = pkgs.zsh;
     extraGroups = [
       "networkmanager"
@@ -24,10 +25,10 @@
   };
   home-manager = {
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs pkgs customLib; };
+    extraSpecialArgs = {inherit inputs pkgs customLib username homeDir;};
     backupFileExtension = "hm-bak";
     users = {
-      "hungz" = import ../../modules/home-manager;
+      ${username} = import ../../modules/home-manager;
     };
   };
   environment.sessionVariables = {
