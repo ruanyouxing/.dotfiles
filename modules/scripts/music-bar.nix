@@ -1,7 +1,6 @@
 {pkgs, ...}: let
   bc = "${pkgs.bc}/bin/bc";
-in {
-  progress-bar = pkgs.writeShellScript "player-progress" ''
+  progress-bar = pkgs.writeShellScriptBin "player-progress" ''
     STATE_FILE="/tmp/progress-mode"
       BAR_LENGTH=20
       FULL="█"
@@ -67,7 +66,7 @@ in {
       text="$bar $(format_time "$position_sec")/$(format_time "$duration_sec")"
       echo "{\"text\": \"$text\", \"tooltip\": \"Click to toggle bar\", \"class\": \"playing\"}"
   '';
-  toggle-bar = pkgs.writeShellScript "toggle-bar" ''
+  toggle-bar = pkgs.writeShellScriptBin "toggle-bar" ''
     STATE_FILE="/tmp/progress-mode"
     if [[ ! -f "$STATE_FILE" ]]; then
       echo "1" > "$STATE_FILE"
@@ -80,4 +79,9 @@ in {
       echo "1" > "$STATE_FILE"
       fi
   '';
+in {
+  home.packages = [
+    progress-bar
+    toggle-bar
+  ];
 }

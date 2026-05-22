@@ -10,6 +10,7 @@
     ./gui
     ./user
     ./tools
+    ../scripts
     inputs.spicetify-nix.homeManagerModules.default
   ];
   programs.home-manager.enable = true;

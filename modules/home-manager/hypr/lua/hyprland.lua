@@ -59,7 +59,7 @@ local opts = {
     force_zero_scaling = true
   }
 }
-if hostName == "dell5411" then
-  opts.input.touchpad.natural_scroll = false;
-end
+-- if hostName == "dell5411" then
+--   opts.input.touchpad.natural_scroll = false;
+-- end
 hl.config(opts)

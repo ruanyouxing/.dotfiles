@@ -1,15 +1,5 @@
-{
-  pkgs,
-  inputs,
-  ...
-}:
-let
-  inherit (import ../scripts { inherit pkgs; }) audio-toggle music-bar;
-  lizzy = pkgs.callPackage ../scripts/lizzy.nix {
-    naersk = pkgs.callPackage inputs.naersk { };
-  };
-in
-{
+{pkgs, ...}: let
+in {
   home.packages = with pkgs; [
     spotifyd
     playerctl
@@ -137,8 +127,8 @@ in
               "  "
             ];
           };
-          on-scroll-up = audio-toggle;
-          on-scroll-down = audio-toggle;
+          on-scroll-up = "audio-toggle";
+          on-scroll-down = "audio-toggle";
           on-click = "pavucontrol";
         };
 
@@ -147,14 +137,14 @@ in
           format = "  {status} ";
         };
         "custom/music-bar" = {
-          exec = music-bar.progress-bar;
+          exec = "progress-bar";
           interval = 1;
           return-type = "json";
           format = "{}";
-          on-click = music-bar.toggle-bar;
+          on-click = "toggle-bar";
         };
         "custom/music" = {
-          exec = "${lizzy}/bin/lizzy --mediaplayer spotify --autotoggle";
+          exec = "lizzy --mediaplayer spotify --autotoggle";
           format = "{icon} : {text}";
           return-type = "json";
           format-icons = {

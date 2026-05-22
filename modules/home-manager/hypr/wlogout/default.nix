@@ -1,15 +1,12 @@
-{ pkgs,... }:
-let
-  assetsFolder = ../assets;
-  inherit (import ../scripts { inherit pkgs; }) lockAndSleep;
-in
-{
+{inputs, ...}: let
+  assetsFolder = inputs.self + "/assets/";
+in {
   programs.wlogout = {
     enable = true;
     layout = [
       {
         label = "lock";
-        action = "${lockAndSleep}";
+        action = "lockandsleep";
         text = "Lock screen";
         keybind = "l";
       }
@@ -46,5 +43,5 @@ in
     ];
     style = builtins.readFile ./wlogout.css;
   };
-  xdg.configFile."wlogout/assets".source = toString assetsFolder;
+  xdg.configFile."wlogout/assets".source = toString assetsFolder + "/wlogout_icons";
 }

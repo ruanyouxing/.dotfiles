@@ -1,12 +1,5 @@
-{
-  pkgs,
-  inputs,
-  ...
-}:
-let
-  inherit (import ../scripts { inherit pkgs inputs; }) weather whichsong;
-in
-{
+{inputs, ...}: let
+in {
   programs.hyprlock = {
     enable = true;
     settings = {
@@ -33,7 +26,7 @@ in
         ];
       };
       background = {
-        path = toString ../../../backgrounds/chihiro.png;
+        path = inputs.self + "/assets/backgrounds/chihiro.png";
         blur_passes = 3;
         blur_size = 8;
       };
@@ -161,7 +154,7 @@ in
           font_size = 18;
           halign = "center";
           position = "0, -40%";
-          text = "cmd[update:1000] ${whichsong}";
+          text = "cmd[update:1000] whichsong";
           valign = "center";
         }
         {
@@ -170,7 +163,7 @@ in
           halign = "center";
           position = "-11%, -5%";
           color = "rgba(cdd6f4ee)"; # #cdd6f4
-          text = "cmd[update:86400] ${weather}  --moon";
+          text = "cmd[update:86400] weather  --moon";
           valign = "center";
           zindex = 2;
         }
@@ -180,7 +173,7 @@ in
           halign = "center";
           position = "-11%, -9%";
           color = "rgba(3DB2FFee)"; # #3DB2FF
-          text = "cmd[update:86400] ${weather}  --humidity";
+          text = "cmd[update:86400] weather  --humidity";
           valign = "center";
           zindex = 2;
         }
@@ -190,7 +183,7 @@ in
           halign = "center";
           position = "-11%, -12%";
           color = "rgba(00CC99ee)"; # #00cc99
-          text = "cmd[update:86400] ${weather}  --windspeed";
+          text = "cmd[update:86400] weather --windspeed";
           valign = "center";
           zindex = 2;
         }
@@ -201,7 +194,7 @@ in
           position = "-1%, -5%";
           color = "rgba(FFB74Dff)"; # #FFB74D
           text_align = "right";
-          text = "cmd[update:86400] ${weather} --temp";
+          text = "cmd[update:86400] weather --temp";
           valign = "center";
           zindex = 2;
         }
@@ -221,7 +214,7 @@ in
           halign = "center";
           position = "11%, -8%";
           color = "rgba(9FA8DAff)"; # #9FA8DA
-          text = "cmd[update:60000] ${weather} --weather";
+          text = "cmd[update:60000] weather --weather";
           valign = "center";
           zindex = 2;
         }
