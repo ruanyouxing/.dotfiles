@@ -1,25 +1,34 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }: let
   dirContents = builtins.readDir ./.;
+
   isNixFile = name: type:
     type
     == "regular"
     && lib.strings.hasSuffix ".nix" name
     && name != "default.nix";
 
+  nixFiles = lib.filterAttrs isNixFile dirContents;
+
+  nixPackages =
+    lib.mapAttrsToList (
+      name: _:
+        import (./. + "/${name}") {inherit pkgs lib inputs;}
+    )
+    nixFiles;
+
   isScriptFile = name: type:
     type
     == "regular"
     && !(lib.strings.hasSuffix ".nix" name);
 
-  nixFiles = lib.filterAttrs isNixFile dirContents;
-  importsList = lib.mapAttrsToList (name: _: ./. + "/${name}") nixFiles;
-
   scriptFiles = lib.filterAttrs isScriptFile dirContents;
-  packagesList =
+
+  shellPackages =
     lib.mapAttrsToList (
       name: _: let
         pkgName = lib.strings.removeSuffix ".sh" name;
@@ -27,10 +36,6 @@
         pkgs.writeShellScriptBin pkgName (builtins.readFile (./. + "/${name}"))
     )
     scriptFiles;
-  dependencies = with pkgs; [
-    libnotify
-  ];
 in {
-  imports = importsList;
-  home.packages = packagesList ++ dependencies;
+  home.packages = nixPackages ++ shellPackages;
 }

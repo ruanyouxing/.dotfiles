@@ -4,7 +4,8 @@
   ...
 }: let
   naersk = pkgs.callPackage inputs.naersk {};
-  lizzy = naersk.buildPackage {
+in
+  naersk.buildPackage {
     src = pkgs.fetchFromGitHub {
       owner = "stefur";
       repo = "lizzy";
@@ -12,7 +13,5 @@
       hash = "sha256-bq1CmjMbClflzEm2MwWHzlV3XqJh/YYqe2bkcj5mF1s=";
     };
     pname = "lizzy";
-  };
-in {
-  home.packages = [lizzy];
-}
+    version = "git";
+  }
