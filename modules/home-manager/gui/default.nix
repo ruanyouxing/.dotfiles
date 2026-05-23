@@ -9,6 +9,7 @@
     ./obs.nix
     # ./mpv.nix
     ./rofi
+    ./kitty
   ];
   home.packages = with pkgs; [
     (discord.override {withVencord = true;})

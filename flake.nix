@@ -68,5 +68,18 @@
         ];
       };
     };
+    devShells.${system}.default = pkgs.mkShell {
+      name = "dotfiles";
+      packages = with pkgs; [
+        bash-language-server
+        nil
+        alejandra
+        lua-language-server
+        stylua
+        git
+        statix
+        shfmt
+      ];
+    };
   };
 }

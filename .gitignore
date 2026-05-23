@@ -1,3 +1,1 @@
-./.config/polybar/scripts/notification-github.sh
-./.config/cava/shaders/*
-./.config/hypr/hyprland.conf
+.direnv/

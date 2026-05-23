@@ -10,7 +10,6 @@ in {
     ./zathura.nix
     ./btop.nix
     ./yazi.nix
-    ./kitty
   ];
   home.packages = with pkgs; [
     mocword

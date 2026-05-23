@@ -4,8 +4,21 @@
   homeDir,
   ...
 }: {
-  programs.starship.enable = true;
+  programs.starship = {
+    enable = true;
+    settings = {
+      nix_shell = {
+        symbol = "󱄅 ";
+        heuristic = true;
+      };
+    };
+  };
   programs.zoxide.enable = true;
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+    enableZshIntegration = true;
+  };
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -47,11 +60,10 @@
       DOTFILES = "/${homeDir}/.dotfiles";
       # GTK_IM_MODULE = "fcitx5";
       XDG_CONFIG_HOME = "${config.xdg.configHome}";
-      EDITOR="nvim";
+      EDITOR = "nvim";
     };
     sessionPath = [
       "${homeDir}/.local/bin"
-      "${homeDir}/.dotfiles/scripts"
     ];
     shellAliases = {
       lg = "${pkgs.lazygit}/bin/lazygit";
