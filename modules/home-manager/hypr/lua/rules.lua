@@ -17,6 +17,13 @@ hl.window_rule({
 
 hl.window_rule({
   match = {
+    class = "^xdg-desktop-portal-gtk$"
+  },
+  pin = true
+})
+
+hl.window_rule({
+  match = {
     title = "^(Picture-in-Picture)$",
   },
   float = true,

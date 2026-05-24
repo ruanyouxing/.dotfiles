@@ -1,16 +1,12 @@
-{pkgs, ...}: {
-  imports = [
-    ./quickshell
-    ./gtk.nix
-    ./browser.nix
-    ./spotify.nix
-    ./flameshot.nix
-    ./qt.nix
-    ./obs.nix
-    # ./mpv.nix
-    ./rofi
-    ./kitty
-  ];
+{
+  pkgs,
+  customLib,
+  ...
+}: {
+  imports = customLib.importDirModules {
+    dir = ./.;
+    excludeNames = ["mpv.nix"];
+  };
   home.packages = with pkgs; [
     (discord.override {withVencord = true;})
     thunar

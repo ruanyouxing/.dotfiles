@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  Grub-theme-particle = pkgs.callPackage ./grub-theme-particles.nix { };
+  Grub-theme-particle = pkgs.callPackage ../../../grub-theme-particles.nix { };
 in
 {
   boot = {

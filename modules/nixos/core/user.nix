@@ -28,7 +28,7 @@
     extraSpecialArgs = {inherit inputs pkgs customLib username homeDir;};
     backupFileExtension = "hm-bak";
     users = {
-      ${username} = import ../../modules/home-manager;
+      ${username} = import (inputs.self + "/modules/home-manager/");
     };
   };
   environment.sessionVariables = {

@@ -8,4 +8,5 @@
     nixos-boot = lib.mkForce "nh os boot --ask --hostname nixosPC ${homeDir}/.dotfiles";
     nixos-test = lib.mkForce "nh os test --ask --hostname nixosPC ${homeDir}/.dotfiles";
   };
+  services.gammastep.enable = lib.mkForce false;
 }

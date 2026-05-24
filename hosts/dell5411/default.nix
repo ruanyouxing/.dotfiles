@@ -1,16 +1,18 @@
 {
   username,
+  customLib,
   lib,
   ...
 }: {
-  imports = [
-    ../../fonts
-    ../../modules/nixos
-    ./hardware-configuration.nix
-    ./boot.nix
-    ./graphics.nix
-    ./services.nix
-  ];
+  imports =
+    customLib.RandomBullshitsGo {
+      dir = ./.;
+      excludeNames = ["hm_override.nix"];
+    }
+    ++ [
+      ../../fonts
+      ../../modules/nixos
+    ];
   home-manager = {
     extraSpecialArgs = {inherit username;};
     users = {

@@ -1,7 +1,5 @@
-{
-  imports = [
-    ./cava.nix
-    ./mpd.nix
-    ./ncmpcpp.nix
-  ];
+{customLib, ...}: {
+  imports = customLib.RandomBullshitsGo {
+    dir = ./.;
+  };
 }

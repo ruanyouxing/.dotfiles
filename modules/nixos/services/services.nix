@@ -2,8 +2,7 @@
   pkgs,
   options,
   ...
-}:
-{
+}: {
   networking.networkmanager.enable = true;
   programs.dconf.enable = true;
   programs.vim.enable = true;
@@ -25,5 +24,9 @@
     v4l-utils
     android-tools
   ];
-  networking.timeServers = options.networking.timeServers.default ++ [ "0.asia.pool.ntp.org" ];
+  networking.timeServers = options.networking.timeServers.default ++ ["0.asia.pool.ntp.org"];
+  programs.localsend = {
+    enable = true;
+    openFirewall = true;
+  };
 }

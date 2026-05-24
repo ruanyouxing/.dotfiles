@@ -1,9 +1,11 @@
-{pkgs, ...}: {
-  imports = [
-    ./waybar
-    ./wlogout
-    ./extras
-  ];
+{
+  pkgs,
+  customLib,
+  ...
+}: {
+  imports = customLib.importDirModules {
+    dir = ./.;
+  };
   home.packages = with pkgs; [
     slurp
     grim

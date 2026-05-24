@@ -1,13 +1,12 @@
 {
   pkgs,
   config,
+  inputs,
   ...
-}:
-let
-  catpuccin-icons = pkgs.callPackage ./catppuccin-icons.nix { };
+}: let
+  catpuccin-icons = pkgs.callPackage (inputs.self + "/catppuccin-icons.nix") {};
   homeDir = config.home.homeDirectory;
-in
-{
+in {
   home.pointerCursor = {
     gtk.enable = true;
     dotIcons.enable = true;
@@ -29,10 +28,10 @@ in
     theme = {
       name = "Catppuccin-GTK-Purple-Dark-Compact-Macchiato";
       package = pkgs.magnetic-catppuccin-gtk.override {
-        accent = [ "lavender" ];
+        accent = ["lavender"];
         shade = "dark";
         size = "compact";
-        tweaks = [ "macchiato" ];
+        tweaks = ["macchiato"];
       };
     };
     iconTheme = {
