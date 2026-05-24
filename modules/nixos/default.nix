@@ -1,3 +1,5 @@
 {customLib, ...}: {
-  imports = customLib.importModules {dir = ./.;};
+  imports = customLib.importModules {
+    dir = ./.;
+  };
 }

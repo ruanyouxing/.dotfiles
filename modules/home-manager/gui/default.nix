@@ -5,7 +5,6 @@
 }: {
   imports = customLib.importModules {
     dir = ./.;
-    excludeNames = ["mpv.nix"];
   };
   home.packages = with pkgs; [
     (discord.override {withVencord = true;})

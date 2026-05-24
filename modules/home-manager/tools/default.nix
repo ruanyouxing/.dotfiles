@@ -1,17 +1,12 @@
 {
   pkgs,
-  inputs,
   customLib,
   ...
-}: let
-  mocword = pkgs.callPackage ./mocword.nix {naersk = pkgs.callPackage inputs.naersk {};};
-in {
+}: {
   imports = customLib.importModules {
     dir = ./.;
-    excludeNames = ["mocword.nix"];
   };
   home.packages = with pkgs; [
-    mocword
     pywal
     gh
     htop

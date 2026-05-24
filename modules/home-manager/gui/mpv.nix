@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.mpv = {
     enable = true;
 
@@ -12,14 +11,14 @@
           visualizer
           thumbfast
           mpv-playlistmanager
-          mpv-cheatsheet
+          mpv-cheatsheet-ng
           mpv-discord
           memo
           eisa01.smartskip
           modernz
         ];
 
-        mpv = pkgs.mpv.override {
+        mpv-unwrapped = pkgs.mpv-unwrapped.override {
           waylandSupport = true;
           jackaudioSupport = true;
           ffmpeg = pkgs.ffmpeg-full;
