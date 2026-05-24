@@ -2,17 +2,18 @@
   inputs,
   username,
   homeDir,
+  customLib,
   ...
 }: {
-  imports = [
-    ./hypr
-    ./audio
-    ./gui
-    ./user
-    ./tools
-    ../scripts
-    inputs.spicetify-nix.homeManagerModules.default
-  ];
+  imports =
+    customLib.importDirModules {
+      dir = ./.;
+    }
+    ++ [
+      ../scripts
+      inputs.spicetify-nix.homeManagerModules.default
+    ];
+
   programs.home-manager.enable = true;
   nixpkgs.config = {
     allowUnfree = true;
