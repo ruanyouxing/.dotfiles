@@ -1,11 +1,7 @@
 {
   pkgs,
-  customLib,
   ...
 }: {
-  imports = customLib.importModules {
-    dir = ./.;
-  };
   home.packages = with pkgs; [
     (discord.override {withVencord = true;})
     thunar

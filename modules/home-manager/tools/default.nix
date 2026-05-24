@@ -1,11 +1,7 @@
 {
   pkgs,
-  customLib,
   ...
 }: {
-  imports = customLib.importModules {
-    dir = ./.;
-  };
   home.packages = with pkgs; [
     pywal
     gh

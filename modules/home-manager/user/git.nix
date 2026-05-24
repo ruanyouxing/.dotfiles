@@ -1,7 +1,4 @@
 {
-  imports = [
-    ./shellcfg.nix
-  ];
   programs.delta = {
     enable = true;
     enableGitIntegration = true;
