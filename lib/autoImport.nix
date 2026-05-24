@@ -1,22 +1,8 @@
 lib: rec {
-  RandomBullshitsGo = {
+  importModules = {
     dir,
     excludeNames ? [],
-  }: let
-    allFiles = lib.filesystem.listFilesRecursive dir;
-  in
-    builtins.filter (
-      path: let
-        name = baseNameOf path;
-      in
-        lib.strings.hasSuffix ".nix" name
-        && name != "default.nix"
-        && !(builtins.elem name excludeNames)
-    )
-    allFiles;
-  importDirModules = {
-    dir,
-    excludeNames ? [],
+    includeDefaultNix ? false,
   }: let
     dirContents = builtins.readDir dir;
     validEntries =
@@ -28,7 +14,7 @@ lib: rec {
             != "default.nix"
             && lib.strings.hasSuffix ".nix" name
             && !(builtins.elem name excludeNames)
-          else if type == "directory"
+          else if type == "directory" && includeDefaultNix
           then builtins.pathExists (dir + "/${name}/default.nix")
           else false
       )

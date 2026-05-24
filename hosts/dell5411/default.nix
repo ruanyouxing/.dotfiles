@@ -5,7 +5,7 @@
   ...
 }: {
   imports =
-    customLib.RandomBullshitsGo {
+    customLib.importModules {
       dir = ./.;
       excludeNames = ["hm_override.nix"];
     }

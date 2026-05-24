@@ -1,3 +1,3 @@
 {customLib, ...}: {
-  imports = customLib.RandomBullshitsGo {dir = ./.;};
+  imports = customLib.importModules {dir = ./.;};
 }

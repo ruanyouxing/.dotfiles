@@ -3,8 +3,9 @@
   customLib,
   ...
 }: {
-  imports = customLib.importDirModules {
+  imports = customLib.importModules {
     dir = ./.;
+    includeDefaultNix = true;
   };
   home.packages = with pkgs; [
     slurp

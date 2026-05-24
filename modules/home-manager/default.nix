@@ -6,8 +6,9 @@
   ...
 }: {
   imports =
-    customLib.importDirModules {
+    customLib.importModules {
       dir = ./.;
+      includeDefaultNix = true;
     }
     ++ [
       ../scripts

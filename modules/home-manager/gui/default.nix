@@ -3,7 +3,7 @@
   customLib,
   ...
 }: {
-  imports = customLib.importDirModules {
+  imports = customLib.importModules {
     dir = ./.;
     excludeNames = ["mpv.nix"];
   };

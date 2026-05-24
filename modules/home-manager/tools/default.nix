@@ -6,7 +6,7 @@
 }: let
   mocword = pkgs.callPackage ./mocword.nix {naersk = pkgs.callPackage inputs.naersk {};};
 in {
-  imports = customLib.RandomBullshitsGo {
+  imports = customLib.importModules {
     dir = ./.;
     excludeNames = ["mocword.nix"];
   };
