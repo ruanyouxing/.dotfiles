@@ -14,8 +14,8 @@ in {
       enable = true;
       size = 24;
     };
-    package = pkgs.catppuccin-cursors.macchiatoSapphire;
-    name = "Catppuccin Macchiato Sapphire";
+    package = pkgs.catppuccin-cursors.macchiatoMauve;
+    name = "Catppuccin Macchiato Mauve";
     size = 16;
   };
   gtk = {
@@ -25,9 +25,9 @@ in {
       size = 14;
     };
     theme = {
-      name = "Catppuccin-GTK-Purple-Dark-Compact-Macchiato";
+      name = "Catppuccin-GTK-Mauve-Dark-Compact-Macchiato";
       package = pkgs.magnetic-catppuccin-gtk.override {
-        accent = ["lavender"];
+        accent = ["mauve"];
         shade = "dark";
         size = "compact";
         tweaks = ["macchiato"];
@@ -35,7 +35,7 @@ in {
     };
     iconTheme = {
       package = extraPkgs.catppuccin-icons;
-      name = "Catppuccin-Frappe";
+      name = "Catppuccin-Macchiato";
     };
     gtk3 = {
       bookmarks = [

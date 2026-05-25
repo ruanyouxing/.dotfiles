@@ -1,13 +1,9 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     pywal
     gh
     htop
     xcp
-    zinit
     dust
     duf
     ncdu

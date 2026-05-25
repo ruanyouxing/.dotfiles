@@ -23,30 +23,41 @@
     enable = true;
     autosuggestion.enable = true;
     enableCompletion = true;
+    plugins = [
+      {
+        name = "zsh-autopair";
+        src = pkgs.zsh-autopair;
+        file = "share/zsh/zsh-autopair/autopair.zsh";
+      }
+      {
+        name = "you-should-use";
+        src = pkgs.zsh-you-should-use;
+        file = "share/zsh/plugins/you-should-use/you-should-use.plugin.zsh";
+      }
+      {
+        name = "fast-syntax-highlighting";
+        src = pkgs.zsh-fast-syntax-highlighting;
+        file = "share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh";
+      }
+      {
+        name = "zsh-history-substring-search";
+        src = pkgs.zsh-history-substring-search;
+        file = "share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh";
+      }
+    ];
     initContent = ''
-          source ${pkgs.zinit}/share/zinit/zinit.zsh
-          zinit load hlissner/zsh-autopair
-          zinit wait lucid for \
-          atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-            zdharma-continuum/fast-syntax-highlighting \
-          blockf \
-            zsh-users/zsh-completions \
-          atload"!_zsh_autosuggest_start" \
-            zsh-users/zsh-autosuggestions
-          zinit ice as"command" from"gh-r" \
-          atpull"%atclone" src"init.zsh"
+      fpath+=(${pkgs.zsh-completions}/share/zsh/site-functions)
 
-          cd(){
-              if (( $# == 0  ))
-                then builtin cd && builtin cd $(${pkgs.findutils}/bin/find . -type d -print | ${pkgs.fzf}/bin/fzf );
-              else
-                builtin cd $1
-              fi
-            }
+      bindkey '^[[A' history-substring-search-up
+      bindkey '^[[B' history-substring-search-down
 
-      # if uwsm check may-start; then
-      #   exec uwsm start hyprland-uwsm.desktop
-      # fi
+      cd(){
+          if (( $# == 0  ))
+            then builtin cd && builtin cd $(${pkgs.findutils}/bin/find . -type d -print | ${pkgs.fzf}/bin/fzf );
+          else
+            builtin cd $1
+          fi
+        }
     '';
   };
   programs.eza = {
