@@ -32,7 +32,7 @@
     };
   };
   xdg.configFile."hypr" = {
-    source = ./lua;
+    source = ./hyprland;
     recursive = true;
   };
   # wayland.windowManager.hyprland = {

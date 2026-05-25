@@ -59,7 +59,7 @@ local keybinds = {
 }
 for i = 1, 9 do
   hl.bind(SUPER .. " + " .. i, dsp.focus { workspace = i })
-  hl.bind(SUPERSHIFT .. " + " .. i, dsp.window.move { workspace = i, follow = false })
+  hl.bind(SUPERSHIFT .. " + " .. i, dsp.window.move { workspace = i, follow = true })
 end
 
 hl.gesture({
