@@ -1,8 +1,8 @@
 {
   inputs,
+  catppuccinFlavor,
   ...
-}:
-{
+}: {
   programs.spicetify =
     let
       spicePkgs = inputs.spicetify-nix.legacyPackages.x86_64-linux;
@@ -10,7 +10,7 @@
     {
       enable = true;
       theme = spicePkgs.themes.catppuccin;
-      colorScheme = "macchiato";
+      colorScheme = catppuccinFlavor;
       enabledExtensions = with spicePkgs.extensions; [
         adblock
         hidePodcasts

@@ -2,6 +2,7 @@
   description = "ruanyouxing dotfiles flake";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    catppuccin.url = "github:catppuccin/nix";
     nvim-config.url = "github:ruanyouxing/nvim";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -17,6 +18,7 @@
     };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     bad-apple-plymouth.url = "github:ruanyouxing/bad-apple-plymouth/test";
+    macefi.url = "github:ruanyouxing/MacEFI";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,26 +38,30 @@
     extraPkgs = import ./extra-pkgs {inherit pkgs lib inputs;};
     username = "hungz";
     homeDir = "/home/${username}";
+    catppuccinFlavor = "macchiato";
+    catppuccinAccent = "mauve";
   in {
     inherit lib;
 
     nixosConfigurations = {
       nixosPC = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = {inherit inputs customLib extraPkgs username homeDir;};
+        specialArgs = {inherit inputs customLib extraPkgs username homeDir catppuccinFlavor catppuccinAccent;};
         modules = [
           ./hosts/nixosPC
           home-manager.nixosModules.default
           # lanzaboote.nixosModules.lanzaboote
+          inputs.catppuccin.nixosModules.catppuccin
           nur.modules.nixos.default
         ];
       };
       dell5411 = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = {inherit inputs customLib extraPkgs username homeDir;};
+        specialArgs = {inherit inputs customLib extraPkgs username homeDir catppuccinFlavor catppuccinAccent;};
         modules = [
           ./hosts/dell5411
           home-manager.nixosModules.default
+          inputs.catppuccin.nixosModules.catppuccin
           nur.modules.nixos.default
         ];
       };
@@ -63,7 +69,7 @@
     homeConfigurations = {
       "homeConfig" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = {inherit inputs customLib extraPkgs username homeDir;};
+        extraSpecialArgs = {inherit inputs customLib extraPkgs username homeDir catppuccinFlavor catppuccinAccent;};
         modules = [
           ./modules/home-manager/default.nix
         ];

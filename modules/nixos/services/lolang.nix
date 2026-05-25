@@ -23,10 +23,10 @@
           kdePackages.fcitx5-qt
           qt6Packages.fcitx5-unikey
           fcitx5-mozc
-          catppuccin-fcitx5
         ];
         waylandFrontend = true;
       };
     };
   };
+  catppuccin.fcitx5.enable = true;
 }

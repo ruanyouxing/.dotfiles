@@ -2,6 +2,8 @@
   username,
   customLib,
   extraPkgs,
+  catppuccinFlavor,
+  catppuccinAccent,
   ...
 }: {
   imports =
@@ -15,7 +17,7 @@
 
   environment.sessionVariables.HOSTNAME = "nixosPC";
   home-manager = {
-    extraSpecialArgs = {inherit extraPkgs;};
+    extraSpecialArgs = {inherit extraPkgs catppuccinFlavor catppuccinAccent;};
     users.${username} = import ./home-manager.nix;
   };
 }

@@ -1,10 +1,4 @@
-{pkgs, ...}: let
-  variant = "macchiato";
-  accent = "mauve";
-  catppuccin-kvantum = pkgs.catppuccin-kvantum.override {
-    inherit accent variant;
-  };
-in {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     papirus-folders
     libsForQt5.qt5ct
@@ -14,14 +8,5 @@ in {
     enable = true;
     platformTheme.name = "qtct";
     style.name = "kvantum";
-  };
-
-  xdg.configFile = {
-    "Kvantum/kvantum.kvconfig".text = ''
-      [General]
-      theme=catppuccin-${variant}-${accent}
-    '';
-
-    "Kvantum/catppuccin-${variant}-${accent}".source = "${catppuccin-kvantum}/share/Kvantum/catppuccin-${variant}-${accent}";
   };
 }

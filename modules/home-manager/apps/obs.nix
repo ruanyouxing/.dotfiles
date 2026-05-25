@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   ...
 }:
@@ -17,12 +16,6 @@ let
       cp ./droidcam-obs/bin/64bit/droidcam-obs.so $out/lib/obs-plugins
     '';
   };
-  theme-dir = pkgs.fetchFromGitHub {
-    owner = "catppuccin";
-    repo = "obs";
-    rev = "58a80435caf1ff4f62b94592f508fba4c3776c97";
-    hash = "sha256-2CuaMd+9GHK18M971+pVltPC9h59LYDXEAEkEq+tRw8=";
-  };
 in
 {
   # programs.obs-studio = {
@@ -32,5 +25,4 @@ in
   #     droidcam-obs
   #   ];
   # };
-  xdg.configFile."obs-studio/themes".source = "${theme-dir}/themes/";
 }

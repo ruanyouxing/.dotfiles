@@ -13,6 +13,7 @@
     }
     ++ [
       inputs.spicetify-nix.homeManagerModules.default
+      inputs.catppuccin.homeModules.catppuccin
     ];
 
   programs.home-manager.enable = true;

@@ -4,6 +4,8 @@
   customLib,
   username,
   homeDir,
+  catppuccinFlavor,
+  catppuccinAccent,
   ...
 }: {
   imports = [
@@ -25,7 +27,7 @@
   };
   home-manager = {
     useUserPackages = true;
-    extraSpecialArgs = {inherit inputs pkgs customLib username homeDir;};
+    extraSpecialArgs = {inherit inputs pkgs customLib username homeDir catppuccinFlavor catppuccinAccent;};
     backupFileExtension = "hm-bak";
     users = {
       ${username} = inputs.self + "/modules/home-manager/";

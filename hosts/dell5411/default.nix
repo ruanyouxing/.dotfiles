@@ -3,6 +3,8 @@
   customLib,
   extraPkgs,
   lib,
+  catppuccinFlavor,
+  catppuccinAccent,
   ...
 }: {
   imports =
@@ -14,7 +16,7 @@
       ../../modules/nixos
     ];
   home-manager = {
-    extraSpecialArgs = {inherit username extraPkgs;};
+    extraSpecialArgs = {inherit username extraPkgs catppuccinFlavor catppuccinAccent;};
     users = {
       ${username} = import ./home-manager.nix;
     };

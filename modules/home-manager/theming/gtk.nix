@@ -1,21 +1,25 @@
 {
+  lib,
   pkgs,
   config,
   extraPkgs,
+  catppuccinFlavor,
+  catppuccinAccent,
   ...
 }: let
   homeDir = config.home.homeDirectory;
+  toSentence = lib.toSentenceCase;
+  cursorPkgName = "${catppuccinFlavor}${toSentence catppuccinAccent}";
 in {
   home.pointerCursor = {
     gtk.enable = true;
-    dotIcons.enable = true;
     x11.enable = true;
     hyprcursor = {
       enable = true;
       size = 24;
     };
-    package = pkgs.catppuccin-cursors.macchiatoMauve;
-    name = "Catppuccin Macchiato Mauve";
+    package = pkgs.catppuccin-cursors.${cursorPkgName};
+    name = "Catppuccin ${toSentence catppuccinFlavor} ${toSentence catppuccinAccent}";
     size = 16;
   };
   gtk = {
@@ -25,17 +29,17 @@ in {
       size = 14;
     };
     theme = {
-      name = "Catppuccin-GTK-Mauve-Dark-Compact-Macchiato";
+      name = "Catppuccin-GTK-${toSentence catppuccinAccent}-Dark-Compact-${toSentence catppuccinFlavor}";
       package = pkgs.magnetic-catppuccin-gtk.override {
-        accent = ["mauve"];
+        accent = [catppuccinAccent];
         shade = "dark";
         size = "compact";
-        tweaks = ["macchiato"];
+        tweaks = [catppuccinFlavor];
       };
     };
     iconTheme = {
-      package = extraPkgs.catppuccin-icons;
-      name = "Catppuccin-Macchiato";
+      package = lib.mkForce extraPkgs.catppuccin-icons;
+      name = lib.mkForce "Catppuccin-${toSentence catppuccinFlavor}";
     };
     gtk3 = {
       bookmarks = [
