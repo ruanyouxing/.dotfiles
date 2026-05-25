@@ -29,12 +29,14 @@ in {
       size = 14;
     };
     theme = {
-      name = "Catppuccin-GTK-${toSentence catppuccinAccent}-Dark-Compact-${toSentence catppuccinFlavor}";
+      name = let
+        flavorSuffix = lib.optionalString (catppuccinFlavor != "mocha") "-${toSentence catppuccinFlavor}";
+      in "Catppuccin-GTK-${toSentence catppuccinAccent}-Dark-Compact${flavorSuffix}";
       package = pkgs.magnetic-catppuccin-gtk.override {
         accent = [catppuccinAccent];
         shade = "dark";
         size = "compact";
-        tweaks = [catppuccinFlavor];
+        tweaks = lib.lists.remove "mocha" [catppuccinFlavor];
       };
     };
     iconTheme = {

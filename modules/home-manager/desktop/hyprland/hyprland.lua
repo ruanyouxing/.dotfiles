@@ -1,7 +1,7 @@
 require("bindings")
 require("animation")
 require("rules")
-
+local catppuccin_theme = require("theme")
 local function get_system_hostname()
   local f = io.popen("hostname")
   if f then
@@ -22,8 +22,8 @@ local opts = {
   general = {
     border_size = 3,
     col = {
-      active_border = { colors = { "rgba(3DDCFFee)", "rgba(A78BFAee)", angle = 90 } },
-      inactive_border = "rgba(595959ff)",
+      active_border = { colors = { catppuccin_theme.mauve } },
+      inactive_border = catppuccin_theme.mantle,
     },
     gaps_in = 5,
     gaps_out = 20,

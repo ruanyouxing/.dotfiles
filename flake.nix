@@ -38,8 +38,8 @@
     extraPkgs = import ./extra-pkgs {inherit pkgs lib inputs;};
     username = "hungz";
     homeDir = "/home/${username}";
-    catppuccinFlavor = "macchiato";
-    catppuccinAccent = "lavender";
+    catppuccinFlavor = "mocha";
+    catppuccinAccent = "mauve";
   in {
     inherit lib;
 

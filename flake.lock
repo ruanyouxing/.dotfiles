@@ -921,11 +921,11 @@
         "nixpkgs": "nixpkgs_9"
       },
       "locked": {
-        "lastModified": 1779732730,
-        "narHash": "sha256-XKgajOTckcSopNMZh2yLjNOR0jDiYTIOAwRdixJd7+c=",
+        "lastModified": 1779740089,
+        "narHash": "sha256-S6YZaM4oygMzu22L8g8JIX8xqVMD9g1chrRpcPDTzg4=",
         "owner": "ruanyouxing",
         "repo": "nvim",
-        "rev": "17dfb0e23b78e8ac8465ab9dca70fd8e8bcd53a0",
+        "rev": "c4d5726ef0018dc8fe1903133bab5d025f439369",
         "type": "github"
       },
       "original": {

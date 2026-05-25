@@ -1,4 +1,4 @@
-homeDir = os.getenv("HOME")
+local homeDir = os.getenv("HOME")
 hl.on("hyprland.start", function()
   hl.exec_cmd("awww-init")
   hl.exec_cmd("awww img " .. homeDir .. "/Downloads/wallpaper.jpg")
