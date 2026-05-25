@@ -1,7 +1,7 @@
 {pkgs, ...}: let
   bc = "${pkgs.bc}/bin/bc";
 in
-  pkgs.writeShellScriptBin "player-progress" ''
+  pkgs.writeShellScriptBin "progress-bar" ''
     STATE_FILE="/tmp/progress-mode"
       BAR_LENGTH=20
       FULL="█"
