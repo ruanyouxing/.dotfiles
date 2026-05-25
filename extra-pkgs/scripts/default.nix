@@ -39,6 +39,5 @@
         pkgs.writeShellScriptBin pkgName (builtins.readFile path)
     )
     scriptFiles;
-in {
-  home.packages = nixPackages ++ shellPackages;
-}
+in
+  nixPackages ++ shellPackages

@@ -3,6 +3,7 @@
   username,
   homeDir,
   customLib,
+  extraPkgs,
   ...
 }: {
   imports =
@@ -11,7 +12,6 @@
       includeDefaultNix = true;
     }
     ++ [
-      ../scripts
       inputs.spicetify-nix.homeManagerModules.default
     ];
 
@@ -24,6 +24,7 @@
     inherit username;
     homeDirectory = homeDir;
     stateVersion = "26.05";
+    packages = extraPkgs.scripts;
   };
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {

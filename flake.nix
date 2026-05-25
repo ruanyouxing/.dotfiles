@@ -33,6 +33,7 @@
     pkgs = nixpkgs.legacyPackages.${system};
     customLib = import ./lib nixpkgs.lib;
     lib = nixpkgs.lib // customLib;
+    extraPkgs = import ./extra-pkgs {inherit pkgs lib inputs;};
     username = "hungz";
     homeDir = "/home/${username}";
   in {
@@ -41,7 +42,7 @@
     nixosConfigurations = {
       nixosPC = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = {inherit inputs customLib username homeDir;};
+        specialArgs = {inherit inputs customLib extraPkgs username homeDir;};
         modules = [
           ./hosts/nixosPC
           home-manager.nixosModules.default
@@ -51,7 +52,7 @@
       };
       dell5411 = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = {inherit inputs customLib username homeDir;};
+        specialArgs = {inherit inputs customLib extraPkgs username homeDir;};
         modules = [
           ./hosts/dell5411
           home-manager.nixosModules.default
@@ -62,7 +63,7 @@
     homeConfigurations = {
       "homeConfig" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = {inherit inputs customLib username homeDir;};
+        extraSpecialArgs = {inherit inputs customLib extraPkgs username homeDir;};
         modules = [
           ./modules/home-manager/default.nix
         ];

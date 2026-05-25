@@ -1,22 +1,22 @@
 {
   username,
   customLib,
+  extraPkgs,
   lib,
   ...
 }: {
   imports =
     customLib.importModules {
       dir = ./.;
-      excludeNames = ["hm_override.nix"];
+      excludeNames = ["home-manager.nix"];
     }
     ++ [
-      ../../fonts
       ../../modules/nixos
     ];
   home-manager = {
-    extraSpecialArgs = {inherit username;};
+    extraSpecialArgs = {inherit username extraPkgs;};
     users = {
-      ${username} = import ./hm_override.nix;
+      ${username} = import ./home-manager.nix;
     };
   };
   networking.hostName = lib.mkForce "veritas-laptop";

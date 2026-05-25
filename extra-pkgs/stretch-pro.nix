@@ -4,7 +4,7 @@
 }:
 stdenv.mkDerivation {
   name = "stretch-pro";
-  src = ./fontpacks/StretchPro.otf;
+  src = ./fonts/fontpacks/StretchPro.otf;
   dontUnpack = true;
   phases = ["installPhase"];
   installPhase = ''

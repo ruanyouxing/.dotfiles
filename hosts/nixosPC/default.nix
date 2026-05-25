@@ -1,18 +1,21 @@
 {
   username,
   customLib,
+  extraPkgs,
   ...
 }: {
   imports =
     customLib.importModules {
       dir = ./.;
-      excludeNames = ["hm_override.nix"];
+      excludeNames = ["home-manager.nix"];
     }
     ++ [
       ../../modules/nixos
-      ../../fonts
     ];
 
   environment.sessionVariables.HOSTNAME = "nixosPC";
-  home-manager.users.${username} = import ./hm_override.nix;
+  home-manager = {
+    extraSpecialArgs = {inherit extraPkgs;};
+    users.${username} = import ./home-manager.nix;
+  };
 }

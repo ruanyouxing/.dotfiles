@@ -1,10 +1,9 @@
 {
   pkgs,
   config,
-  inputs,
+  extraPkgs,
   ...
 }: let
-  catpuccin-icons = pkgs.callPackage (inputs.self + "/catppuccin-icons.nix") {};
   homeDir = config.home.homeDirectory;
 in {
   home.pointerCursor = {
@@ -35,7 +34,7 @@ in {
       };
     };
     iconTheme = {
-      package = catpuccin-icons;
+      package = extraPkgs.catppuccin-icons;
       name = "Catppuccin-Frappe";
     };
     gtk3 = {
