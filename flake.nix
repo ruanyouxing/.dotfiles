@@ -39,7 +39,7 @@
     username = "hungz";
     homeDir = "/home/${username}";
     catppuccinFlavor = "macchiato";
-    catppuccinAccent = "mauve";
+    catppuccinAccent = "lavender";
   in {
     inherit lib;
 
