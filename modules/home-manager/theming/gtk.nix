@@ -9,8 +9,8 @@
 }: let
   homeDir = config.home.homeDirectory;
   toSentence = lib.toSentenceCase;
-  cursorPkgName = "${catppuccinFlavor}${toSentence catppuccinAccent}";
 in {
+  catppuccin.cursors.enable = true;
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
@@ -18,8 +18,6 @@ in {
       enable = true;
       size = 24;
     };
-    package = pkgs.catppuccin-cursors.${cursorPkgName};
-    name = "Catppuccin ${toSentence catppuccinFlavor} ${toSentence catppuccinAccent}";
     size = 16;
   };
   gtk = {

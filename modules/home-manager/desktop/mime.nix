@@ -4,15 +4,15 @@
     defaultApplications = {
       "inode/directory" = "thunar.desktop";
 
-      "image/png" = "ristretto.desktop";
-      "image/jpeg" = "ristretto.desktop";
-      "image/gif" = "ristretto.desktop";
-      "image/webp" = "ristretto.desktop";
-      "image/bmp" = "ristretto.desktop";
-      "image/tiff" = "ristretto.desktop";
-      "image/svg+xml" = "ristretto.desktop";
-      "image/vnd.microsoft.icon" = "ristretto.desktop";
-      "image/x-xcf" = "ristretto.desktop";
+      "image/png" = "org.xfce.ristretto.desktop";
+      "image/jpeg" = "org.xfce.ristretto.desktop";
+      "image/gif" = "org.xfce.ristretto.desktop";
+      "image/webp" = "org.xfce.ristretto.desktop";
+      "image/bmp" = "org.xfce.ristretto.desktop";
+      "image/tiff" = "org.xfce.ristretto.desktop";
+      "image/svg+xml" = "org.xfce.ristretto.desktop";
+      "image/vnd.microsoft.icon" = "org.xfce.ristretto.desktop";
+      "image/x-xcf" = "org.xfce.ristretto.desktop";
 
       "video/mp4" = "mpv.desktop";
       "video/mkv" = "mpv.desktop";
@@ -40,6 +40,13 @@
       "x-scheme-handler/about" = "brave-browser.desktop";
       "x-scheme-handler/unknown" = "brave-browser.desktop";
       "text/html" = "brave-browser.desktop";
+    };
+  };
+  home.sessionVariables.TERMINAL = "kitty";
+  xdg.terminal-exec = {
+    enable = true;
+    settings = {
+      default = ["kitty.desktop"];
     };
   };
 }

@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    pywal
     gh
     htop
     xcp
@@ -10,7 +9,6 @@
     nix-prefetch-github
     octofetch
     pipes
-    ranger
     rsync
     ttyper
     silver-searcher
