@@ -20,6 +20,7 @@
       "networkmanager"
       "wheel"
       "audio"
+      "video"
       "libvirtd"
       "kvm"
       "adbusers"

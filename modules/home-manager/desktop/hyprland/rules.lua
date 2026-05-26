@@ -8,19 +8,14 @@ hl.layer_rule({
 })
 hl.window_rule({
   match = {
-    title = "^.*([oO]pen|[sS]ave|[uU]pload|Volume Control|Preferences|Settings|Popup|.*Dialog.*|Bluetooth Devices).*$"
+    -- title = "^.*([oO]pen|[sS]ave|[uU]pload|Volume Control|Preferences|Settings|Popup|.*Dialog.*|Bluetooth Devices).*$"
+    class = "xdg-desktop-portal-gtk",
   },
   size = { 1200, 900 },
   center = true,
   float = true,
 })
 
-hl.window_rule({
-  match = {
-    class = "^xdg-desktop-portal-gtk$"
-  },
-  pin = true
-})
 
 hl.window_rule({
   match = {
