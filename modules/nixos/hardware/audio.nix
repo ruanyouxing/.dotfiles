@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     pavucontrol
     pulseaudio
@@ -23,6 +22,7 @@
     pulseaudio.enable = false;
     pipewire = {
       enable = true;
+      wireplumber.enable = true;
       alsa = {
         enable = true;
         support32Bit = true;

@@ -58,6 +58,9 @@ local opts = {
       natural_scroll = true
     }
   },
+  misc = {
+    initial_workspace_tracking = 0,
+  },
   debug = {
     disable_logs = false,
     enable_stdout_logs = true

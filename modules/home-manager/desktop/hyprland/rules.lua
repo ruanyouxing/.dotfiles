@@ -8,10 +8,10 @@ hl.layer_rule({
 })
 hl.window_rule({
   match = {
-    title = ":^.*([oO]pen|[sS]ave|[uU]pload|Volume Control|Preferences|Settings|Popup|.*Dialog.*|Bluetooth Devices).*$"
+    title = "^.*([oO]pen|[sS]ave|[uU]pload|Volume Control|Preferences|Settings|Popup|.*Dialog.*|Bluetooth Devices).*$"
   },
-  size = { 800, 600 },
-  -- pin = true,
+  size = { 1200, 900 },
+  center = true,
   float = true,
 })
 
