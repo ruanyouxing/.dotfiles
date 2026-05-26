@@ -639,11 +639,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1779799971,
-        "narHash": "sha256-oXPUu2ad8MWLeSYxA4hcG5spDI7x8/pzYv2kMhJu0/U=",
+        "lastModified": 1779800562,
+        "narHash": "sha256-GhkR9q59wdfBhdRG+AWaZEkjMDBt0GUuI/+DSaLBN1Y=",
         "owner": "ruanyouxing",
         "repo": "MacEFI",
-        "rev": "200fd700f486f7cc43271d17b42fb393f47d79cc",
+        "rev": "8e74996011c4135933385d3a6d5909a120b5cc6f",
         "type": "github"
       },
       "original": {

@@ -42,14 +42,14 @@ local keybinds = {
   { SuperShift("up"),        function() exec_cmd("swapwindow", "u") end },
   { SuperShift("down"),      function() exec_cmd("swapwindow", "d") end },
 
-  { "XF86AudioRaiseVolume",  exec_cmd("volume-control up") },
-  { "XF86AudioLowerVolume",  exec_cmd("volume-control down") },
-  { "XF86AudioMute",         exec_cmd("volume-control mute") },
-  { "XF86AudioPlay",         exec_cmd("playerctl play-pause") },
-  { "XF86AudioPrev",         exec_cmd("playerctl prev") },
-  { "XF86AudioNext",         exec_cmd("playerctl next") },
-  { "XF86MonBrightnessUp",   exec_cmd("brightnessctl s +5%") },
-  { "XF86MonBrightnessDown", exec_cmd("brightnessctl s -5%") },
+  -- { "VolumeUp",              exec_cmd("volume-control up"),                  { repeating = true } },
+  -- { "VolumeDown",            exec_cmd("volume-control down"),                { repeating = true } },
+  -- { "VolumeMute",            exec_cmd("volume-control mute"),                { locked = true } },
+  -- { "MediaPlay",             exec_cmd("playerctl play-pause"),               { locked = true } },
+  -- { "MediaPrevious",         exec_cmd("playerctl prev"),                     { locked = true } },
+  -- { "MediaNext",             exec_cmd("playerctl next"),                     { locked = true } },
+  -- { "MonBrightnessUp",       exec_cmd("brightnessctl s +5%"),                { repeating = true } },
+  -- { "MonBrightnessDown",     exec_cmd("brightnessctl s -5%"),                { repeating = true } },
 
 
   { Super("mouse_down"),     dsp.focus { workspace = "e+1" } },

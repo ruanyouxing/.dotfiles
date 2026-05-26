@@ -4,9 +4,6 @@ let
 in
 {
   boot = {
-    extraModprobeConfig = ''
-      options v4l2loopback devices=1 video_nr=0 card_label="OBS-Virtual-Camera" exclusive_caps=1
-    '';
     supportedFilesystems = [
       "ntfs"
       "exfat"
@@ -16,7 +13,6 @@ in
     ];
     kernelModules = [
       "ntfs3"
-      "v4l2loopback"
     ];
     loader = {
       timeout = 10;
