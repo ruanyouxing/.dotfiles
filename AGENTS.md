@@ -45,7 +45,7 @@ Custom package derivations at `extra-pkgs/`:
 | File | What |
 |---|---|
 | `catppuccin-icons.nix` | Catppuccin GTK icon theme derivation |
-| `catppuccin-grub.nix` | Catppuccin GRUB theme (flavor from `flake.nix`) |
+
 | `stretch-pro.nix` | Stretch Pro font (source: `fonts/fontpacks/`) |
 | `scripts/` | Auto-discovered scripts (see below) |
 
@@ -82,7 +82,7 @@ Shell packages: `bash-language-server`, `nil` (nix LSP), `alejandra` (nix fmt), 
 - `modules/home-manager/` — HM modules: `apps/` (browser, kitty, mpv, obs), `audio/` (mpd, cava), `cli/` (btop, neovim, yazi), `desktop/` (hyprland, waybar, wlogout, rofi), `shell/` (git, zsh), `theming/` (gtk, qt)
 - `modules/nixos/` — shared NixOS modules (boot, audio, graphics, virtualization, services)
 - `fonts/default.nix` — font config (Fira Code, Noto CJK, Nerd Fonts, etc.)
-- `extra-pkgs/` — custom package derivations (catppuccin-icons, catppuccin-grub, stretch-pro, scripts)
+- `extra-pkgs/` — custom package derivations (catppuccin-icons, stretch-pro, scripts)
 
 ## Formatter / lint conventions
 

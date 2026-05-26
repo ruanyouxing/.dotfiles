@@ -5,9 +5,7 @@
 }: let
   allFiles = lib.filesystem.listFilesRecursive ./.;
   scriptsDir = toString ./scripts;
-  excludeNames = [
-    "catppuccin-grub.nix"
-  ];
+  excludeNames = [];
   pkgFiles =
     builtins.filter (
       path: let
