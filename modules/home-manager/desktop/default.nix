@@ -1,7 +1,8 @@
 {
   pkgs,
   ...
-}: {
+}: let
+in {
   home.packages = with pkgs; [
     slurp
     grim
@@ -12,7 +13,7 @@
     dunst
   ];
   services.gammastep = {
-    enable = false;
+    enable = true;
     provider = "manual";
     latitude = 12.0;
     longitude = 107.0;
@@ -35,9 +36,9 @@
     source = ./hyprland;
     recursive = true;
   };
-  # wayland.windowManager.hyprland = {
-  #   enable = true;
-  #   configType = "lua";
-  #   # plugins = [];
-  # };
+  wayland.windowManager.hyprland = {
+    enable = true;
+    configType = "lua";
+    # plugins = [];
+  };
 }

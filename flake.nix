@@ -8,7 +8,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    lanzaboote.url = "github:nix-community/lanzaboote";
+    # lanzaboote.url = "github:nix-community/lanzaboote";
     hyprland.url = "github:hyprwm/Hyprland";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     naersk.url = "github:nmattia/naersk";
@@ -19,16 +19,17 @@
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     bad-apple-plymouth.url = "github:ruanyouxing/bad-apple-plymouth/test";
     macefi.url = "github:ruanyouxing/MacEFI";
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    snappy-switcher.url = "github:OpalAayan/snappy-switcher";
+    # nur = {
+    #   url = "github:nix-community/NUR";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
   outputs = {
     nixpkgs,
     home-manager,
     # lanzaboote,
-    nur,
+    # nur,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -52,7 +53,7 @@
           home-manager.nixosModules.default
           # lanzaboote.nixosModules.lanzaboote
           inputs.catppuccin.nixosModules.catppuccin
-          nur.modules.nixos.default
+          # nur.modules.nixos.default
         ];
       };
       dell5411 = nixpkgs.lib.nixosSystem {
@@ -62,7 +63,7 @@
           ./hosts/dell5411
           home-manager.nixosModules.default
           inputs.catppuccin.nixosModules.catppuccin
-          nur.modules.nixos.default
+          # nur.modules.nixos.default
         ];
       };
     };

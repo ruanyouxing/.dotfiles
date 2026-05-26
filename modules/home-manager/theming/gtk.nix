@@ -18,7 +18,7 @@ in {
       enable = true;
       size = 24;
     };
-    size = 16;
+    size = 24;
   };
   gtk = {
     enable = true;

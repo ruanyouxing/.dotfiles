@@ -13,34 +13,36 @@ end
 local dsp = hl.dsp
 local exec_cmd = dsp.exec_cmd
 local keybinds = {
-  { AltShift("Return"),      exec_cmd("kitty") },
-  { AltShift("Q"),           exec_cmd("uwsm stop") },
-  { AltShift("h"),           exec_cmd("scratchpad -g") },
-  { Super("R"),              exec_cmd("rofi -modi drun -show drun -width 5") },
-  { SuperShift("R"),         exec_cmd("kitty --class kitty-float -e yazi") },
-  { "CTRL + Print",          exec_cmd("flameshot gui") },
-  { "Print",                 exec_cmd("flameshot full") },
-  { Super("E"),              exec_cmd("Thunar") },
-  { Super("semicolon"),      exec_cmd("rofi -modi emoji -show emoji") },
-  { "ALT + F4",              exec_cmd("wlogout") },
+  { AltShift("Return"),  exec_cmd("kitty") },
+  { AltShift("Q"),       exec_cmd("uwsm stop") },
+  { AltShift("h"),       exec_cmd("scratchpad -g") },
+  { Super("R"),          exec_cmd("rofi -modi drun -show drun -width 5") },
+  { SuperShift("R"),     exec_cmd("kitty --class kitty-float -e yazi") },
+  { "CTRL + Print",      exec_cmd("flameshot gui") },
+  { "Print",             exec_cmd("flameshot full") },
+  { Super("E"),          exec_cmd("Thunar") },
+  { Super("semicolon"),  exec_cmd("rofi -modi emoji -show emoji") },
+  { "ALT + F4",          exec_cmd("wlogout") },
+  { "ALT + Tab",         exec_cmd("snappy-switcher next") },
+  { AltShift("Tab"),     exec_cmd("snappy-switcher prev") },
 
-  { Super("L"),              exec_cmd("lockandsleep") },
+  { Super("L"),          exec_cmd("lockandsleep") },
 
-  { Super("W"),              dsp.window.close() },
-  { Super("S"),              dsp.window.float({ action = "toggle" }) },
-  { Super("F"),              dsp.window.fullscreen({ action = "toggle" }) },
-  { Super("P"),              dsp.window.pseudo() },
-  { Super("J"),              dsp.layout("togglesplit") },
+  { Super("W"),          dsp.window.close() },
+  { Super("S"),          dsp.window.float({ action = "toggle" }) },
+  { Super("F"),          dsp.window.fullscreen({ action = "toggle" }) },
+  { Super("P"),          dsp.window.pseudo() },
+  { Super("J"),          dsp.layout("togglesplit") },
 
-  { Super("left"),           dsp.focus({ direction = "left" }) },
-  { Super("right"),          dsp.focus({ direction = "right" }) },
-  { Super("up"),             dsp.focus({ direction = "up" }) },
-  { Super("down"),           dsp.focus({ direction = "down" }) },
+  { Super("left"),       dsp.focus({ direction = "left" }) },
+  { Super("right"),      dsp.focus({ direction = "right" }) },
+  { Super("up"),         dsp.focus({ direction = "up" }) },
+  { Super("down"),       dsp.focus({ direction = "down" }) },
 
-  { SuperShift("left"),      function() exec_cmd("swapwindow", "l") end },
-  { SuperShift("right"),     function() exec_cmd("swapwindow", "r") end },
-  { SuperShift("up"),        function() exec_cmd("swapwindow", "u") end },
-  { SuperShift("down"),      function() exec_cmd("swapwindow", "d") end },
+  { SuperShift("left"),  function() exec_cmd("swapwindow", "l") end },
+  { SuperShift("right"), function() exec_cmd("swapwindow", "r") end },
+  { SuperShift("up"),    function() exec_cmd("swapwindow", "u") end },
+  { SuperShift("down"),  function() exec_cmd("swapwindow", "d") end },
 
   -- { "VolumeUp",              exec_cmd("volume-control up"),                  { repeating = true } },
   -- { "VolumeDown",            exec_cmd("volume-control down"),                { repeating = true } },
@@ -52,10 +54,10 @@ local keybinds = {
   -- { "MonBrightnessDown",     exec_cmd("brightnessctl s -5%"),                { repeating = true } },
 
 
-  { Super("mouse_down"),     dsp.focus { workspace = "e+1" } },
-  { Super("mouse_up"),       dsp.focus { workspace = "e-1" } },
-  { Super("mouse:272"),      dsp.window.drag(),                              { mouse = true } },
-  { Super("mouse:273"),      dsp.window.resize(),                            { mouse = true } },
+  { Super("mouse_down"), dsp.focus { workspace = "e+1" } },
+  { Super("mouse_up"),   dsp.focus { workspace = "e-1" } },
+  { Super("mouse:272"),  dsp.window.drag(),                              { mouse = true } },
+  { Super("mouse:273"),  dsp.window.resize(),                            { mouse = true } },
 }
 for i = 1, 9 do
   hl.bind(SUPER .. " + " .. i, dsp.focus { workspace = i })
