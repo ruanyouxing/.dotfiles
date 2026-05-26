@@ -1,6 +1,6 @@
-{ pkgs, extraPkgs, ... }:
+{ pkgs, extraPkgs, catppuccinFlavor, ... }:
 let
-  Grub-theme-particle = extraPkgs.grub-theme-particles;
+  grubTheme = pkgs.callPackage ../../../extra-pkgs/catppuccin-grub.nix { flavor = catppuccinFlavor; };
 in
 {
   boot = {
@@ -30,8 +30,8 @@ in
         efiInstallAsRemovable = true;
         configurationLimit = 10;
         gfxmodeEfi = "1920x1080";
-        theme = Grub-theme-particle;
-        splashImage = "${Grub-theme-particle}/background.jpg";
+        theme = grubTheme;
+        splashImage = "${grubTheme}/background.png";
       };
     };
   };

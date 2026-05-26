@@ -5,6 +5,9 @@
 }: let
   allFiles = lib.filesystem.listFilesRecursive ./.;
   scriptsDir = toString ./scripts;
+  excludeNames = [
+    "catppuccin-grub.nix"
+  ];
   pkgFiles =
     builtins.filter (
       path: let
@@ -14,6 +17,7 @@
         lib.strings.hasSuffix ".nix" name
         && name != "default.nix"
         && !lib.strings.hasPrefix scriptsDir str
+        && !(builtins.elem name excludeNames)
     )
     allFiles;
 in

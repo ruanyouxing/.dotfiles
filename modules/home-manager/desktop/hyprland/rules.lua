@@ -11,7 +11,7 @@ hl.window_rule({
     title = ":^.*([oO]pen|[sS]ave|[uU]pload|Volume Control|Preferences|Settings|Popup|.*Dialog.*|Bluetooth Devices).*$"
   },
   size = { 800, 600 },
-  pin = true,
+  -- pin = true,
   float = true,
 })
 

@@ -52,10 +52,10 @@ local keybinds = {
   { "XF86MonBrightnessDown", exec_cmd("brightnessctl s -5%") },
 
 
-  { Super("mouse_down"),     function() exec_cmd("workspace", "e+1") end },
-  { Super("mouse_up"),       function() exec_cmd("workspace", "e-1") end },
-  { Super("mouse:272"),      function() exec_cmd("movewindow") end,          { mouse = true } },
-  { Super("mouse:273"),      function() exec_cmd("resizewindow") end,        { mouse = true } },
+  { Super("mouse_down"),     function() dsp.focus { workspace = "e+1" } end },
+  { Super("mouse_up"),       function() dsp.focus { workspace = "e-1" } end },
+  { Super("mouse:272"),      function() dsp.window.drag() end,               { mouse = true } },
+  { Super("mouse:273"),      function() dsp.window.resize() end,             { mouse = true } },
 }
 for i = 1, 9 do
   hl.bind(SUPER .. " + " .. i, dsp.focus { workspace = i })
@@ -66,14 +66,14 @@ hl.gesture({
   fingers = 3,
   direction = "right",
   action = function()
-    exec_cmd("workspace", "e+1")
+    dsp.focus { workspace = "e+1" }
   end
 })
 hl.gesture({
   fingers = 3,
   direction = "left",
   action = function()
-    exec_cmd("workspace", "e-1")
+    dsp.focus { workspace = "e-1" }
   end
 })
 hl.gesture({
