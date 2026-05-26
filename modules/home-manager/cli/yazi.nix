@@ -10,15 +10,21 @@
             desc = "View PDF";
           }
         ];
+        edit = [
+          {
+            run = "$EDITOR %s";
+            block = true;
+          }
+        ];
       };
-      # open = {
-      #   rules = [
-      #     {
-      #       name = "*.pdf";
-      #       use = "view-pdf";
-      #     }
-      #   ];
-      # };
+      open = {
+        rules = [
+          {
+            mime = "text/*";
+            use = "edit";
+          }
+        ];
+      };
       mgr = {
         show_hidden = true;
         sort_by = "mtime";
