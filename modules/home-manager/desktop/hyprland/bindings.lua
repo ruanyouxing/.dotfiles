@@ -20,6 +20,7 @@ local keybinds = {
   { SuperShift("R"),     exec_cmd("kitty --class kitty-float -e yazi") },
   { "CTRL + Print",      exec_cmd("flameshot gui") },
   { "Print",             exec_cmd("flameshot full") },
+  { Super("V"),          exec_cmd("cliphist list | rofi -dmenu -p 'Clipboard' | cliphist decode | wl-copy") },
   { Super("E"),          exec_cmd("Thunar") },
   { Super("semicolon"),  exec_cmd("rofi -modi emoji -show emoji") },
   { "ALT + F4",          exec_cmd("wlogout") },

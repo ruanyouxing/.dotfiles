@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     gh
-    htop
     xcp
     dust
     duf
@@ -13,5 +12,6 @@
     ttyper
     silver-searcher
     unzip
+    p7zip-rar
   ];
 }
