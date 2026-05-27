@@ -1,22 +1,22 @@
-require("bindings")
-require("animation")
-require("rules")
-local catppuccin_theme = require("theme")
+require 'bindings'
+require 'animation'
+require 'rules'
+local catppuccin_theme = require 'theme'
 local function get_system_hostname()
-  local f = io.popen("hostname")
+  local f = io.popen 'hostname'
   if f then
-    local s = f:read("*a")
+    local s = f:read '*a'
     f:close()
-    return s:gsub("%s+", "")
+    return s:gsub('%s+', '')
   end
-  return "unknown"
+  return 'unknown'
 end
 
 local hostName = get_system_hostname()
-if hostName == "veritas-laptop" then
-  require("dell5411_config")
-elseif hostName == "veritas" then
-  require("nixosPC_config")
+if hostName == 'veritas-laptop' then
+  require 'dell5411_config'
+elseif hostName == 'veritas' then
+  require 'nixosPC_config'
 end
 local opts = {
   general = {
@@ -27,7 +27,7 @@ local opts = {
     },
     gaps_in = 5,
     gaps_out = 20,
-    layout = "master"
+    layout = 'master',
   },
   decoration = {
     rounding = 10,
@@ -38,8 +38,8 @@ local opts = {
     blur = {
       enabled = true,
       passes = 3,
-      size = 10
-    }
+      size = 10,
+    },
   },
   dwindle = {
     preserve_split = true,
@@ -47,32 +47,32 @@ local opts = {
   },
   master = {
     mfact = 0.55,
-    new_status = "slave",
-    orientation = "left"
+    new_status = 'slave',
+    orientation = 'left',
   },
   input = {
     follow_mouse = 1,
-    kb_layout = "us",
+    kb_layout = 'us',
     sensitivity = 0,
     touchpad = {
-      natural_scroll = true
-    }
+      natural_scroll = true,
+    },
   },
   misc = {
     initial_workspace_tracking = 0,
   },
   debug = {
     disable_logs = false,
-    enable_stdout_logs = true
+    enable_stdout_logs = true,
   },
   ecosystem = {
-    no_update_news = true
+    no_update_news = true,
   },
   xwayland = {
-    force_zero_scaling = true
-  }
+    force_zero_scaling = true,
+  },
 }
-if hostName == "veritas-laptop" then
-  opts.input.touchpad.natural_scroll = false;
+if hostName == 'veritas-laptop' then
+  opts.input.touchpad.natural_scroll = false
 end
 hl.config(opts)
