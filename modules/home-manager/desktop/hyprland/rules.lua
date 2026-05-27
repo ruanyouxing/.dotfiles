@@ -1,20 +1,9 @@
----@diagnostic disable:undefined-global
-
 hl.layer_rule({
   match = {
     namespace = "^(waybar|rofi|kitty)$",
     class = "^(rofi|kitty|kitty-float)$"
   },
   blur = true,
-})
-hl.window_rule({
-  match = {
-    -- title = "^.*([oO]pen|[sS]ave|[uU]pload|Volume Control|Preferences|Settings|Popup|.*Dialog.*|Bluetooth Devices).*$"
-    class = "xdg-desktop-portal-gtk",
-  },
-  size = { 800, 600 },
-  center = true,
-  float = true,
 })
 
 

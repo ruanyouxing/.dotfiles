@@ -4,13 +4,12 @@
 }
 
 window#waybar {
-  background-color: rgba(26, 27, 38, 0.5);
-  color: #ffffff;
+  background-color: alpha(@base, 0.5);
+  color: @text;
   transition-property: background-color;
   transition-duration: 0.5s;
   border-top: 8px transparent;
   border-radius: 8px;
-  transition-duration: 0.5s;
   margin: 16px 16px;
 }
 
@@ -20,7 +19,7 @@ window#waybar.hidden {
 
 #workspaces button {
   padding: 0 5px;
-  color: #7984a4;
+  color: @overlay0;
   background-color: transparent;
   box-shadow: inset 0 -3px transparent;
   border: none;
@@ -28,22 +27,19 @@ window#waybar.hidden {
 }
 
 #workspaces button.focused {
-  color: #bf616a;
+  color: @mauve;
 }
 
 #workspaces button.active {
-  color: #6a92d7;
+  color: @blue;
 }
 
 #workspaces button.urgent {
-  background-color: #eb4d4b;
+  background-color: @red;
 }
 
 #window {
-  /* border-radius: 20px; */
-  /* padding-left: 10px; */
-  /* padding-right: 10px; */
-  color: #64727d;
+  color: @overlay1;
 }
 
 #clock,
@@ -67,29 +63,30 @@ window#waybar.hidden {
 #workspaces {
   margin: 0 4px;
   border-radius: 7.8px;
-  background-color: #1f2530;
+  background-color: @surface0;
 }
 
 #cpu {
-  color: #fb958b;
-  background-color: #1f2530;
+  color: @maroon;
+  background-color: @surface0;
 }
 
 #memory {
-  color: #ebcb8b;
-  background-color: #1f2530;
+  color: @yellow;
+  background-color: @surface0;
 }
 
 #custom-power-menu {
   border-radius: 9.5px;
-  background-color: #1b242b;
+  background-color: @mantle;
   border-radius: 7.5px;
   padding: 0 5px;
+  color: @mauve;
 }
 
 #custom-launcher {
-  background-color: #1b242b;
-  color: #6a92d7;
+  background-color: @mantle;
+  color: @mauve;
   border-radius: 7.5px;
   padding: 0 3px;
 }
@@ -98,87 +95,85 @@ window#waybar.hidden {
   margin-left: 0;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
 .modules-right>widget:last-child>#workspaces {
   margin-right: 0;
 }
 
 #pulseaudio {
-  color: #7d9bba;
+  color: @sapphire;
 }
 
 #battery {
-  color: #b1bacc;
+  color: @subtext0;
 }
 
 #battery.warning {
-  background: orange;
+  background: @peach;
 }
 
 #battery.critical {
-  background: red;
+  background: @red;
 }
 
 #clock {
-  color: #c8d2e0;
-  /* background-color: #14141e; */
+  color: @subtext1;
 }
 
 @keyframes blink {
   to {
-    background-color: rgba(30, 34, 42, 0.5);
-    color: #abb2bf;
+    background-color: alpha(@mantle, 0.5);
+    color: @subtext0;
   }
 }
 
 label:focus {
-  background-color: #000000;
+  background-color: @crust;
 }
 
 #disk {
-  background-color: #964b00;
+  background-color: @peach;
 }
 
 #bluetooth {
-  color: #707d9d;
+  color: @overlay1;
 }
 
 #bluetooth.disconnected {
-  color: #f53c3c;
+  color: @red;
 }
 
 #network {
-  color: #b48ead;
+  color: @mauve;
 }
 
 #network.disconnected {
-  color: #f53c3c;
+  color: @red;
 }
 
 #custom-media {
-  background-color: #66cc99;
-  color: #2a5c45;
+  background-color: @green;
+  color: @base;
   min-width: 100px;
 }
 
 #window {
-  color: #ffffff;
+  color: @text;
 }
 
 #custom-media.custom-music {
-  background-color: #66cc99;
+  background-color: @green;
 }
 
 #custom-media.custom-vlc {
-  background-color: #ffa000;
+  background-color: @peach;
 }
 
 #temperature {
-  background-color: #f0932b;
+  background-color: @peach;
 }
 
 #temperature.critical {
-  background-color: #eb4d4b;
+  background-color: @red;
 }
 
 #tray>.passive {
@@ -187,45 +182,45 @@ label:focus {
 
 #tray>.needs-attention {
   -gtk-icon-effect: highlight;
-  background-color: #eb4d4b;
+  background-color: @red;
 }
 
 #idle_inhibitor {
-  background-color: #2d3436;
+  background-color: @surface0;
 }
 
 #idle_inhibitor.activated {
-  background-color: #ecf0f1;
-  color: #2d3436;
+  background-color: @text;
+  color: @base;
 }
 
 #mpd {
-  color: #2a5c45;
+  color: @green;
 }
 
 #mpd.disconnected {
-  color: #f53c3c;
+  color: @red;
 }
 
 #mpd.stopped {
-  color: #90b1b1;
+  color: @teal;
 }
 
 #mpd.paused {
-  color: #51a37a;
+  color: @green;
 }
 
 #language {
-  background: #00b093;
-  color: #740864;
+  background: @teal;
+  color: @mauve;
   padding: 0 5px;
   margin: 0 5px;
   min-width: 16px;
 }
 
 #keyboard-state {
-  background: #97e1ad;
-  color: #000000;
+  background: @green;
+  color: @crust;
   padding: 0 0px;
   margin: 0 5px;
   min-width: 16px;
@@ -238,10 +233,13 @@ label:focus {
 #custom-music {
   padding: 0 10px;
   margin: 0 4px;
-  /* background-color: #1db954; */
-  color: #ffffff;
+  color: @green;
+}
+
+#custom-music.paused {
+  color: @red;
 }
 
 #keyboard-state>label.locked {
-  background: rgba(0, 0, 0, 0.2);
+  background: alpha(@crust, 0.2);
 }

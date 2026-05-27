@@ -64,8 +64,8 @@ in {
             "urgent" = "";
             # "active" = ""; "default" = "";
           };
-          on-scroll-up = "hyprctl dispatch workspace e+1";
-          on-scroll-down = "hyprctl dispatch workspace e-1";
+          on-scroll-up = "hyprctl eval \"hl.dispatch(hl.dsp.focus({ workspace = 'e+1' }))\"";
+          on-scroll-down = "hyprctl eval \"hl.dispatch(hl.dsp.focus({ workspace = 'e-1' }))\"";
         };
         "hyprland/window" = {
           format = "{title} ";
@@ -77,15 +77,15 @@ in {
             "(.*)Nvim(.*)" = "Neovim ";
             "(.*)Mozilla Firefox(.*)" = "Firefox ";
             "(.*) - Discord(.*)" = "Discord ";
-            "^(.+?)\\s* - \\s*(.+)$" = "Spotify ";
+            # "^(.+?)\\s* - \\s*(.+)$" = "Spotify ";
           };
         };
         "tray" = {
           spacing = 10;
         };
         "clock" = {
-          format = " <span color='#bf616a'> </span>{:%I:%M %p} ";
-          format-alt = " <span color='#bf616a'> </span>{:%a %b %d} ";
+          format = "  {:%I:%M %p} ";
+          format-alt = "  {:%a %b %d} ";
           tooltip-format = " <big>{:%B%Y}</big>\n<tt><small>{calendar}</small></tt> ";
         };
 
@@ -106,7 +106,7 @@ in {
           format-alt = " 󰖩 {signalStrength}% ";
           format-ethernet = " 󰈀 Wired ";
           format-disconnected = " 󰖪  ";
-          on-click-right = toString ../../scripts/wifimenu;
+          on-click-right = "wifimenu";
         };
 
         pulseaudio = {
@@ -133,7 +133,7 @@ in {
         };
 
         "bluetooth" = {
-          on-click = "~/.config/waybar/scripts/rofi-bluetooth &";
+          on-click = "rofi-bluetooth";
           format = "  {status} ";
         };
         "custom/music-bar" = {
@@ -148,8 +148,8 @@ in {
           format = "{icon} : {text}";
           return-type = "json";
           format-icons = {
-            "Playing" = "<span color=\"#1DB954\"> </span>";
-            "Paused" = "<span color=\"#FF1313\"> </span>";
+            "Playing" = " ";
+            "Paused" = " ";
           };
           max-length = 60;
           tooltip = false;
@@ -159,15 +159,16 @@ in {
           on-scroll-down = "playerctl previous";
         };
         "custom/power-menu" = {
-          format = " <span color='#6a92d7'>⏻ </span>";
+          format = " ⏻ ";
           on-click = "wlogout";
         };
         "custom/launcher" = {
-          format = " <span color='#6a92d7'> 󱄅 </span> ";
+          format = " 󱄅 ";
           on-click = "rofi -show drun";
         };
       };
     };
     style = builtins.readFile ./waybar.css;
   };
+  catppuccin.waybar.mode = "prependImport";
 }

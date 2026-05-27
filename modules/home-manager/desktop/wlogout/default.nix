@@ -41,7 +41,7 @@ in {
         keybind = "r";
       }
     ];
-    style = builtins.readFile ./wlogout.css;
   };
   xdg.configFile."wlogout/assets".source = toString assetsFolder + "/wlogout_icons";
+  catppuccin.wlogout.extraStyle = builtins.readFile ./wlogout.css;
 }

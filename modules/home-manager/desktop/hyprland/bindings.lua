@@ -10,6 +10,10 @@ end
 local SuperShift = function(key)
   return SUPERSHIFT .. " + " .. key
 end
+local CTRLSUPER = "CTRL + SUPER"
+local CtrlSuper = function(key)
+  return CTRLSUPER .. " + " .. key
+end
 local dsp = hl.dsp
 local exec_cmd = dsp.exec_cmd
 local keybinds = {
@@ -40,10 +44,15 @@ local keybinds = {
   { Super("up"),         dsp.focus({ direction = "up" }) },
   { Super("down"),       dsp.focus({ direction = "down" }) },
 
-  { SuperShift("left"),  function() exec_cmd("swapwindow", "l") end },
-  { SuperShift("right"), function() exec_cmd("swapwindow", "r") end },
-  { SuperShift("up"),    function() exec_cmd("swapwindow", "u") end },
-  { SuperShift("down"),  function() exec_cmd("swapwindow", "d") end },
+  { CtrlSuper("left"),   dsp.window.resize({ x = -20, y = 0, relative = true }),                            { repeating = true } },
+  { CtrlSuper("right"),  dsp.window.resize({ x = 20, y = 0, relative = true }),                             { repeating = true } },
+  { CtrlSuper("up"),     dsp.window.resize({ x = 0, y = -20, relative = true }),                            { repeating = true } },
+  { CtrlSuper("down"),   dsp.window.resize({ x = 0, y = 20, relative = true }),                             { repeating = true } },
+
+  { SuperShift("left"),  dsp.window.swap({ direction = "left" }) },
+  { SuperShift("right"), dsp.window.swap({ direction = "right" }) },
+  { SuperShift("up"),    dsp.window.swap({ direction = "up" }) },
+  { SuperShift("down"),  dsp.window.swap({ direction = "down" }) },
 
   -- { "VolumeUp",              exec_cmd("volume-control up"),                  { repeating = true } },
   -- { "VolumeDown",            exec_cmd("volume-control down"),                { repeating = true } },
@@ -57,8 +66,8 @@ local keybinds = {
 
   { Super("mouse_down"), dsp.focus { workspace = "e+1" } },
   { Super("mouse_up"),   dsp.focus { workspace = "e-1" } },
-  { Super("mouse:272"),  dsp.window.drag(),                              { mouse = true } },
-  { Super("mouse:273"),  dsp.window.resize(),                            { mouse = true } },
+  { Super("mouse:272"),  dsp.window.drag(),                                                                 { mouse = true } },
+  { Super("mouse:273"),  dsp.window.resize(),                                                               { mouse = true } },
 }
 for i = 1, 9 do
   hl.bind(SUPER .. " + " .. i, dsp.focus { workspace = i })

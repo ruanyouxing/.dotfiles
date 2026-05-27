@@ -18,3 +18,12 @@ hl.monitor({
   position = "0x0",
   scale = 1.2
 })
+hl.window_rule({
+  match = {
+    -- title = "^.*([oO]pen|[sS]ave|[uU]pload|Volume Control|Preferences|Settings|Popup|.*Dialog.*|Bluetooth Devices).*$"
+    class = "xdg-desktop-portal-gtk",
+  },
+  size = { 800, 600 },
+  center = true,
+  float = true,
+})
