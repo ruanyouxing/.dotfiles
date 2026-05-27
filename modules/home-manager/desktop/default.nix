@@ -10,6 +10,7 @@ in {
     awww
     wtype
     wl-clipboard
+    cliphist
     dunst
   ];
   services.gammastep = {
