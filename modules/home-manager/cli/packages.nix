@@ -10,7 +10,6 @@
     pipes
     rsync
     ttyper
-    silver-searcher
     unzip
     p7zip-rar
   ];

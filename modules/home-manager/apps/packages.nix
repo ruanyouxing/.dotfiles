@@ -14,5 +14,6 @@
     qownnotes
     kdePackages.okular
     # xournalpp
+    ffmpeg
   ];
 }
