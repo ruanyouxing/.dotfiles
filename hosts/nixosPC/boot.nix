@@ -38,4 +38,5 @@ in
     };
   };
   # systemd.services.plymouth-quit.serviceConfig.ExecStartPre = "${pkgs.busybox}/bin/sleep 4";
+  catppuccin.plymouth.enable = false;
 }

@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   boot = {
     supportedFilesystems = [
       "ntfs"
@@ -26,8 +25,6 @@
       };
     };
   };
-  environment.systemPackages = with pkgs; [ ntfs3g ];
+  environment.systemPackages = with pkgs; [ntfs3g];
   security.lockKernelModules = false;
-
-  catppuccin.grub.enable = true;
 }

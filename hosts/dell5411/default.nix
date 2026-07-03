@@ -15,6 +15,7 @@
     ++ [
       ../../modules/nixos
     ];
+
   home-manager = {
     extraSpecialArgs = {inherit username extraPkgs catppuccinFlavor catppuccinAccent;};
     users = {

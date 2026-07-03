@@ -4,6 +4,9 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ../../modules/catppuccin.nix
+  ];
   home.shellAliases = {
     nixos-switch = lib.mkForce "nh os switch --ask --hostname dell5411 ${homeDir}/.dotfiles";
     nixos-boot = lib.mkForce "nh os boot --ask --hostname dell5411 ${homeDir}/.dotfiles";

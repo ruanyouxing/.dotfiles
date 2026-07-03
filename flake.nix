@@ -53,6 +53,7 @@
           home-manager.nixosModules.default
           # lanzaboote.nixosModules.lanzaboote
           inputs.catppuccin.nixosModules.catppuccin
+          ./modules/catppuccin.nix
           # nur.modules.nixos.default
         ];
       };
@@ -63,6 +64,7 @@
           ./hosts/dell5411
           home-manager.nixosModules.default
           inputs.catppuccin.nixosModules.catppuccin
+          ./modules/catppuccin.nix
           # nur.modules.nixos.default
         ];
       };
@@ -73,6 +75,7 @@
         extraSpecialArgs = {inherit inputs customLib extraPkgs username homeDir catppuccinFlavor catppuccinAccent;};
         modules = [
           ./modules/home-manager/default.nix
+          ./modules/catppuccin.nix
         ];
       };
     };

@@ -3,6 +3,9 @@
   homeDir,
   ...
 }: {
+  imports = [
+    ../../modules/catppuccin.nix
+  ];
   home.shellAliases = {
     nixos-switch = lib.mkForce "nh os switch --ask --hostname nixosPC ${homeDir}/.dotfiles";
     nixos-boot = lib.mkForce "nh os boot --ask --hostname nixosPC ${homeDir}/.dotfiles";
