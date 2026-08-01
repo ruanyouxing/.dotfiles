@@ -20,6 +20,9 @@ in {
     package = inputs.nvim-config.packages.${system}.default;
     defaultEditor = true;
   };
-  programs.lazygit.enable = true;
+  programs.lazygit = {
+    enable = true;
+    enableNushellIntegration = true;
+  };
   programs.opencode.enable = true;
 }

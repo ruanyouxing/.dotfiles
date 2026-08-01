@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.kitty = {
     enable = true;
 
@@ -129,7 +129,6 @@
       clipboard_control = "write-clipboard write-primary read-clipboard-ask read-primary-ask";
       clipboard_max_size = 64;
       allow_hyperlinks = true;
-      shell_integration = "no-cursor";
       allow_cloning = "ask";
       clone_source_strategies = "venv,conda,env_var,path";
       term = "xterm-kitty";

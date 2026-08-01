@@ -11,11 +11,9 @@
   imports = [
     inputs.home-manager.nixosModules.default
   ];
-  programs.zsh.enable = true;
   users.users.${username} = {
     isNormalUser = true;
     description = username;
-    shell = pkgs.zsh;
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -26,6 +24,14 @@
       "adbusers"
     ];
   };
+  environment.shells = [
+    pkgs.nushell
+  ];
+  programs.bash.interactiveShellInit = ''
+    if ! [ "$TERM" = "dumb" ] && [ -z "$BASH_EXECUTION_STRING" ]; then
+      exec nu
+    fi
+  '';
   home-manager = {
     useUserPackages = true;
     extraSpecialArgs = {inherit inputs pkgs customLib username homeDir catppuccinFlavor catppuccinAccent;};
