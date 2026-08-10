@@ -2,6 +2,8 @@
   description = "ruanyouxing dotfiles flake";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    comma.url = "github:nix-community/comma";
+    nix-index-database.url = "github:nix-community/nix-index-database";
     catppuccin.url = "github:catppuccin/nix";
     nvim-config.url = "github:ruanyouxing/nvim";
     home-manager = {

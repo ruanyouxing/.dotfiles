@@ -1,8 +1,10 @@
 {
   pkgs,
   options,
+  inputs,
   ...
 }: {
+  imports = [inputs.nix-index-database.nixosModules.default];
   networking.networkmanager.enable = true;
   programs.nix-ld.enable = true;
   programs.dconf.enable = true;
@@ -29,4 +31,5 @@
     enable = true;
     openFirewall = true;
   };
+  programs.nix-index-database.comma.enable = true;
 }
