@@ -5,7 +5,7 @@
   ...
 }: let
   system = pkgs.stdenv.hostPlatform.system;
-  allDeps = inputs.nvim-config.legacyPackages.${system}.nvimDepedencies;
+  allDeps = inputs.nvim-config.legacyPackages.${system}.nvimDependencies;
   exclude = ["opencode" "lazygit"];
   filteredDeps = builtins.filter (pkg: !(builtins.elem (lib.getName pkg) exclude)) allDeps;
 in {

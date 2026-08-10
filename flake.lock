@@ -931,11 +931,11 @@
         "nixpkgs": "nixpkgs_10"
       },
       "locked": {
-        "lastModified": 1785586898,
-        "narHash": "sha256-+oqL6uUTr1c+GQOvh9yslnW5YiR07UDLxDtJfkoKG2c=",
+        "lastModified": 1786363390,
+        "narHash": "sha256-i7kYmA5NwdkghOQQ8NgLKZtJMGZ6lOoH+BXi33NuIKs=",
         "owner": "ruanyouxing",
         "repo": "nvim",
-        "rev": "bc1c685ccea0aeff6ae0aa186ca60c87abac874e",
+        "rev": "2f16049649241cee90783ed72f5916b3b9dd19fc",
         "type": "github"
       },
       "original": {
