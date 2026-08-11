@@ -27,17 +27,17 @@ in {
       name = "Iosevka Nerd Font";
       size = 14;
     };
-    theme = {
-      name = let
-        flavorSuffix = lib.optionalString (catppuccinFlavor != "mocha") "-${toSentence catppuccinFlavor}";
-      in "Catppuccin-GTK-${toSentence catppuccinAccent}-Dark-Compact${flavorSuffix}";
-      package = pkgs.magnetic-catppuccin-gtk.override {
-        accent = [catppuccinAccent];
-        shade = "dark";
-        size = "compact";
-        tweaks = lib.lists.remove "mocha" [catppuccinFlavor];
-      };
-    };
+    # theme = {
+    #   name = let
+    #     flavorSuffix = lib.optionalString (catppuccinFlavor != "mocha") "-${toSentence catppuccinFlavor}";
+    #   in "Catppuccin-GTK-${toSentence catppuccinAccent}-Dark-Compact${flavorSuffix}";
+    #   package = pkgs.magnetic-catppuccin-gtk.override {
+    #     accent = [catppuccinAccent];
+    #     shade = "dark";
+    #     size = "compact";
+    #     tweaks = lib.lists.remove "mocha" [catppuccinFlavor];
+    #   };
+    # };
     iconTheme = {
       package = lib.mkForce extraPkgs.catppuccin-icons;
       name = lib.mkForce "Catppuccin-${toSentence catppuccinFlavor}";

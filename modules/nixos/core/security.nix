@@ -12,6 +12,5 @@
         ];
       }
     ];
-    pam.services.hyprlock = {};
   };
 }
