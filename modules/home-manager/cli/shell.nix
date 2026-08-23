@@ -24,6 +24,9 @@
     };
     nushell = {
       enable = true;
+      settings = {
+          edit_mode = "vi";
+        };
       shellAliases = {
         lg = "${pkgs.lazygit}/bin/lazygit";
         g = "git";

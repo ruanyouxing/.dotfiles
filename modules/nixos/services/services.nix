@@ -26,6 +26,7 @@
     v4l-utils
     android-tools
   ];
+  networking.networkmanager.insertNameservers = ["1.1.1.1" "8.8.8.8"];
   networking.timeServers = options.networking.timeServers.default ++ ["0.asia.pool.ntp.org"];
   programs.localsend = {
     enable = true;
