@@ -8,7 +8,8 @@
         showStartupLaunchMessage = false;
         uiColor = "#a78bfa";
         jpegQuality = 100;
-        disabledGrimWarning = true;
+        # disabledGrimWarning = true;
+        # useGrimAdapter = true;
       };
     };
   };

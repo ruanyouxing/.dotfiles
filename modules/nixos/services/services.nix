@@ -33,4 +33,8 @@
     openFirewall = true;
   };
   programs.nix-index-database.comma.enable = true;
+  services.mysql = {
+    enable = true;
+    package = pkgs.mariadb;
+  };
 }

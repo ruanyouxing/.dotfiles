@@ -46,9 +46,9 @@
     '';
   };
 in {
-  # home.packages = [
-  #   inputs.snappy-switcher.packages.${pkgs.system}.default
-  # ];
+  home.packages = [
+    inputs.snappy-switcher.packages.${pkgs.system}.default
+  ];
 
   xdg.configFile."snappy-switcher/config.ini" = {
     source = pkgs.writeText "config.ini" ''
