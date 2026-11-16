@@ -51,8 +51,8 @@ in {
   };
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
+    extraPortals = [
+      # inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland
     ];
     config = {
       common = {
