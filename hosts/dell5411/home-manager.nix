@@ -16,4 +16,5 @@
     pkgs.brightnessctl
   ];
   services.hypridle.settings.listener = lib.mkForce [];
+  services.gammastep.enable = lib.mkForce false;
 }

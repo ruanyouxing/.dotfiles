@@ -9,7 +9,7 @@ hl.on('hyprland.start', function()
   hl.exec_cmd 'fcitx5'
   hl.exec_cmd 'flameshot'
   hl.exec_cmd 'snappy-switcher --daemon'
-  hl.exec_cmd 'gammastep-indicator'
+  -- hl.exec_cmd 'gammastep-indicator'
 end)
 hl.monitor {
   output = 'eDP-1',
