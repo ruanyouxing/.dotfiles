@@ -10,7 +10,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # lanzaboote.url = "github:nix-community/lanzaboote";
+    bootvine = {
+      url = "git+https://codeberg.org/wvhulle/bootvine";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    lanzaboote.url = "github:nix-community/lanzaboote";
     hyprland.url = "github:hyprwm/Hyprland";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     naersk.url = "github:nmattia/naersk";
@@ -30,7 +34,8 @@
   outputs = {
     nixpkgs,
     home-manager,
-    # lanzaboote,
+    lanzaboote,
+    bootvine,
     # nur,
     ...
   } @ inputs: let
@@ -52,10 +57,11 @@
         specialArgs = {inherit inputs customLib extraPkgs username homeDir catppuccinFlavor catppuccinAccent;};
         modules = [
           ./hosts/nixosPC
-          home-manager.nixosModules.default
-          # lanzaboote.nixosModules.lanzaboote
-          inputs.catppuccin.nixosModules.catppuccin
           ./modules/catppuccin.nix
+          home-manager.nixosModules.default
+          lanzaboote.nixosModules.lanzaboote
+          inputs.catppuccin.nixosModules.catppuccin
+          bootvine.nixosModules.default
           # nur.modules.nixos.default
         ];
       };
@@ -64,9 +70,10 @@
         specialArgs = {inherit inputs customLib extraPkgs username homeDir catppuccinFlavor catppuccinAccent;};
         modules = [
           ./hosts/dell5411
+          ./modules/catppuccin.nix
           home-manager.nixosModules.default
           inputs.catppuccin.nixosModules.catppuccin
-          ./modules/catppuccin.nix
+          bootvine.nixosModules.default
           # nur.modules.nixos.default
         ];
       };

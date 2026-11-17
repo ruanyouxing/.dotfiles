@@ -2,11 +2,10 @@
   pkgs,
   inputs,
   ...
-}:
-let
+}: let
   bad_apple = inputs.bad-apple-plymouth.packages.${pkgs.system}.default;
-in
-{
+in {
+  environment.systemPackages = [pkgs.sbctl];
   boot = {
     kernelParams = [
       "loglevel=3"
@@ -26,15 +25,15 @@ in
       "ntfs3"
       "v4l2loopback"
     ];
-    extraModulePackages = [ pkgs.linuxPackages.v4l2loopback ];
-    #    lanzaboote = {
-    #      enable = true;
-    #      pkiBundle = "/etc/secureboot";
-    #    };
+    extraModulePackages = [pkgs.linuxPackages.v4l2loopback];
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl/";
+    };
     plymouth = {
       enable = true;
       theme = "bad_apple";
-      themePackages = [ bad_apple ];
+      themePackages = [bad_apple];
     };
   };
   # systemd.services.plymouth-quit.serviceConfig.ExecStartPre = "${pkgs.busybox}/bin/sleep 4";

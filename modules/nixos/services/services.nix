@@ -13,6 +13,7 @@
     dbus.enable = true;
     ntp.enable = true;
     openssh.enable = true;
+    bootvine.enable = true;
   };
   hardware.opentabletdriver = {
     enable = true;
